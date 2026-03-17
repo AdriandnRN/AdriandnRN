@@ -3,6 +3,13 @@ Professional Profile
 I am a Registered Nurse (RN) graduated from Activa Training Center in Miami, FL. My professional background is unique: I combine a Bachelor’s degree in Industrial Engineering with over two years of experience in Medical Administration. This allows me to approach nursing with a focus on clinical safety, process optimization, and exceptional patient advocacy. I am highly proficient in managing complex patient workflows and adhering to RN standards for evidence-based practice.
 ---
 
+📁 Professional Portfolio & Evidence
+*Click to view my professional documentation:*
+
+* 📄 **[Professional Resume / CV](./Adrian_Diaz_RN_Resume.pdf)**
+* 📋 **[Clinical Skills Competency Checklist](./Clinical_Skills_Checklist.pdf)** - Evidence of mastered skills (Apgar, IV, Wound Care).
+* 📝 **[Clinical Reflective Journals](./Clinical_Reflective_Journals.pdf)** - Insights from rotations at Select Specialty Hospital and Palazzo Mental Health.
+* 🎓 **[Nursing Philosophy Statement](./Nursing_Philosophy.pdf)** - My commitment to the nursing profession.
 ## 📚 Education
 
 * **Associate Degree in Nursing (ADN)**
