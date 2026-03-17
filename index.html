@@ -3,137 +3,85 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Adrian Diaz | Nursing Portfolio</title>
+    <title>Adrian Diaz | RN Portfolio</title>
     <style>
-        /* Paleta: Diamante (Blanco Brillante) y Oro */
-        :root {
-            --gold: #B8860B; /* Oro profundo para legibilidad sobre blanco */
-            --gold-bright: #D4AF37;
-            --diamond-bg: #FFFFFF;
-            --text-dark: #2C2C2C;
-            --soft-gray: #F4F4F4;
-        }
-
+        /* Estilo Directo para asegurar que NO salga negro */
         body {
-            font-family: 'Georgia', serif; /* Un toque más elegante y clásico */
-            background-color: var(--diamond-bg);
-            color: var(--text-dark);
+            background-color: #FFFFFF !important; /* Blanco Diamante */
+            color: #222222;
+            font-family: 'Arial', sans-serif;
             margin: 0;
-            line-height: 1.8;
+            padding: 0;
         }
 
-        /* Menú Interactivo */
+        /* Menú con bordes Oro */
         nav {
-            background-color: var(--diamond-bg);
-            padding: 25px;
             text-align: center;
-            border-bottom: 3px solid var(--gold);
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
+            padding: 20px;
+            border-bottom: 4px solid #D4AF37; /* Oro */
+            background-color: #FFFFFF;
         }
 
         nav a {
-            color: var(--text-dark);
             text-decoration: none;
-            margin: 0 20px;
+            color: #D4AF37; /* Oro */
             font-weight: bold;
+            margin: 0 15px;
             text-transform: uppercase;
-            letter-spacing: 1.5px;
-            transition: 0.3s;
-            font-size: 0.9rem;
         }
 
-        nav a:hover {
-            color: var(--gold);
-            border-bottom: 2px solid var(--gold);
-        }
-
-        /* Encabezado */
+        /* Encabezado en Oro */
         header {
-            padding: 80px 20px;
             text-align: center;
-            background: linear-gradient(to bottom, #ffffff, #fdfbf7);
+            padding: 50px 20px;
         }
 
         h1 {
-            color: var(--gold);
-            font-size: 3.5rem;
+            color: #D4AF37; /* Oro */
+            font-size: 3rem;
             margin: 0;
-            text-transform: uppercase;
-            letter-spacing: 4px;
         }
 
-        .subtitle {
-            color: var(--text-dark);
-            font-size: 1.2rem;
-            font-weight: 300;
-            margin-top: 10px;
-        }
-
-        .bilingual {
-            color: var(--gold);
+        .info-sub {
             font-weight: bold;
+            color: #555;
             display: block;
-            margin-top: 5px;
+            margin-bottom: 20px;
         }
 
-        /* Botones de Acción */
-        .actions {
-            margin-top: 40px;
-        }
-
-        .actions a {
+        /* Botones Oro */
+        .btn {
             display: inline-block;
-            padding: 15px 30px;
-            margin: 10px;
-            border: 2px solid var(--gold);
-            color: var(--gold);
+            padding: 12px 20px;
+            border: 2px solid #D4AF37;
+            color: #D4AF37;
             text-decoration: none;
             font-weight: bold;
-            text-transform: uppercase;
-            transition: all 0.3s ease;
+            margin: 5px;
+            border-radius: 5px;
         }
 
-        .actions a:hover {
-            background-color: var(--gold);
+        .btn:hover {
+            background-color: #D4AF37;
             color: white;
-            box-shadow: 0 4px 15px rgba(184, 134, 11, 0.3);
         }
 
-        /* Contenido Principal */
+        /* Secciones */
         main {
-            max-width: 900px;
+            max-width: 800px;
             margin: 0 auto;
-            padding: 60px 20px;
-        }
-
-        h3 {
-            color: var(--gold);
-            font-size: 1.8rem;
-            border-bottom: 1px solid var(--gold);
-            padding-bottom: 10px;
-            margin-top: 50px;
-            text-align: center;
-        }
-
-        section p {
-            font-size: 1.2rem;
-            color: var(--text-dark);
-            text-align: justify;
-        }
-
-        .mission-text {
-            font-style: italic;
-            text-align: center;
-            font-size: 1.4rem;
-            color: #444;
             padding: 20px;
         }
 
-        strong {
-            color: var(--gold);
+        h2 {
+            color: #D4AF37;
+            border-bottom: 1px solid #D4AF37;
+            padding-bottom: 5px;
+        }
+
+        p {
+            font-size: 1.1rem;
+            line-height: 1.6;
         }
     </style>
 </head>
@@ -149,23 +97,21 @@
 
     <header>
         <h1>Adrian Diaz</h1>
-        <span class="subtitle">New Graduate RN Candidate | Miami, FL</span>
-        <span class="bilingual">BILINGUAL (ENGLISH/SPANISH)</span>
+        <span class="info-sub">New Graduate RN Candidate | Miami, FL</span>
+        <p><strong>BILINGUAL (ENGLISH/SPANISH)</strong></p>
         
-        <div class="actions">
-            <a href="mailto:adriandn2022@gmail.com">Contact for Interview</a>
-            <a href="tel:7862187679">Call Me</a>
-        </div>
+        <a href="mailto:adriandn2022@gmail.com" class="btn">Contact for Interview</a>
+        <a href="tel:7862187679" class="btn">Call Me</a>
     </header>
 
     <main>
-        <section id="mission">
-            <h3>Professional Mission</h3>
-            <p class="mission-text">"To integrate industrial engineering precision with evidence-based nursing care, ensuring clinical safety, operational efficiency, and compassionate patient advocacy in high-acuity environments."</p>
+        <section>
+            <h2>Professional Mission</h2>
+            <p>"To integrate industrial engineering precision with evidence-based nursing care, ensuring clinical safety, operational efficiency, and compassionate patient advocacy in high-acuity environments."</p>
         </section>
 
-        <section id="introduction">
-            <h3>Professional Introduction</h3>
+        <section>
+            <h2>Professional Introduction</h2>
             <p>Hello, I am <strong>Adrian Diaz</strong>, a dedicated RN graduate from <strong>Activa Training Center</strong>. My path to nursing is unique, as I hold a <strong>Bachelor's degree in Industrial Engineering</strong>. This background allows me to view patient care through a lens of safety, process optimization, and meticulous attention to detail.</p>
             <p>With over two years of experience at <strong>Barroso Medical Services</strong>, I have mastered the administrative and clinical workflows necessary to provide seamless patient transitions. I believe that nurses are the first line of defense; my goal is to utilize early intervention and clear, bilingual communication to improve patient outcomes.</p>
         </section>
