@@ -1,39 +1,217 @@
+To achieve that "two-page" feel—where the first thing people see is a clean, high-impact cover and the rest of the information is tucked away—we will use a Full-Screen Hero Landing design.
+
+This version features a professional Home Page with your photo and a strong call-to-action, followed by a Deep Profile section that feels like a separate page.
+
+How to set this up:
+Open your index.html on GitHub.
+
+Replace everything with the code below.
+
+To add your photo: Save your photo as profile.jpg in your GitHub repository, and it will automatically appear in the circle.
+
+HTML
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Adrian Diaz, RN | Professional Portfolio</title>
-    <link rel="stylesheet" href="style.css"> </head>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --navy: #002d5b;
+            --medical-blue: #007bff;
+            --teal: #20c997;
+            --light-bg: #f8f9fa;
+            --text-dark: #212529;
+            --white: #ffffff;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; color: var(--text-dark); background-color: var(--light-bg); scroll-behavior: smooth; }
+
+        /* --- PAGE 1: FULL SCREEN HERO --- */
+        .hero-page {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, var(--navy) 0%, #004a99 100%);
+            color: var(--white);
+            text-align: center;
+            padding: 20px;
+            position: relative;
+        }
+
+        .hero-container {
+            max-width: 800px;
+            animation: fadeIn 1.2s ease-out;
+        }
+
+        /* Profile Image Placeholder */
+        .profile-img {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            border: 5px solid rgba(255, 255, 255, 0.2);
+            margin-bottom: 30px;
+            object-fit: cover;
+            background: #eee; /* Placeholder color */
+        }
+
+        .hero-container h1 { font-size: 3.5rem; font-weight: 700; margin-bottom: 10px; }
+        .hero-container p.title { font-size: 1.5rem; font-weight: 300; opacity: 0.9; margin-bottom: 25px; }
+        .hero-container p.bio-brief { font-size: 1.1rem; opacity: 0.8; max-width: 600px; margin: 0 auto 40px; line-height: 1.6; }
+
+        .cta-buttons { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; }
+        
+        .btn-primary { 
+            padding: 15px 35px; background: var(--medical-blue); color: white; border-radius: 50px;
+            text-decoration: none; font-weight: 600; transition: 0.3s; font-size: 1rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+        .btn-primary:hover { background: #0056b3; transform: translateY(-3px); }
+
+        .btn-secondary { 
+            padding: 15px 35px; background: transparent; color: white; border-radius: 50px;
+            text-decoration: none; font-weight: 600; border: 2px solid white; transition: 0.3s;
+        }
+        .btn-secondary:hover { background: white; color: var(--navy); }
+
+        /* --- NAVIGATION --- */
+        nav { background: var(--white); padding: 15px 0; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 10px rgba(0,0,0,0.05); display: flex; justify-content: center; gap: 30px; }
+        nav a { text-decoration: none; color: var(--navy); font-weight: 600; font-size: 0.9rem; text-transform: uppercase; }
+
+        /* --- PAGE 2: INFORMATION SECTIONS --- */
+        .content-container { max-width: 1000px; margin: 60px auto; padding: 0 20px; }
+        
+        section { background: var(--white); padding: 50px; border-radius: 20px; margin-bottom: 40px; box-shadow: 0 5px 20px rgba(0,0,0,0.03); }
+        
+        h2 { font-size: 2rem; color: var(--navy); margin-bottom: 30px; display: flex; align-items: center; gap: 15px; }
+        h2 i { color: var(--medical-blue); }
+
+        .info-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+        .info-card { background: var(--light-bg); padding: 30px; border-radius: 15px; border-left: 5px solid var(--medical-blue); }
+        .info-card h3 { color: var(--navy); margin-bottom: 15px; }
+        .info-card p { font-size: 0.95rem; line-height: 1.6; color: #555; }
+
+        /* Document Vault Style */
+        .vault-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; }
+        .doc-link { 
+            display: flex; align-items: center; gap: 15px; padding: 20px; background: #fff; 
+            border: 1px solid #eee; border-radius: 12px; text-decoration: none; color: var(--navy);
+            transition: 0.3s; font-weight: 600;
+        }
+        .doc-link:hover { border-color: var(--medical-blue); color: var(--medical-blue); background: #f0f7ff; }
+        .doc-link i { font-size: 1.5rem; }
+
+        /* Footer */
+        footer { text-align: center; padding: 60px 20px; color: #aaa; background: white; border-top: 1px solid #eee; }
+
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+        @media (max-width: 768px) {
+            .hero-container h1 { font-size: 2.5rem; }
+            section { padding: 30px 20px; }
+        }
+    </style>
+</head>
 <body>
 
-    <nav>
-        <ul>
-            <li><a href="index.html">Inicio</a></li>
-            <li><a href="experiencia.html">Experiencia Clínica</a></li>
-            <li><a href="documentos.html">Credenciales</a></li>
-            <li><a href="contacto.html">Contacto</a></li>
-        </ul>
-    </nav>
-
-    <header>
-        <h1>Adrian Diaz, RN</h1>
-        <p>Enfermero Registrado | Ingeniero Industrial</p>
+    <header class="hero-page">
+        <div class="hero-container">
+            <img src="profile.jpg" alt="Adrian Diaz" class="profile-img" onerror="this.src='https://via.placeholder.com/180?text=AD';">
+            
+            <h1>Adrian Diaz, RN</h1>
+            <p class="title">Bilingual Registered Nurse | Industrial Engineer</p>
+            <p class="bio-brief">
+                Bridging the gap between engineering precision and compassionate nursing care. 
+                Focused on critical care efficiency and patient advocacy in South Florida.
+            </p>
+            
+            <div class="cta-buttons">
+                <a href="#about" class="btn-primary">View Full Profile</a>
+                <a href="./Adrian_Diaz_RN_Resume.pdf" class="btn-secondary">Download Resume</a>
+            </div>
+        </div>
     </header>
 
-    <section id="biografia">
-        <h2>Perfil Profesional</h2>
-        <p>Dedicado a la excelencia clínica y la seguridad del paciente, fusiono la precisión técnica de mi formación en Ingeniería Industrial con protocolos de cuidado compasivo desarrollados en Activa Training Center.</p>
+    <nav>
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#clinical">Clinical</a>
+        <a href="#vault">Vault</a>
+        <a href="#contact">Contact</a>
+    </nav>
+
+    <div class="content-container">
         
-        <div class="botones-navegacion">
-            <a href="experiencia.html" class="btn">Ver Mi Experiencia</a>
-            <a href="documentos.html" class="btn">Ver Mis Documentos</a>
-        </div>
-    </section>
+        <section id="about">
+            <h2><i class="fas fa-user-circle"></i> Professional Background</h2>
+            <p style="margin-bottom: 20px; font-size: 1.1rem; line-height: 1.8;">
+                I am a graduate of <strong>Activa Training Center</strong> with a unique professional identity. By combining a <strong>Bachelor's degree in Industrial Engineering</strong> with a career in nursing, I provide a systematic, highly organized, and efficient approach to patient care.
+            </p>
+            <p style="font-size: 1.1rem; line-height: 1.8;">
+                My experience at <strong>Barroso Medical Services</strong> has provided me with deep expertise in medical administration, HIPAA compliance, and Florida health systems, allowing me to advocate for patients both clinically and administratively.
+            </p>
+        </section>
+
+        <section id="clinical">
+            <h2><i class="fas fa-hospital-symbol"></i> Clinical Residency & Rotations</h2>
+            <div class="info-grid">
+                <div class="info-card">
+                    <h3>Select Specialty Hospital</h3>
+                    <p>Managed complex acute care with a focus on patients with PTSD and Schizophrenia. Expert in therapeutic communication and medication safety protocols.</p>
+                </div>
+                <div class="info-card">
+                    <h3>Palazzo Mental Health</h3>
+                    <p>Community mental health rotation focusing on trauma-informed care and holistic psychiatric assessments for vulnerable populations.</p>
+                </div>
+                <div class="info-card">
+                    <h3>Maternity & Pediatrics</h3>
+                    <p>Clinical competency in APGAR assessments, newborn metabolic screenings, and pediatric developmental milestones.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="vault">
+            <h2><i class="fas fa-lock"></i> Digital Credential Vault</h2>
+            <p style="margin-bottom: 25px;">Secure access to my professional documentation:</p>
+            <div class="vault-grid">
+                <a href="./Adrian_Diaz_RN_Resume.pdf" class="doc-link">
+                    <i class="fas fa-file-pdf" style="color: #e74c3c;"></i> Professional CV
+                </a>
+                <a href="./Clinical_Skills_Checklist.pdf" class="doc-link">
+                    <i class="fas fa-clipboard-check" style="color: #2ecc71;"></i> Skills Checklist
+                </a>
+                <a href="./Clinical_Reflective_Journals.pdf" class="doc-link">
+                    <i class="fas fa-book-medical" style="color: #f1c40f;"></i> Reflective Journals
+                </a>
+                <a href="./Nursing_Philosophy1.pdf" class="doc-link">
+                    <i class="fas fa-heartbeat" style="color: #9b59b6;"></i> Philosophy Statement
+                </a>
+            </div>
+        </section>
+
+        <section id="contact" style="text-align: center;">
+            <h2><i class="fas fa-paper-plane"></i> Contact & Opportunities</h2>
+            <p style="margin-bottom: 30px;">Currently open to RN Residency programs and professional networking.</p>
+            <div class="cta-buttons">
+                <a href="mailto:adriandn2022@gmail.com" class="btn-primary" style="background: var(--navy);">Email Me</a>
+                <a href="tel:7862187679" class="btn-secondary" style="color: var(--navy); border-color: var(--navy);">Call (786) 218-7679</a>
+            </div>
+        </section>
+
+    </div>
 
     <footer>
-        <p>© 2026 | Miami Springs, FL</p>
+        <p><strong>Adrian Diaz, RN</strong></p>
+        <p>Miami Springs, FL • © 2026 Portfolio</p>
     </footer>
+
+</body>
+</html>
 
 </body>
 </html>
