@@ -14,7 +14,19 @@ I am a Registered Nurse (RN) graduated from Activa Training Center in Miami, FL.
   
 * 🎓 **Nursing Philosophy Statement** - My commitment to the nursing profession.
   * [Philosophy Paper - Part 1](./Nursing_Philosophy1.pdf)
-  * [Philosophy Paper - Part 2](./Nursing_Philosophy2.pdf) 
+  * [Philosophy Paper - Part 2](./Nursing_Philosophy2.pdf)
+
+📄 **Professional Resume / CV**
+  * [[Download] Adrian Diaz Resume](./Adrian_Diaz_RN_Resume.pdf)
+* 📋 **Clinical Skills Competency Checklist**
+  * [[View] Mastered Skills Inventory](./Clinical_Skills_Checklist.pdf)
+* 📝 **Clinical Reflective Journals**
+  * [[View] Select Specialty Hospital Journal](./Clinical_Reflective_Journals.pdf)
+  * [[View] Palazzo Mental Health Journal](./Reflective%20Journal%20Adrian.pdf)
+* 🎓 **Nursing Philosophy Statement**
+  * [[View] Philosophy Paper - Part 1](./Nursing_Philosophy1.pdf)
+  * [[View] Philosophy Paper - Part 2](./Nursing_Philosophy2.pdf)
+
 ## 📚 Education
 
 * **Associate Degree in Nursing (ADN)**
