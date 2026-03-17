@@ -9,7 +9,6 @@
             --gold: #D4AF37;
             --text-dark: #222222;
             --diamond-bg: #FFFFFF;
-            --soft-gold: #fdfbf7;
         }
 
         body {
@@ -20,7 +19,7 @@
             line-height: 1.6;
         }
 
-        /* Menú */
+        /* Menú Navegación */
         nav {
             text-align: center;
             padding: 20px;
@@ -40,8 +39,9 @@
             font-size: 0.9rem;
         }
 
+        /* Contenedor */
         main {
-            max-width: 850px;
+            max-width: 800px;
             margin: 0 auto;
             padding: 40px 20px;
         }
@@ -49,64 +49,56 @@
         h1 {
             color: var(--gold);
             text-align: center;
-            font-size: 2.5rem;
+            font-size: 2.2rem;
             margin-bottom: 30px;
         }
 
-        .experience-card {
-            background: var(--soft-gold);
-            padding: 25px;
+        /* Tarjetas de Experiencia */
+        .card {
+            background: #fffdf5;
+            padding: 20px;
             border-radius: 8px;
             border: 1px solid #eee;
             border-left: 6px solid var(--gold);
-            margin-bottom: 30px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            margin-bottom: 25px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
         }
 
-        .experience-card h3 {
+        .card h3 {
             margin-top: 0;
             color: #333;
-            font-size: 1.4rem;
+            font-size: 1.3rem;
         }
 
-        /* Estilo de los botones dentro de los recuadros */
-        .inline-doc-btn {
+        /* Botones dentro de las tarjetas */
+        .btn-doc {
             display: inline-flex;
             align-items: center;
             margin-top: 15px;
-            padding: 10px 18px;
+            padding: 10px 15px;
             border: 2px solid var(--gold);
             color: var(--gold);
             text-decoration: none;
             font-weight: bold;
-            border-radius: 5px;
-            transition: all 0.3s ease;
-            font-size: 0.9rem;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            transition: 0.3s;
         }
 
-        .inline-doc-btn:hover {
+        .btn-doc:hover {
             background-color: var(--gold);
             color: white;
         }
 
         .icon {
-            margin-right: 10px;
-            font-size: 1.1rem;
-        }
-
-        .skills-section {
-            margin-top: 50px;
-            text-align: center;
-            padding: 20px;
-            border: 1px dashed var(--gold);
-            border-radius: 8px;
+            margin-right: 8px;
         }
 
         footer {
             text-align: center;
-            padding: 40px;
-            color: #888;
-            font-size: 0.9rem;
+            padding: 30px;
+            color: #999;
+            font-size: 0.8rem;
         }
     </style>
 </head>
@@ -123,27 +115,40 @@
     <main>
         <h1>Clinical Experience</h1>
 
-        <section class="experience-card">
+        <div class="card">
             <h3>Select Specialty Hospital (Miami Lakes)</h3>
             <p>Managed complex acute care patients. Developed strong skills in therapeutic communication and medication safety for patients with PTSD and comorbidities.</p>
-            <a href="Clinical_Reflective_Journals.pdf" class="inline-doc-btn" target="_blank">
-                <span class="icon">📓</span> View Select Specialty Reflective Journal
+            <a href="Clinical_Reflective_Journals.pdf" class="btn-doc" target="_blank">
+                <span class="icon">📓</span> Select Specialty Reflective Journal
             </a>
-        </section>
+        </div>
 
-        <section class="experience-card">
+        <div class="card">
             <h3>Palazzo Mental Health</h3>
             <p>Rotations in community mental health, focusing on trauma-informed care and holistic patient assessments.</p>
-            <a href="Reflective_Journal_Adrian.pdf" class="inline-doc-btn" target="_blank">
-                <span class="icon">🧠</span> View Reflective Journal Adrian.pdf
+            <a href="Reflective_Journal_Adrian.pdf" class="btn-doc" target="_blank">
+                <span class="icon">🧠</span> Reflective Journal Adrian.pdf
             </a>
-        </section>
+        </div>
 
-        <section class="experience-card">
+        <div class="card">
             <h3>Maternity & Pediatrics</h3>
             <p>Proficient in newborn APGAR scoring, metabolic screenings, and pediatric developmental assessments.</p>
-            </section>
+        </div>
 
-        <section class="skills-section">
+        <div class="card" style="border-left-color: #555;">
             <h3>Clinical Skills & Competencies</h3>
-            <p>Full
+            <p>Full validation of nursing clinical skills and procedural mastery.</p>
+            <a href="Clinical_Skills_Checklist.pdf" class="btn-doc" target="_blank">
+                <span class="icon">📋</span> Clinical Skills Competency Checklist
+            </a>
+        </div>
+
+    </main>
+
+    <footer>
+        © 2026 Adrian Diaz | Nursing Professional Portfolio
+    </footer>
+
+</body>
+</html>
