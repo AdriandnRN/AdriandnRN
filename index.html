@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adrian Diaz, RN | Elite Nursing Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --gold: #D4AF37;
+            --dark-gold: #B8860B;
+            --white: #FFFFFF;
+            --cream: #FCFBF4;
+            --text: #2c2c2c;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Poppins', sans-serif; color: var(--text); background-color: var(--white); scroll-behavior: smooth; overflow-x: hidden; }
+
+        /* --- PAGE 1: LUXURY LANDING --- */
+        .landing-page {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: var(--cream);
+            background-image: radial-gradient(circle at center, #ffffff 0%, #fcfbf4 100%);
+            position: relative;
+            text-align: center;
+            padding: 20px;
+            border-bottom: 5px solid var(--gold);
+        }
+
+        .landing-container { animation: fadeIn 1.5s ease-in-out; }
+
+        .profile-frame {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            padding: 5px;
+            background: linear-gradient(to right, var(--gold), var(--dark-gold));
+            margin: 0 auto 30px;
+            box-shadow: 0 10px 20px rgba(212, 175, 55, 0.3);
+        }
+
+        .profile-img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid var(--white);
+            background-color: var(--white);
+        }
+
+        h1 { font-family: 'Playfair Display', serif; font-size: 4rem; color: var(--gold); margin-bottom: 10px; letter-spacing: -1px; }
+        .subtitle { font-size: 1.2rem; font-weight: 300; text-transform: uppercase; letter-spacing: 4px; color: var(--dark-gold); margin-bottom: 40px; }
+        
+        .intro-text { max-width: 600px; margin: 0 auto 40px; font-size: 1.1rem; color: #666; font-weight: 300; }
+
+        .btn-gold {
+            display: inline-block; padding: 15px 40px; background: var(--gold); color: var(--white);
+            text-decoration: none; font-weight: 600; border-radius: 2px; transition: 0.4s;
+            border: 1px solid var(--gold); text-transform: uppercase; letter-spacing: 2px;
+        }
+        .btn-gold:hover { background: transparent; color: var(--gold); transform: translateY(-3px); }
+
+        /* --- NAVIGATION --- */
+        nav { background: var(--white); padding: 20px; position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 15px rgba(0,0,0,0.05); display: flex; justify-content: center; gap: 40px; border-bottom: 1px solid #eee; }
+        nav a { text-decoration: none; color: var(--text); font-weight: 600; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 2px; transition: 0.3s; }
+        nav a:hover { color: var(--gold); }
+
+        /* --- PAGE 2: THE PORTFOLIO --- */
+        .main-container { max-width: 1100px; margin: 80px auto; padding: 0 20px; }
+        
+        section { margin-bottom: 100px; opacity: 0; transform: translateY(30px); transition: 1s all ease-out; }
+        section.visible { opacity: 1; transform: translateY(0); }
+
+        .section-title { font-family: 'Playfair Display', serif; font-size: 2.5rem; color: var(--gold); margin-bottom: 40px; text-align: center; }
+        .section-title::after { content: ''; display: block; width: 60px; height: 3px; background: var(--gold); margin: 15px auto; }
+
+        /* Grid for clinical experience */
+        .clinical-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+        .gold-card { 
+            background: var(--white); padding: 40px; border: 1px solid #eee; border-top: 5px solid var(--gold);
+            transition: 0.4s; box-shadow: 0 5px 15px rgba(0,0,0,0.02);
+        }
+        .gold-card:hover { transform: translateY(-10px); box-shadow: 0 15px 30px rgba(0,0,0,0.08); }
+        .gold-card h3 { color: var(--gold); margin-bottom: 15px; font-family: 'Playfair Display', serif; font-size: 1.5rem; }
+
+        /* Credential List */
+        .credential-list { list-style: none; }
+        .credential-item { 
+            display: flex; align-items: center; justify-content: space-between; padding: 20px;
+            border-bottom: 1px solid #eee; transition: 0.3s; text-decoration: none; color: var(--text);
+        }
+        .credential-item:hover { background-color: var(--cream); padding-left: 30px; color: var(--gold); }
+        .credential-item i { font-size: 1.2rem; color: var(--gold); }
+
+        footer { text-align: center; padding: 80px 20px; background: var(--cream); border-top: 1px solid var(--gold); }
+
+        /* Animations */
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 2.5rem; }
+            nav { gap: 15px; font-size: 0.7rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="landing-page" id="home">
+        <div class="landing-container">
+            <div class="profile-frame">
+                <img src="profile.jpg" alt="Adrian Diaz" class="profile-img" onerror="this.src='https://cdn-icons-png.flaticon.com/512/3135/3135715.png';">
+            </div>
+            <h1>Adrian Diaz</h1>
+            <p class="subtitle">Registered Nurse | Industrial Engineer</p>
+            <p class="intro-text">
+                Specializing in clinical efficiency and high-acuity patient advocacy. 
+                Merging the precision of engineering with the heart of nursing care.
+            </p>
+            <a href="#about" class="btn-gold">Explore Portfolio</a>
+        </div>
+    </header>
+
+    <nav>
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#clinical">Clinical</a>
+        <a href="#vault">Credentials</a>
+        <a href="#contact">Contact</a>
+    </nav>
+
+    <div class="main-container">
+        
+        <section id="about">
+            <h2 class="section-title">Professional Profile</h2>
+            <div style="text-align: center; max-width: 800px; margin: 0 auto; line-height: 2;">
+                <p>As an <strong>Activa Training Center</strong> graduate, I bring a dual perspective to healthcare. With a <strong>Bachelor's Degree in Industrial Engineering</strong> and over two years in medical administration at <strong>Barroso Medical Services</strong>, I am uniquely equipped to manage complex patient workflows while ensuring the highest standards of safety and evidence-based practice.</p>
+            </div>
+        </section>
+
+        <section id="clinical">
+            <h2 class="section-title">Clinical Residency</h2>
+            <div class="clinical-grid">
+                <div class="gold-card">
+                    <h3>Select Specialty Hospital</h3>
+                    <p>Managed critical patients with complex comorbidities. Expertise in psychiatric therapeutic communication and medication safety for Schizophrenia and PTSD patients.</p>
+                </div>
+                <div class="gold-card">
+                    <h3>Palazzo Mental Health</h3>
+                    <p>Focused on community mental health and trauma-informed care. Skilled in holistic patient assessments and crisis intervention.</p>
+                </div>
+                <div class="gold-card">
+                    <h3>Maternity & Pediatrics</h3>
+                    <p>Clinical rotations involving APGAR scoring, neonatal assessments, and metabolic screenings following Florida health protocols.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="vault">
+            <h2 class="section-title">Credential Vault</h2>
+            <div class="credential-list">
+                <a href="./Adrian_Diaz_RN_Resume.pdf" class="credential-item">
+                    <span><i class="fas fa-file-pdf"></i> Professional Resume / CV</span>
+                    <i class="fas fa-chevron-right"></i>
+                </a>
+                <a href="./Clinical_Skills_Checklist.pdf" class="credential-item">
+                    <span><i class="fas fa-award"></i> Clinical Skills Competency Checklist</span>
+                    <i class="fas fa-chevron-right"></i>
+                </a>
+                <a href="./Clinical_Reflective_Journals.pdf" class="credential-item">
+                    <span><i class="fas fa-book-medical"></i> Clinical Reflective Journals</span>
+                    <i class="fas fa-chevron-right"></i>
+                </a>
+                <a href="./Nursing_Philosophy1.pdf" class="credential-item">
+                    <span><i class="fas fa-scroll"></i> Philosophy of Nursing Statement</span>
+                    <i class="fas fa-chevron-right"></i>
+                </a>
+            </div>
+        </section>
+
+        <section id="contact" style="text-align: center;">
+            <h2 class="section-title">Connect With Me</h2>
+            <p style="margin-bottom: 40px;">Currently accepting opportunities for RN Residency and Clinical Leadership roles.</p>
+            <div style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
+                <a href="mailto:adriandn2022@gmail.com" class="btn-gold">Email Me</a>
+                <a href="tel:7862187679" class="btn-gold" style="background: white; color: var(--gold);">Call: (786) 218-7679</a>
+            </div>
+        </section>
+
+    </div>
+
+    <footer>
+        <p style="font-family: 'Playfair Display', serif; font-size: 1.5rem; color: var(--gold); margin-bottom: 10px;">Adrian Diaz, RN</p>
+        <p style="font-size: 0.8rem; letter-spacing: 2px; text-transform: uppercase;">Excellence in Care • Efficiency in Practice</p>
+        <p style="margin-top: 20px; color: #999;">© 2026 Miami, FL</p>
+    </footer>
+
+    <script>
+        // Reveal sections on scroll
+        const sections = document.querySelectorAll('section');
+        const observerOptions = { threshold: 0.1 };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        sections.forEach(section => observer.observe(section));
+    </script>
+</body>
+</html>
