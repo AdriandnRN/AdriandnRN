@@ -8,7 +8,8 @@ I am a Registered Nurse (RN) graduated from Activa Training Center in Miami, FL.
 
 * 📄 **[Professional Resume / CV](./Adrian_Diaz_RN_Resume.pdf)**
 * 📋 **[Clinical Skills Competency Checklist](./Clinical_Skills_Checklist.pdf)** - Evidence of mastered skills (Apgar, IV, Wound Care).
-* 📝 **[Clinical Reflective Journals](./Clinical_Reflective_Journals.pdf)**
+* 📝 **[Clinical Reflective Journals]
+* (./Clinical_Reflective_Journals.pdf)**
  [Journal: Select Specialty Hospital](./Clinical_Reflective_Journals.pdf)
  [Journal: Palazzo Mental Health](./Reflective%20Journal%20Adrian.pdf)
 *   - Insights from rotations at Select Specialty Hospital and Palazzo Mental Health.
