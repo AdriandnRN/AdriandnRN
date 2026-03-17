@@ -3,118 +3,220 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Adrian Diaz | RN Portfolio</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <title>Adrian Diaz | Nursing Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
     <style>
         :root {
             --gold: #D4AF37;
-            --dark-gold: #B8860B;
-            --white: #FFFFFF;
-            --light-gray: #FAFAFA;
-            --text: #2C2C2C;
+            --text-main: #1a1a1a;
+            --text-muted: #666666;
+            --white: #ffffff;
+            --border: #eeeeee;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Inter', sans-serif; background-color: var(--white); color: var(--text); scroll-behavior: smooth; }
+        body { font-family: 'Inter', sans-serif; background-color: var(--white); color: var(--text-main); line-height: 1.6; }
 
-        /* --- PÁGINA DE INICIO (PORTADA) --- */
-        #landing-page {
-            height: 100vh;
-            width: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: var(--white);
-            position: fixed;
-            top: 0;
-            left: 0;
-            z-index: 2000;
-            transition: transform 0.8s cubic-bezier(0.85, 0, 0.15, 1);
-        }
-
-        .cover-content { text-align: center; animation: fadeIn 1.5s ease; }
-        
-        .profile-circle {
-            width: 180px; height: 180px; border-radius: 50%;
-            border: 3px solid var(--gold); padding: 5px; margin: 0 auto 30px;
-            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.2);
-        }
-        .profile-circle img { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; background: #eee; }
-
-        .cover-content h1 { font-family: 'Playfair Display', serif; font-size: 3.5rem; color: var(--gold); margin-bottom: 5px; letter-spacing: -1px; }
-        .cover-content .tagline { font-size: 1rem; text-transform: uppercase; letter-spacing: 3px; color: var(--text); opacity: 0.7; margin-bottom: 40px; }
-
-        .enter-btn {
-            padding: 15px 40px; background: var(--white); color: var(--gold);
-            border: 2px solid var(--gold); font-weight: 600; text-transform: uppercase;
-            letter-spacing: 2px; cursor: pointer; transition: 0.4s;
-        }
-        .enter-btn:hover { background: var(--gold); color: var(--white); }
-
-        /* --- PÁGINA DE CONTENIDO (ESTILO ANDY) --- */
-        #main-portfolio { display: none; opacity: 0; transition: opacity 1s; }
-
-        /* Navigation Menu */
+        /* --- NAVIGATION (Exact Andy Style) --- */
         nav {
-            background: var(--white); border-bottom: 1px solid #eee;
-            padding: 20px 0; position: sticky; top: 0; z-index: 1000;
+            border-bottom: 1px solid var(--border);
+            padding: 25px 0;
+            position: sticky;
+            top: 0;
+            background: var(--white);
+            z-index: 1000;
         }
         .nav-container {
-            max-width: 1100px; margin: 0 auto; display: flex; justify-content: center; gap: 30px;
+            max-width: 900px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            flex-wrap: wrap;
         }
         .nav-container a {
-            text-decoration: none; color: var(--text); font-size: 0.75rem; font-weight: 600;
-            text-transform: uppercase; letter-spacing: 1.5px; transition: 0.3s;
+            text-decoration: none;
+            color: var(--text-main);
+            font-size: 0.7rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            transition: color 0.3s;
         }
         .nav-container a:hover { color: var(--gold); }
 
-        /* Header Section */
-        .header-content { text-align: center; padding: 60px 20px; border-bottom: 1px solid #f0f0f0; }
-        .header-content h2 { font-family: 'Playfair Display', serif; font-size: 3rem; color: var(--text); margin-bottom: 10px; }
-        .header-content .subtitle { color: var(--gold); font-weight: 600; letter-spacing: 1px; margin-bottom: 20px; display: block; }
-        .badge { background: #f9f9f9; border: 1px solid #eee; padding: 5px 15px; font-size: 0.7rem; font-weight: 600; color: #666; }
-
-        .action-btns { margin-top: 30px; display: flex; justify-content: center; gap: 15px; }
-        .btn-action {
-            padding: 10px 25px; border-radius: 4px; text-decoration: none; font-size: 0.8rem; font-weight: 600; transition: 0.3s;
+        /* --- HEADER / PROFILE SECTION --- */
+        header {
+            max-width: 800px;
+            margin: 60px auto 40px;
+            text-align: center;
+            padding: 0 20px;
         }
-        .btn-gold { background: var(--gold); color: white; border: 1px solid var(--gold); }
-        .btn-outline { background: transparent; color: var(--text); border: 1px solid #ddd; }
-        .btn-action:hover { transform: translateY(-2px); box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
+        .profile-photo {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            margin-bottom: 25px;
+            object-fit: cover;
+            border: 1px solid var(--border);
+            padding: 5px;
+        }
+        h1 { font-family: 'Playfair Display', serif; font-size: 2.8rem; margin-bottom: 5px; font-weight: 700; }
+        .title-sub { font-size: 0.9rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 15px; display: block; }
+        .bilingual-tag { 
+            font-size: 0.65rem; font-weight: 600; letter-spacing: 1px; 
+            padding: 4px 12px; border: 1px solid var(--gold); color: var(--gold); 
+            display: inline-block; margin-bottom: 25px;
+        }
 
-        /* Main Content Grid */
-        .content-body { max-width: 900px; margin: 60px auto; padding: 0 20px; }
+        .header-btns { display: flex; justify-content: center; gap: 15px; margin-top: 10px; }
+        .btn {
+            padding: 10px 20px;
+            text-decoration: none;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: 0.3s;
+        }
+        .btn-gold { background: var(--gold); color: var(--white); }
+        .btn-gold:hover { background: #b8952e; }
+        .btn-outline { border: 1px solid #ddd; color: var(--text-main); }
+        .btn-outline:hover { background: #f9f9f9; }
+
+        /* --- CONTENT SECTIONS --- */
+        .content-wrap { max-width: 750px; margin: 0 auto; padding: 0 25px 100px; }
         
-        .info-block { margin-bottom: 60px; }
-        .info-block h3 { 
-            font-family: 'Playfair Display', serif; font-size: 1.8rem; color: var(--gold); 
-            margin-bottom: 25px; border-bottom: 2px solid var(--gold); display: inline-block;
+        section { padding-top: 80px; margin-bottom: 20px; }
+        h2 { 
+            font-family: 'Playfair Display', serif; 
+            font-size: 1.6rem; 
+            color: var(--gold); 
+            margin-bottom: 20px; 
+            border-bottom: 1px solid #f0f0f0;
+            padding-bottom: 10px;
         }
-        .info-block p { line-height: 1.8; color: #444; margin-bottom: 20px; }
+        
+        .mission-box { font-style: italic; color: var(--text-muted); font-size: 1.1rem; margin-bottom: 40px; line-height: 1.8; }
+        p { margin-bottom: 20px; font-size: 0.95rem; color: #444; }
+        strong { color: var(--text-main); font-weight: 600; }
 
-        /* Credentials List */
-        .credential-link {
-            display: flex; align-items: center; justify-content: space-between;
-            padding: 15px; background: #fafafa; border: 1px solid #eee; border-radius: 4px;
-            text-decoration: none; color: var(--text); margin-bottom: 10px; transition: 0.3s;
+        /* --- CREDENTIALS LIST --- */
+        .doc-list { list-style: none; margin-top: 20px; }
+        .doc-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+            border-bottom: 1px solid #f7f7f7;
+            text-decoration: none;
+            color: var(--text-main);
+            font-size: 0.9rem;
+            transition: 0.2s;
         }
-        .credential-link:hover { border-color: var(--gold); background: #fff; transform: translateX(5px); }
-        .credential-link i { color: var(--gold); }
+        .doc-item:hover { color: var(--gold); padding-left: 5px; }
+        .doc-item i { font-size: 0.8rem; opacity: 0.5; }
 
-        footer { text-align: center; padding: 40px; border-top: 1px solid #eee; font-size: 0.8rem; color: #999; }
+        /* --- FOOTER --- */
+        footer {
+            text-align: center;
+            padding: 60px 0;
+            border-top: 1px solid var(--border);
+            font-size: 0.7rem;
+            color: #999;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
 
-        /* --- ANIMACIONES --- */
-        .hide-landing { transform: translateY(-100%) !important; }
-        .show-portfolio { display: block !important; opacity: 1 !important; }
-
-        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-
-        @media (max-width: 768px) {
-            .nav-container { flex-wrap: wrap; gap: 10px; }
-            .header-content h2 { font-size: 2rem; }
-            .cover-content h1 { font-size: 2.5rem; }
+        @media (max-width: 600px) {
+            h1 { font-size: 2rem; }
+            .nav-container { gap: 12px; }
+            .nav-container a { font-size: 0.6rem; }
         }
     </style>
 </head>
 <body>
+
+    <nav>
+        <div class="nav-container">
+            <a href="#home">Home</a>
+            <a href="#philosophy">Philosophy</a>
+            <a href="#clinical">Clinical</a>
+            <a href="#credentials">Credentials</a>
+            <a href="#contact">Contact</a>
+        </div>
+    </nav>
+
+    <header id="home">
+        <img src="profile.jpg" alt="Adrian Diaz" class="profile-photo" onerror="this.src='https://via.placeholder.com/150?text=AD';">
+        <h1>Adrian Diaz</h1>
+        <span class="title-sub">New Graduate RN Candidate | Miami, FL</span>
+        <span class="bilingual-tag">BILINGUAL (ENGLISH/SPANISH)</span>
+        
+        <div class="header-btns">
+            <a href="mailto:adriandn2022@gmail.com" class="btn btn-gold">Contact for Interview</a>
+            <a href="tel:7862187679" class="btn btn-outline">Call Me</a>
+        </div>
+    </header>
+
+    <div class="content-wrap">
+        
+        <section id="mission">
+            <h2>Professional Mission</h2>
+            <div class="mission-box">
+                "To integrate industrial engineering precision with evidence-based nursing care, ensuring clinical safety, operational efficiency, and compassionate patient advocacy in high-acuity environments."
+            </div>
+        </section>
+
+        <section id="philosophy">
+            <h2>Professional Introduction</h2>
+            <p>Hello, I am <strong>Adrian Diaz</strong>, a dedicated RN graduate from <strong>Activa Training Center</strong>. My path to nursing is unique, as I hold a <strong>Bachelor's degree in Industrial Engineering</strong>. This background allows me to view patient care through a lens of safety, process optimization, and meticulous attention to detail.</p>
+            <p>With over two years of experience at <strong>Barroso Medical Services</strong>, I have mastered the administrative and clinical workflows necessary to provide seamless patient transitions. I believe that nurses are the first line of defense; my goal is to utilize early intervention and clear, bilingual communication to improve patient outcomes.</p>
+        </section>
+
+        <section id="clinical">
+            <h2>Clinical Experience</h2>
+            <p><strong>Select Specialty Hospital (Miami Lakes):</strong> Managed complex acute care patients. Developed strong skills in therapeutic communication and medication safety for patients with PTSD and comorbidities.</p>
+            <p><strong>Palazzo Mental Health:</strong> Rotations in community mental health, focusing on trauma-informed care and holistic patient assessments.</p>
+            <p><strong>Maternity & Pediatrics:</strong> Proficient in newborn APGAR scoring, metabolic screenings, and pediatric developmental assessments.</p>
+        </section>
+
+        <section id="credentials">
+            <h2>Credential Vault</h2>
+            <div class="doc-list">
+                <a href="./Adrian_Diaz_RN_Resume.pdf" class="doc-item">
+                    <span>Professional Resume / CV</span> <i class="fas fa-external-link-alt"></i>
+                </a>
+                <a href="./Clinical_Skills_Checklist.pdf" class="doc-item">
+                    <span>Clinical Skills Competency Checklist</span> <i class="fas fa-external-link-alt"></i>
+                </a>
+                <a href="./Clinical_Reflective_Journals.pdf" class="doc-item">
+                    <span>Select Specialty Reflective Journal</span> <i class="fas fa-external-link-alt"></i>
+                </a>
+                <a href="./Reflective Journal Adrian.pdf" class="doc-item">
+                    <span>Palazzo Mental Health Journal</span> <i class="fas fa-external-link-alt"></i>
+                </a>
+                <a href="./Nursing_Philosophy1.pdf" class="doc-item">
+                    <span>Nursing Philosophy Statement</span> <i class="fas fa-external-link-alt"></i>
+                </a>
+            </div>
+        </section>
+
+        <section id="contact">
+            <h2>Contact Information</h2>
+            <p><strong>Email:</strong> adriandn2022@gmail.com</p>
+            <p><strong>Phone:</strong> (786) 218-7679</p>
+            <p><strong>Location:</strong> Miami Springs, FL</p>
+        </section>
+
+    </div>
+
+    <footer>
+        © 2026 Adrian Diaz | Miami, FL <br>
+        Nursing Professional Portfolio | Prepared for Residency Review
+    </footer>
+
+</body>
+</html>
