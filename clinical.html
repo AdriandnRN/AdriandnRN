@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clinical Experience | Adrian Diaz</title>
+    <style>
+        :root {
+            --gold: #D4AF37;
+            --text-dark: #222222;
+            --diamond-bg: #FFFFFF;
+            --soft-gold: #fdfbf7;
+        }
+
+        body {
+            background-color: var(--diamond-bg) !important;
+            color: var(--text-dark);
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            line-height: 1.6;
+        }
+
+        /* Menú */
+        nav {
+            text-align: center;
+            padding: 20px;
+            border-bottom: 4px solid var(--gold);
+            background-color: white;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--gold);
+            font-weight: bold;
+            margin: 0 15px;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+        }
+
+        /* Contenido Principal */
+        main {
+            max-width: 850px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        h1 {
+            color: var(--gold);
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+        }
+
+        h2 {
+            color: var(--gold);
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 10px;
+            margin-top: 40px;
+        }
+
+        .experience-card {
+            background: var(--soft-gold);
+            padding: 25px;
+            border-radius: 8px;
+            border-left: 5px solid var(--gold);
+            margin-bottom: 20px;
+        }
+
+        .experience-card h3 {
+            margin-top: 0;
+            color: #444;
+        }
+
+        /* Botones de Documentos */
+        .clinical-docs {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .doc-btn {
+            flex: 1;
+            min-width: 250px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 15px;
+            border: 2px solid var(--gold);
+            color: var(--gold);
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 5px;
+            transition: 0.3s;
+        }
+
+        .doc-btn:hover {
+            background-color: var(--gold);
+            color: white;
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px;
+            color: #888;
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="philosophy.html">Philosophy</a>
+        <a href="clinical.html">Clinical</a>
+        <a href="credentials.html">Credentials</a>
+        <a href="contact.html">Contact</a>
+    </nav>
+
+    <main>
+        <h1>Clinical Experience</h1>
+
+        <section class="experience-card">
+            <h3>Select Specialty Hospital (Miami Lakes)</h3>
+            <p>Managed complex acute care patients. Developed strong skills in therapeutic communication and medication safety for patients with PTSD and comorbidities.</p>
+        </section>
+
+        <section class="experience-card">
+            <h3>Palazzo Mental Health</h3>
+            <p>Rotations in community mental health, focusing on trauma-informed care and holistic patient assessments.</p>
+        </section>
+
+        <section class="experience-card">
+            <h3>Maternity & Pediatrics</h3>
+            <p>Proficient in newborn APGAR scoring, metabolic screenings, and pediatric developmental assessments.</p>
+        </section>
+
+        <h2>Clinical Documentation</h2>
+        <div class="clinical-docs">
+            <a href="Clinical_Skills_Checklist.pdf" class="doc-btn" target="_blank">
+                📋 Clinical Skills Competency Checklist
+            </a>
+            <a href="Clinical_Reflective_Journals.pdf" class="doc-btn" target="_blank">
+                📓 Select Specialty Reflective Journal
+            </a>
+            <a href="Reflective Journal Adrian.pdf" class="doc-btn" target="_blank">
+                🧠 Palazzo Mental Health Journal
+            </a>
+        </div>
+    </main>
+
+    <footer>
+        © 2026 Adrian Diaz | Miami, FL
+    </footer>
+
+</body>
+</html>
