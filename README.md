@@ -14,9 +14,9 @@ I am a Registered Nurse (RN) graduated from Activa Training Center in Miami, FL.
  [Journal: Palazzo Mental Health](./Reflective%20Journal%20Adrian.pdf)
 *   - Insights from rotations at Select Specialty Hospital and Palazzo Mental Health.
     - 
-*🎓 **Nursing Philosophy Statement**
+*🎓 **Nursing Philosophy Statement** - My commitment to the nursing profession.
 * * [Philosophy Paper - Part 1](./Nursing_Philosophy1.pdf)
-  * [Philosophy Paper - Part 2](./Nursing_Philosophy2.pdf) - My commitment to the nursing profession.
+  * [Philosophy Paper - Part 2](./Nursing_Philosophy2.pdf) 
 ## 📚 Education
 
 * **Associate Degree in Nursing (ADN)**
