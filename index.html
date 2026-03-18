@@ -6,14 +6,16 @@
     <title>Adrian Diaz | Professional RN Portfolio</title>
     <style>
         :root {
-            /* COLORES DIAMANTE BRILLANTE */
-            --diamond-main: #E0E0E0; /* Platino/Plateado base */
-            --diamond-flash: #FFFFFF; /* Blanco puro para destellos */
-            --diamond-glow: rgba(224, 224, 224, 0.8);
-            --neural-base: rgba(0, 255, 255, 0.15); /* Cian pálido base */
-            --neural-flash: rgba(255, 255, 255, 0.9); /* Blanco brillante al hover */
+            --gold: #D4AF37; /* COLOR ORO ORIGINAL */
+            --gold-light: #f4e4ad;
+            
+            /* NUEVO COLOR DIAMANTE PARA LA RED */
+            --diamond-base: rgba(224, 224, 224, 0.2); /* Platino sutil base */
+            --diamond-flash: rgba(255, 255, 255, 0.9); /* Blanco puro brillante al hover */
+            
             --text-dark: #222222;
             --white: #FFFFFF;
+            --bg-soft: #fdfdfd;
         }
 
         body {
@@ -37,12 +39,12 @@
             background-color: #fff;
         }
 
-        /* NAVEGACIÓN */
+        /* NAVEGACIÓN (MANTIENE ORO) */
         nav {
             text-align: center;
             padding: 25px 0;
-            border-bottom: 4px solid var(--diamond-main);
-            background-color: rgba(255, 255, 255, 0.9);
+            border-bottom: 4px solid var(--gold);
+            background-color: rgba(255, 255, 255, 0.95);
             position: sticky;
             top: 0;
             z-index: 1000;
@@ -51,7 +53,7 @@
 
         nav a {
             text-decoration: none;
-            color: var(--diamond-main);
+            color: var(--gold);
             font-weight: bold;
             margin: 0 15px;
             text-transform: uppercase;
@@ -63,7 +65,6 @@
         nav a:hover, .active {
             color: var(--text-dark) !important;
             transform: scale(1.05);
-            text-shadow: 0 0 10px var(--diamond-glow);
         }
 
         header {
@@ -71,7 +72,7 @@
             padding: 60px 20px 40px;
         }
 
-        /* EKG ANIMADO DIAMANTE CON PUNTO RECORRIÉNDOLO */
+        /* EKG ANIMADO ORO */
         .ekg-container {
             width: 100%;
             max-width: 400px;
@@ -82,7 +83,7 @@
         }
 
         .ekg-svg {
-            width: 200%; /* El doble de ancho para el efecto infinito */
+            width: 200%;
             height: 100%;
             position: absolute;
             top: 0;
@@ -92,42 +93,23 @@
 
         .ekg-path {
             fill: none;
-            stroke: var(--diamond-main);
+            stroke: var(--gold);
             stroke-width: 3;
             stroke-linecap: round;
             stroke-linejoin: round;
         }
 
-        /* PUNTO BRILLANTE QUE RECORRE EL EKG */
-        .ekg-dot {
-            width: 10px;
-            height: 10px;
-            background-color: var(--diamond-flash);
-            border-radius: 50%;
-            position: absolute;
-            top: 50%; /* Centrado verticalmente */
-            transform: translateY(-50%);
-            box-shadow: 0 0 15px var(--diamond-flash), 0 0 25px var(--diamond-flash);
-            animation: ekgDotMove 4s linear infinite;
-        }
-
         @keyframes ekgMove {
             0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); } /* Mueve la mitad del ancho */
-        }
-
-        @keyframes ekgDotMove {
-            0% { left: 0%; }
-            100% { left: 100%; } /* Recorre todo el ancho del contenedor */
+            100% { transform: translateX(-50%); }
         }
 
         h1 {
-            color: var(--diamond-main);
+            color: var(--gold);
             font-size: 3.5rem;
             margin: 0;
             letter-spacing: 2px;
             text-transform: uppercase;
-            text-shadow: 0 0 15px var(--diamond-glow);
         }
 
         .title-sub {
@@ -143,7 +125,7 @@
             margin: 0 auto;
             padding: 20px 20px 60px;
             position: relative;
-            z-index: 1; /* Asegura que el contenido esté sobre el canvas */
+            z-index: 1;
         }
 
         .intro-box {
@@ -162,7 +144,7 @@
         .intro-box:hover {
             transform: translateY(-5px);
             box-shadow: 0 15px 40px rgba(0,0,0,0.05);
-            border-color: var(--diamond-main);
+            border-color: var(--gold);
         }
 
         .intro-box strong {
@@ -175,12 +157,12 @@
             gap: 25px;
         }
 
-        /* RESALTADO DE TÓPICOS CON ESTILO DIAMANTE */
+        /* RESALTADO DE TÓPICOS ORO */
         .skill-card {
             padding: 25px;
             background: rgba(253, 253, 253, 0.9);
             border-radius: 8px;
-            border-left: 5px solid var(--diamond-main);
+            border-left: 5px solid var(--gold);
             transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             cursor: default;
         }
@@ -188,17 +170,16 @@
         .skill-card:hover {
             transform: scale(1.05);
             background: var(--white);
-            box-shadow: 0 15px 35px var(--diamond-glow);
+            box-shadow: 0 15px 35px rgba(212, 175, 55, 0.2);
             border-left-width: 10px;
         }
 
         .skill-card h3 {
             margin-top: 0;
-            color: var(--diamond-main);
+            color: var(--gold);
             font-size: 1.1rem;
             text-transform: uppercase;
             letter-spacing: 1px;
-            text-shadow: 0 0 5px var(--diamond-glow);
         }
 
         .skill-list {
@@ -217,10 +198,9 @@
 
         .skill-list li::before {
             content: "✓";
-            color: var(--diamond-main);
+            color: var(--gold);
             font-weight: bold;
             margin-right: 10px;
-            text-shadow: 0 0 3px var(--diamond-glow);
         }
 
         footer {
@@ -252,7 +232,7 @@
             <svg class="ekg-svg" viewBox="0 0 800 100" preserveAspectRatio="none">
                 <path class="ekg-path" d="M0,50 L200,50 L210,40 L220,60 L230,50 L280,50 L290,20 L310,80 L320,50 L370,50 L380,45 L390,55 L400,50 L600,50 L610,40 L620,60 L630,50 L680,50 L690,20 L710,80 L720,50 L770,50 L780,45 L790,55 L800,50" />
             </svg>
-            <div class="ekg-dot"></div> </div>
+        </div>
         
         <h1>Adrian Diaz</h1>
         <span class="title-sub">Registered Nurse | Industrial Engineer</span>
@@ -343,8 +323,8 @@
                 ctx.beginPath();
                 ctx.arc(p.x, p.y, isGlowing ? 4 : p.size, 0, Math.PI * 2); // Más grande al hover
                 
-                // Color base (cian pálido) vs Color brillante (blanco puro)
-                ctx.fillStyle = isGlowing ? 'rgba(255, 255, 255, 0.9)' : 'rgba(0, 255, 255, 0.2)';
+                // Color base (platino sutil) vs Color brillante (blanco puro)
+                ctx.fillStyle = isGlowing ? 'rgba(255, 255, 255, 0.9)' : 'rgba(224, 224, 224, 0.2)';
                 
                 // Añadir sombra/resplandor brillante al hover
                 if(isGlowing) {
@@ -367,7 +347,7 @@
                         let opacity = (1 - dist2/130) * (isGlowing ? 0.7 : 0.2);
                         
                         // Color de línea base vs Color de línea brillante
-                        ctx.strokeStyle = isGlowing ? `rgba(255, 255, 255, ${opacity})` : `rgba(0, 255, 255, ${opacity})`;
+                        ctx.strokeStyle = isGlowing ? `rgba(255, 255, 255, ${opacity})` : `rgba(224, 224, 224, ${opacity})`;
                         ctx.lineWidth = isGlowing ? 1.5 : 0.8; // Más gruesa al hover
                         
                         ctx.beginPath();
