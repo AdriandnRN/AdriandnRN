@@ -5,43 +5,48 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Adrian Diaz | RN Portfolio</title>
     <style>
+        :root {
+            --gold: #D4AF37;
+            --text-dark: #222222;
+            --white: #FFFFFF;
+        }
+
         body {
-            background-color: #FFFFFF !important;
-            color: #222222;
+            background-color: var(--white) !important;
+            color: var(--text-dark);
             font-family: 'Arial', sans-serif;
             margin: 0;
             padding: 0;
         }
 
-        /* NAVEGACIÓN INTERACTIVA CON SOMBRA */
+        /* NAVEGACIÓN INTERACTIVA */
         nav {
             text-align: center;
             padding: 25px 0;
-            border-bottom: 4px solid #D4AF37;
-            background-color: #FFFFFF;
+            border-bottom: 4px solid var(--gold);
+            background-color: var(--white);
             position: sticky;
             top: 0;
             z-index: 1000;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.08); /* Sombra de profundidad */
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
         }
 
         nav a {
             text-decoration: none;
-            color: #D4AF37;
+            color: var(--gold);
             font-weight: bold;
             margin: 0 15px;
             text-transform: uppercase;
             font-size: 0.9rem;
             position: relative;
             padding-bottom: 5px;
-            display: inline-block; /* Permite el escalado */
-            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Efecto elástico */
+            display: inline-block;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
 
-        /* EFECTO: AGRANDAR Y CAMBIAR COLOR */
         nav a:hover {
-            color: #222222; 
-            transform: scale(1.15); /* Crece un 15% */
+            color: var(--text-dark);
+            transform: scale(1.15);
         }
 
         /* Línea animada inferior */
@@ -53,7 +58,7 @@
             display: block;
             margin-top: 5px;
             right: 0;
-            background: #222222;
+            background: var(--text-dark);
             transition: width 0.3s ease;
         }
 
@@ -64,26 +69,28 @@
 
         /* Resaltado de página actual */
         .active {
-            color: #222222 !important;
-            border-bottom: 2px solid #222222;
+            color: var(--text-dark) !important;
+            border-bottom: 2px solid var(--text-dark);
         }
 
         header {
             text-align: center;
-            padding: 50px 20px;
+            padding: 60px 20px;
         }
 
         h1 {
-            color: #D4AF37;
+            color: var(--gold);
             font-size: 3rem;
             margin: 0;
+            text-transform: uppercase;
         }
 
         .info-sub {
             font-weight: bold;
             color: #555;
             display: block;
-            margin-bottom: 20px;
+            margin-top: 10px;
+            font-size: 1.2rem;
         }
 
         main {
@@ -93,14 +100,16 @@
         }
 
         h2 {
-            color: #D4AF37;
-            border-bottom: 1px solid #D4AF37;
+            color: var(--gold);
+            border-bottom: 1px solid var(--gold);
             padding-bottom: 5px;
+            margin-top: 40px;
         }
 
         p {
             font-size: 1.1rem;
             line-height: 1.6;
+            color: #333;
         }
 
         /* BOTÓN FLOTANTE INTERACTIVO */
@@ -108,7 +117,19 @@
             position: fixed;
             bottom: 25px;
             right: 25px;
-            background-color: #D4AF37;
-            color: #ffffff !important;
+            background-color: var(--gold);
+            color: var(--white) !important;
             padding: 12px 24px;
             border-radius: 50px;
+            text-decoration: none;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            z-index: 9999;
+            transition: all 0.3s ease;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        .floating-contact:
