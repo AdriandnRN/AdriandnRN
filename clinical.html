@@ -19,15 +19,16 @@
             line-height: 1.6;
         }
 
-        /* Menú Navegación */
+        /* NAVEGACIÓN INTERACTIVA */
         nav {
             text-align: center;
-            padding: 20px;
+            padding: 25px 0;
             border-bottom: 4px solid var(--gold);
             background-color: white;
             position: sticky;
             top: 0;
             z-index: 1000;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
         }
 
         nav a {
@@ -37,6 +38,37 @@
             margin: 0 15px;
             text-transform: uppercase;
             font-size: 0.9rem;
+            position: relative;
+            padding-bottom: 5px;
+            display: inline-block;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        nav a:hover {
+            color: var(--text-dark);
+            transform: scale(1.15);
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            display: block;
+            margin-top: 5px;
+            right: 0;
+            background: var(--text-dark);
+            transition: width 0.3s ease;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+            left: 0;
+        }
+
+        .active {
+            color: var(--text-dark) !important;
+            border-bottom: 2px solid var(--text-dark);
         }
 
         /* Contenedor */
@@ -53,152 +85,18 @@
             margin-bottom: 30px;
         }
 
-        /* Tarjetas de Experiencia */
+        /* Tarjetas de Experiencia Interactivas */
         .card {
             background: #fffdf5;
-            padding: 20px;
+            padding: 25px;
             border-radius: 8px;
             border: 1px solid #eee;
             border-left: 6px solid var(--gold);
             margin-bottom: 25px;
             box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            transition: all 0.3s ease; /* Transición para la tarjeta */
         }
 
-        .card h3 {
-            margin-top: 0;
-            color: #333;
-            font-size: 1.3rem;
-        }
-
-        /* Botones dentro de las tarjetas */
-        .btn-doc {
-            display: inline-flex;
-            align-items: center;
-            margin-top: 15px;
-            padding: 10px 15px;
-            border: 2px solid var(--gold);
-            color: var(--gold);
-            text-decoration: none;
-            font-weight: bold;
-            border-radius: 4px;
-            font-size: 0.85rem;
-            transition: 0.3s;
-        }
-
-        .btn-doc:hover {
-            background-color: var(--gold);
-            color: white;
-        }
-
-        .icon {
-            margin-right: 8px;
-        }
-
-        footer {
-            text-align: center;
-            padding: 30px;
-            color: #999;
-            font-size: 0.8rem;
-        }
-    </style>
-    <style>
-    .floating-contact {
-        position: fixed;
-        bottom: 25px;
-        right: 25px;
-        background-color: #D4AF37; /* Oro Profesional */
-        color: #ffffff !important;
-        padding: 12px 24px;
-        border-radius: 50px;
-        text-decoration: none;
-        box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-        font-weight: bold;
-        font-family: Arial, sans-serif;
-        font-size: 16px;
-        display: flex;
-        align-items: center;
-        gap: 10px;
-        z-index: 9999;
-        transition: all 0.3s ease;
-        border: 2px solid transparent;
-    }
-
-    .floating-contact:hover {
-        background-color: #222222; /* Cambia a negro al pasar el mouse */
-        transform: translateY(-5px) scale(1.05);
-        box-shadow: 0 6px 20px rgba(0,0,0,0.3);
-        color: #D4AF37 !important;
-        border: 2px solid #D4AF37;
-    }
-
-    /* Animación sutil de entrada */
-    @keyframes fadeInUp {
-        from { opacity: 0; transform: translateY(20px); }
-        to { opacity: 1; transform: translateY(0); }
-    }
-
-    .floating-contact {
-        animation: fadeInUp 0.8s ease-out;
-    }
-
-    /* Ocultar en pantallas muy pequeñas si estorba el contenido */
-    @media (max-width: 480px) {
-        .floating-contact {
-            padding: 10px 18px;
-            font-size: 14px;
-            bottom: 15px;
-            right: 15px;
-        }
-    }
-</style>
-
-<a href="contact.html" class="floating-contact">
-    <span style="font-size: 20px;">✉️</span>
-    <span>Contact Me</span>
-</a>
-</head>
-<body>
-
-    <nav>
-        <a href="index.html">Home</a>
-        <a href="philosophy.html">Philosophy</a>
-        <a href="clinical.html">Clinical</a>
-        <a href="credentials.html">Credentials</a>
-        <a href="contact.html">Contact</a>
-    </nav>
-
-    <main>
-        <h1>Clinical Experience</h1>
-
-        <div class="card">
-            <h3>Select Specialty Hospital (Miami Lakes)</h3>
-            <p>Managed complex acute care patients. Developed strong skills in therapeutic communication and medication safety for patients with PTSD and comorbidities.</p>
-            <a href="Clinical_Reflective_Journals.pdf" class="btn-doc" target="_blank">
-                <span class="icon">📓</span> Select Specialty Reflective Journal
-            </a>
-        </div>
-
-        <div class="card">
-            <h3>Palazzo Mental Health</h3>
-            <p>Rotations in community mental health, focusing on trauma-informed care and holistic patient assessments.</p>
-            <a href="Reflective_Journal_Adrian.pdf" class="btn-doc" target="_blank">
-                <span class="icon">🧠</span> Reflective Journal Adrian.pdf
-            </a>
-        </div>
-
-        <div class="card" style="border-left-color: #555;">
-            <h3>Clinical Skills & Competencies</h3>
-            <p>Full validation of nursing clinical skills and procedural mastery.</p>
-            <a href="Clinical_Skills_Checklist.pdf" class="btn-doc" target="_blank">
-                <span class="icon">📋</span> Clinical Skills Competency Checklist
-            </a>
-        </div>
-
-    </main>
-
-    <footer>
-        © 2026 Adrian Diaz | Nursing Professional Portfolio
-    </footer>
-
-</body>
-</html>
+        .card:hover {
+            transform: translateY(-5px); /* Se eleva un poco */
+            box-shadow:
