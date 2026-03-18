@@ -12,34 +12,94 @@
             margin: 0;
             padding: 0;
         }
+
+        /* NAVEGACIÓN INTERACTIVA */
         nav {
             text-align: center;
-            padding: 20px;
+            padding: 25px 0;
             border-bottom: 4px solid #D4AF37;
             background-color: #FFFFFF;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
         }
+
         nav a {
             text-decoration: none;
             color: #D4AF37;
             font-weight: bold;
             margin: 0 15px;
             text-transform: uppercase;
+            font-size: 0.9rem;
+            position: relative; /* Necesario para la línea animada */
+            padding-bottom: 5px;
+            transition: color 0.3s ease;
         }
+
+        /* La línea que aparece al pasar el mouse (Efecto Interactivo) */
+        nav a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            display: block;
+            margin-top: 5px;
+            right: 0;
+            background: #222222; /* Color de la línea al activarse */
+            transition: width 0.3s ease;
+        }
+
+        nav a:hover {
+            color: #222222; /* El texto cambia a negro al pasar el mouse */
+        }
+
+        nav a:hover::after {
+            width: 100%;
+            left: 0;
+        }
+
+        /* Clase para resaltar la página actual */
+        .active {
+            color: #222222 !important;
+            border-bottom: 2px solid #222222;
+        }
+
         header {
             text-align: center;
             padding: 50px 20px;
         }
+
         h1 {
             color: #D4AF37;
             font-size: 3rem;
             margin: 0;
         }
+
         .info-sub {
             font-weight: bold;
             color: #555;
             display: block;
             margin-bottom: 20px;
         }
+
+        main {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        h2 {
+            color: #D4AF37;
+            border-bottom: 1px solid #D4AF37;
+            padding-bottom: 5px;
+        }
+
+        p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+
+        /* Estilo para el botón de la misión o contacto si decides ponerlo */
         .btn {
             display: inline-block;
             padding: 12px 20px;
@@ -49,31 +109,20 @@
             font-weight: bold;
             margin: 5px;
             border-radius: 5px;
+            transition: 0.3s;
         }
+
         .btn:hover {
             background-color: #D4AF37;
             color: white;
-        }
-        main {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-        h2 {
-            color: #D4AF37;
-            border-bottom: 1px solid #D4AF37;
-            padding-bottom: 5px;
-        }
-        p {
-            font-size: 1.1rem;
-            line-height: 1.6;
+            transform: translateY(-2px);
         }
     </style>
 </head>
 <body>
 
     <nav>
-        <a href="index.html">Home</a>
+        <a href="index.html" class="active">Home</a>
         <a href="philosophy.html">Philosophy</a>
         <a href="clinical.html">Clinical</a>
         <a href="credentials.html">Credentials</a>
@@ -84,7 +133,6 @@
         <h1>Adrian Diaz</h1>
         <span class="info-sub">New Graduate RN Candidate | Miami, FL</span>
         <p><strong>BILINGUAL (ENGLISH/SPANISH)</strong></p>
-        <br>
     </header>
 
     <main>
