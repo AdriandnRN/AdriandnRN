@@ -5,20 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Philosophy | Adrian Diaz</title>
     <style>
-        :root {
-            --gold: #D4AF37;
-            --text-dark: #222222;
-            --white: #FFFFFF;
-        }
-
-        body {
-            background-color: var(--white);
-            color: var(--text-dark);
-            font-family: 'Arial', sans-serif;
-            margin: 0;
-            padding: 0;
-            line-height: 1.6;
-        }
+        :root { --gold: #D4AF37; --text-dark: #222222; --white: #FFFFFF; }
+        body { background-color: var(--white); color: var(--text-dark); font-family: 'Arial', sans-serif; margin: 0; padding: 0; line-height: 1.6; }
 
         /* NAVEGACIÓN */
         nav {
@@ -43,28 +31,60 @@
             transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
 
-        nav a:hover {
-            color: var(--text-dark);
-            transform: scale(1.15);
-        }
+        nav a:hover { color: var(--text-dark); transform: scale(1.15); }
+        .active { color: var(--text-dark) !important; border-bottom: 2px solid var(--text-dark); }
 
-        .active {
-            color: var(--text-dark) !important;
-            border-bottom: 2px solid var(--text-dark);
-        }
-
-        main {
-            max-width: 850px;
-            margin: 60px auto;
-            padding: 20px;
-        }
-
-        h1 {
-            color: var(--gold);
-            text-align: center;
-            font-size: 2.5rem;
-            text-transform: uppercase;
-        }
+        main { max-width: 850px; margin: 60px auto; padding: 20px; }
+        h1 { color: var(--gold); text-align: center; font-size: 2.5rem; text-transform: uppercase; }
 
         .philosophy-container {
             background: #fffdf5;
+            padding: 40px;
+            border-radius: 15px;
+            border-left: 5px solid var(--gold);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            margin-top: 30px;
+        }
+
+        .pdf-section { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; margin-top: 40px; }
+
+        .btn-pdf {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 15px 25px;
+            border: 2px solid var(--gold);
+            color: var(--gold);
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 8px;
+            transition: 0.3s;
+            text-transform: uppercase;
+        }
+
+        .btn-pdf:hover { background-color: var(--gold); color: white; transform: translateY(-3px); }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="philosophy.html" class="active">Philosophy</a>
+        <a href="clinical.html">Clinical</a>
+        <a href="credentials.html">Credentials</a>
+        <a href="contact.html">Contact</a>
+    </nav>
+
+    <main>
+        <h1>Nursing Philosophy</h1>
+        <div class="philosophy-container">
+            <p>"My nursing philosophy is rooted in the integration of evidence-based practice, clinical excellence, and deep compassion."</p>
+            <div class="pdf-section">
+                <a href="Nursing_Philosophy1.pdf" class="btn-pdf" target="_blank">📄 View Philosophy 1</a>
+                <a href="Nursing_Philosophy2.pdf" class="btn-pdf" target="_blank">📄 View Philosophy 2</a>
+            </div>
+        </div>
+    </main>
+
+</body>
+</html>
