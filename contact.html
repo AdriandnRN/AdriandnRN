@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,18 +8,22 @@
         :root {
             --gold: #D4AF37;
             --text-dark: #222222;
-            --diamond-bg: #FFFFFF;
+            --white: #FFFFFF;
+            --light-grey: #f9f9f9;
         }
 
         body {
-            background-color: var(--diamond-bg) !important;
+            background-color: var(--white);
             color: var(--text-dark);
             font-family: 'Arial', sans-serif;
             margin: 0;
             padding: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
         }
-        
-        /* NAVEGACIÓN INTERACTIVA */
+
+        /* NAVIGATION */
         nav {
             text-align: center;
             padding: 25px 0;
@@ -38,28 +42,118 @@
             margin: 0 15px;
             text-transform: uppercase;
             font-size: 0.9rem;
-            position: relative;
-            padding-bottom: 5px;
             display: inline-block;
-            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transition: 0.3s;
         }
 
         nav a:hover {
             color: var(--text-dark);
-            transform: scale(1.15);
+            transform: scale(1.1);
         }
 
-        nav a::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
+        .active {
+            color: var(--text-dark) !important;
+            border-bottom: 2px solid var(--text-dark);
+        }
+
+        main {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 20px;
+        }
+
+        .contact-card {
+            background: var(--light-grey);
+            width: 100%;
+            max-width: 500px;
+            padding: 50px;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            border-top: 5px solid var(--gold);
+        }
+
+        h1 {
+            color: var(--gold);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 30px;
+        }
+
+        .contact-info {
+            margin-bottom: 40px;
+        }
+
+        .contact-info p {
+            font-size: 1.1rem;
+            margin: 15px 0;
+            color: #444;
+        }
+
+        .contact-info strong {
+            color: var(--text-dark);
             display: block;
-            margin-top: 5px;
-            right: 0;
-            background: var(--text-dark);
-            transition: width 0.3s ease;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            letter-spacing: 1px;
+            margin-bottom: 5px;
         }
 
-        nav a:hover::after {
-            width: 100
+        .btn-email {
+            display: inline-block;
+            background-color: var(--gold);
+            color: white;
+            text-decoration: none;
+            padding: 15px 35px;
+            border-radius: 50px;
+            font-weight: bold;
+            transition: 0.3s;
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+        }
+
+        .btn-email:hover {
+            background-color: var(--text-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px;
+            color: #999;
+            font-size: 0.8rem;
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="philosophy.html">Philosophy</a>
+        <a href="clinical.html">Clinical</a>
+        <a href="credentials.html">Credentials</a>
+        <a href="contact.html" class="active">Contact</a>
+    </nav>
+
+    <main>
+        <div class="contact-card">
+            <h1>Get In Touch</h1>
+            
+            <div class="contact-info">
+                <p><strong>Location</strong> Miami Springs, Florida</p>
+                <p><strong>Email</strong> adriandn2022@gmail.com</p>
+                <p><strong>Professional Profile</strong> RN Graduate</p>
+            </div>
+
+            <a href="mailto:adriandn2022@gmail.com" class="btn-email">Send an Email</a>
+        </div>
+    </main>
+
+    <footer>
+        © 2026 Adrian Diaz | Professional Nursing Portfolio
+    </footer>
+
+</body>
+</html>
