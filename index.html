@@ -49,7 +49,6 @@
             transform: scale(1.15);
         }
 
-        /* Línea animada inferior */
         nav a::after {
             content: '';
             position: absolute;
@@ -67,7 +66,6 @@
             left: 0;
         }
 
-        /* Resaltado de página actual */
         .active {
             color: var(--text-dark) !important;
             border-bottom: 2px solid var(--text-dark);
@@ -132,4 +130,56 @@
             animation: fadeInUp 0.8s ease-out;
         }
 
-        .floating-contact:
+        .floating-contact:hover {
+            background-color: var(--text-dark);
+            transform: translateY(-5px) scale(1.05);
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px;
+            color: #999;
+            font-size: 0.8rem;
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="index.html" class="active">Home</a>
+        <a href="philosophy.html">Philosophy</a>
+        <a href="clinical.html">Clinical</a>
+        <a href="credentials.html">Credentials</a>
+        <a href="contact.html">Contact</a>
+    </nav>
+
+    <header>
+        <h1>Adrian Diaz</h1>
+        <span class="info-sub">Registered Nurse Graduate | Industrial Engineer</span>
+        <p>Miami Springs, FL</p>
+    </header>
+
+    <main>
+        <h2>Professional Summary</h2>
+        <p>
+            Dedicated and detail-oriented healthcare professional with a unique background in Industrial Engineering and Nursing. 
+            Committed to providing high-quality patient care, clinical safety, and evidence-based practice.
+        </p>
+    </main>
+
+    <footer>
+        © 2026 Adrian Diaz | Miami Springs, Florida
+    </footer>
+
+    <a href="contact.html" class="floating-contact">
+        <span>✉️</span>
+        <span>Contact Me</span>
+    </a>
+
+</body>
+</html>
