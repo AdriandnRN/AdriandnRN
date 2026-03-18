@@ -13,7 +13,7 @@
             padding: 0;
         }
 
-        /* NAVEGACIÓN INTERACTIVA */
+        /* NAVEGACIÓN INTERACTIVA CON SOMBRA */
         nav {
             text-align: center;
             padding: 25px 0;
@@ -22,6 +22,7 @@
             position: sticky;
             top: 0;
             z-index: 1000;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08); /* Sombra de profundidad */
         }
 
         nav a {
@@ -31,12 +32,19 @@
             margin: 0 15px;
             text-transform: uppercase;
             font-size: 0.9rem;
-            position: relative; /* Necesario para la línea animada */
+            position: relative;
             padding-bottom: 5px;
-            transition: color 0.3s ease;
+            display: inline-block; /* Permite el escalado */
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Efecto elástico */
         }
 
-        /* La línea que aparece al pasar el mouse (Efecto Interactivo) */
+        /* EFECTO: AGRANDAR Y CAMBIAR COLOR */
+        nav a:hover {
+            color: #222222; 
+            transform: scale(1.15); /* Crece un 15% */
+        }
+
+        /* Línea animada inferior */
         nav a::after {
             content: '';
             position: absolute;
@@ -45,12 +53,8 @@
             display: block;
             margin-top: 5px;
             right: 0;
-            background: #222222; /* Color de la línea al activarse */
+            background: #222222;
             transition: width 0.3s ease;
-        }
-
-        nav a:hover {
-            color: #222222; /* El texto cambia a negro al pasar el mouse */
         }
 
         nav a:hover::after {
@@ -58,7 +62,7 @@
             left: 0;
         }
 
-        /* Clase para resaltar la página actual */
+        /* Resaltado de página actual */
         .active {
             color: #222222 !important;
             border-bottom: 2px solid #222222;
@@ -99,54 +103,12 @@
             line-height: 1.6;
         }
 
-        /* Estilo para el botón de la misión o contacto si decides ponerlo */
-        .btn {
-            display: inline-block;
-            padding: 12px 20px;
-            border: 2px solid #D4AF37;
-            color: #D4AF37;
-            text-decoration: none;
-            font-weight: bold;
-            margin: 5px;
-            border-radius: 5px;
-            transition: 0.3s;
-        }
-
-        .btn:hover {
+        /* BOTÓN FLOTANTE INTERACTIVO */
+        .floating-contact {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
             background-color: #D4AF37;
-            color: white;
-            transform: translateY(-2px);
-        }
-    </style>
-</head>
-<body>
-
-    <nav>
-        <a href="index.html" class="active">Home</a>
-        <a href="philosophy.html">Philosophy</a>
-        <a href="clinical.html">Clinical</a>
-        <a href="credentials.html">Credentials</a>
-        <a href="contact.html">Contact</a>
-    </nav>
-
-    <header>
-        <h1>Adrian Diaz</h1>
-        <span class="info-sub">New Graduate RN Candidate | Miami, FL</span>
-        <p><strong>BILINGUAL (ENGLISH/SPANISH)</strong></p>
-    </header>
-
-    <main>
-        <section>
-            <h2>Professional Mission</h2>
-            <p>"To integrate industrial engineering precision with evidence-based nursing care, ensuring clinical safety, operational efficiency, and compassionate patient advocacy in high-acuity environments."</p>
-        </section>
-
-        <section>
-            <h2>Professional Introduction</h2>
-            <p>Hello, I am <strong>Adrian Diaz</strong>, a dedicated RN graduate from <strong>Activa Training Center</strong>. My path to nursing is unique, as I hold a <strong>Bachelor's degree in Industrial Engineering</strong>. This background allows me to view patient care through a lens of safety, process optimization, and meticulous attention to detail.</p>
-            <p>With over two years of experience at <strong>Barroso Medical Services</strong>, I have mastered the administrative and clinical workflows necessary to provide seamless patient transitions. I believe that nurses are the first line of defense; my goal is to utilize early intervention and clear, bilingual communication to improve patient outcomes.</p>
-        </section> 
-    </main>
-
-</body>
-</html>
+            color: #ffffff !important;
+            padding: 12px 24px;
+            border-radius: 50px;
