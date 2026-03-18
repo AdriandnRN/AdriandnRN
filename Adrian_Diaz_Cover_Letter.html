@@ -5,99 +5,99 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cover Letter | Adrian Diaz</title>
     <style>
-        :root {
-            --gold: #D4AF37;
-            --text: #333;
-        }
-
-        body {
-            background-color: #f4f4f4;
+        /* Forzamos que la página NO sea invisible */
+        html, body {
+            background-color: #f4f4f4 !important;
             margin: 0;
             padding: 0;
+            display: block !important;
+            color: #333;
             font-family: 'Times New Roman', Times, serif;
-            color: var(--text);
         }
 
         nav {
             text-align: center;
             padding: 20px;
-            border-bottom: 4px solid var(--gold);
+            border-bottom: 4px solid #D4AF37;
             background-color: #FFFFFF;
+            font-family: Arial, sans-serif;
         }
 
         nav a {
             text-decoration: none;
-            color: var(--gold);
+            color: #D4AF37;
             font-weight: bold;
             margin: 0 15px;
             text-transform: uppercase;
-            font-family: Arial, sans-serif;
-            font-size: 0.9rem;
         }
 
-        .letter-page {
+        .letter-container {
             background-color: #FFFFFF;
-            max-width: 850px;
-            margin: 40px auto;
-            padding: 60px 70px;
-            box-shadow: 0 0 20px rgba(0,0,0,0.1);
-            border-top: 8px solid var(--gold);
+            max-width: 800px;
+            margin: 30px auto;
+            padding: 50px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            border-top: 6px solid #D4AF37;
         }
 
-        .header {
-            text-align: center;
-            margin-bottom: 30px;
-            border-bottom: 1px solid #eee;
-            padding-bottom: 20px;
-        }
+        h1 { color: #D4AF37; font-family: Arial, sans-serif; text-align: center; margin: 0; }
+        
+        .contact-info { text-align: center; font-family: Arial, sans-serif; font-size: 0.9rem; color: #666; margin-bottom: 30px; }
 
-        .header h1 {
-            margin: 0;
-            color: var(--gold);
-            font-family: Arial, sans-serif;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-        }
+        .content p { line-height: 1.6; margin-bottom: 15px; text-align: justify; }
+        
+        .content ul { line-height: 1.5; margin-bottom: 15px; }
 
-        .contact-line {
-            font-family: Arial, sans-serif;
-            font-size: 0.85rem;
-            color: #666;
-            margin-top: 5px;
-        }
+        .signature { margin-top: 40px; font-weight: bold; }
+    </style>
+</head>
+<body>
 
-        .date { margin-bottom: 25px; }
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="philosophy.html">Philosophy</a>
+        <a href="clinical.html">Clinical</a>
+        <a href="credentials.html">Credentials</a>
+    </nav>
 
-        .recipient { margin-bottom: 25px; line-height: 1.4; }
+    <div class="letter-container">
+        <h1>ADRIAN DIAZ</h1>
+        <div class="contact-info">
+            Miami Springs, FL • (786) 218-7679 • adriandn2022@gmail.com<br>
+            <strong>Bilingual RN Graduate • B.S. Industrial Engineering</strong>
+        </div>
 
-        .subject {
-            font-weight: bold;
-            text-transform: uppercase;
-            margin-bottom: 20px;
-            text-decoration: underline;
-        }
+        <div class="date">March 17, 2026</div>
 
-        .content p {
-            margin-bottom: 15px;
-            text-align: justify;
-            line-height: 1.5;
-            font-size: 1.05rem;
-        }
+        <p>To Whom It May Concern:<br>
+        Hiring Manager / Nurse Recruitment Team</p>
 
-        .content ul {
-            margin-bottom: 15px;
-            font-size: 1rem;
-            line-height: 1.4;
-        }
+        <div class="content">
+            <p><strong>RE: REGISTERED NURSE POSITION / NEW GRADUATE RESIDENCY</strong></p>
 
-        .signature { margin-top: 40px; line-height: 1.4; }
+            <p>I am writing to express my enthusiastic interest in joining your nursing team. As a recent <strong>Nursing Graduate from Activa Training Center</strong> with a Bachelor’s Degree in Industrial Engineering, I offer a unique dual-perspective that combines clinical excellence with process optimization and patient safety.</p>
 
-        .actions { text-align: center; margin-bottom: 40px; }
+            <p>During my two-year tenure at <strong>Barroso Medical Services LLC</strong>, I worked under direct medical supervision as a <strong>Medical Assistant</strong>. In this role, I was responsible for primary patient triage, vital sign monitoring, EKG administration, and assisting in minor clinical procedures. This experience allowed me to master clinical workflows and EHR documentation while ensuring strict HIPAA compliance.</p>
 
-        .btn-back {
-            text-decoration: none;
-            color: var(--gold);
-            border: 1px solid var(--gold);
-            padding: 10px 20px;
-            border-radius: 5px;
-            font-
+            <p>My clinical rotations and <strong>Clinical Skills Checklist</strong> demonstrate my proficiency in specialized care:</p>
+            <ul>
+                <li><strong>Maternity & Pediatrics:</strong> Proficient in newborn APGAR scoring, metabolic screenings, Leopold maneuvers, and pediatric developmental assessments.</li>
+                <li><strong>Medical-Surgical (Select Specialty):</strong> Hands-on experience in sterile wound care, tracheostomy suctioning, Foley catheterization, and NG tube management.</li>
+                <li><strong>Behavioral Health (Palazzo/Evolutions):</strong> Expertise in mental status examinations (MSE), trauma-informed care, and therapeutic communication.</li>
+                <li><strong>Advanced Skills:</strong> Trained in IV therapy management, oxygen administration, and comprehensive head-to-toe physical assessments.</li>
+            </ul>
+
+            <p>My background in <strong>Industrial Engineering</strong> allows me to view the nursing unit as a critical system. I am committed to reducing errors through meticulous attention to detail and clinical safety protocols. I believe that my technical proficiency, combined with my bilingual communication skills, makes me a valuable advocate for diverse patient populations.</p>
+
+            <p>I am eager to bring my strong work ethic and compassion to your facility. I am available for all shifts and ready to contribute immediately to your mission of patient-centered excellence.</p>
+        </div>
+
+        <div class="signature">
+            Sincerely,<br><br>
+            Adrian Diaz<br>
+            Nursing Graduate | RN Candidate
+        </div>
+    </div>
+
+</body>
+</html>
