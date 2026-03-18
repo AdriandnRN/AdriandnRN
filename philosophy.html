@@ -8,18 +8,19 @@
         :root {
             --gold: #D4AF37;
             --text-dark: #222222;
-            --diamond-bg: #FFFFFF;
+            --white: #FFFFFF;
         }
 
         body {
-            background-color: var(--diamond-bg) !important;
+            background-color: var(--white);
             color: var(--text-dark);
             font-family: 'Arial', sans-serif;
             margin: 0;
+            padding: 0;
             line-height: 1.6;
         }
 
-        /* NAVEGACIÓN INTERACTIVA */
+        /* NAVEGACIÓN */
         nav {
             text-align: center;
             padding: 25px 0;
@@ -38,8 +39,6 @@
             margin: 0 15px;
             text-transform: uppercase;
             font-size: 0.9rem;
-            position: relative;
-            padding-bottom: 5px;
             display: inline-block;
             transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
@@ -49,53 +48,23 @@
             transform: scale(1.15);
         }
 
-        nav a::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            display: block;
-            margin-top: 5px;
-            right: 0;
-            background: var(--text-dark);
-            transition: width 0.3s ease;
-        }
-
-        nav a:hover::after {
-            width: 100%;
-            left: 0;
-        }
-
         .active {
             color: var(--text-dark) !important;
             border-bottom: 2px solid var(--text-dark);
         }
 
-        /* Contenido */
         main {
             max-width: 850px;
-            margin: 0 auto;
-            padding: 40px 20px;
+            margin: 60px auto;
+            padding: 20px;
         }
 
         h1 {
             color: var(--gold);
             text-align: center;
             font-size: 2.5rem;
-            margin-bottom: 5px;
+            text-transform: uppercase;
         }
 
-        .badge {
-            display: block;
-            text-align: center;
-            color: #666;
-            font-style: italic;
-            margin-bottom: 30px;
-        }
-
-        .philosophy-card {
+        .philosophy-container {
             background: #fffdf5;
-            padding: 30px;
-            border-radius: 10px;
-            border-left: 5px solid var(--gold);
-            box-shadow: 0 4px 6px rgba(0,0,0,0.0
