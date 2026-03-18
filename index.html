@@ -7,6 +7,8 @@
     <style>
         :root {
             --gold: #D4AF37;
+            --neon-green: #90EE90; /* Verde claro */
+            --bright-green: #00FF00; /* Verde brillante para el hover */
             --text-dark: #222222;
             --white: #FFFFFF;
         }
@@ -18,21 +20,21 @@
             margin: 0;
             padding: 0;
             overflow-x: hidden;
+            position: relative;
         }
 
-        /* NEURAL BACKGROUND CANVAS */
-        #neural-canvas {
+        /* CANVAS DE RED NEURONAL */
+        #neuron-canvas {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
             z-index: -1;
-            filter: blur(3px);
-            opacity: 0.15;
-            background: #fff;
+            background-color: #fff;
         }
 
+        /* NAVEGACIÓN */
         nav {
             text-align: center;
             padding: 25px 0;
@@ -41,6 +43,7 @@
             position: sticky;
             top: 0;
             z-index: 1000;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
         }
 
         nav a {
@@ -50,49 +53,132 @@
             margin: 0 15px;
             text-transform: uppercase;
             font-size: 0.9rem;
+            transition: 0.3s;
+            display: inline-block;
         }
 
-        header { text-align: center; padding: 60px 20px 20px; }
+        nav a:hover, .active {
+            color: var(--text-dark) !important;
+            transform: scale(1.05);
+        }
 
-        /* EKG ANIMATION */
+        header {
+            text-align: center;
+            padding: 60px 20px 40px;
+        }
+
+        /* EKG ANIMADO */
         .ekg-container {
-            width: 100%; max-width: 400px; height: 60px;
-            margin: 0 auto 20px; overflow: hidden; position: relative;
+            width: 100%;
+            max-width: 400px;
+            height: 60px;
+            margin: 0 auto 20px;
+            overflow: hidden;
+            position: relative;
         }
+
         .ekg-svg {
-            width: 200%; height: 100%; position: absolute;
+            width: 200%;
+            height: 100%;
+            position: absolute;
             animation: ekgMove 4s linear infinite;
         }
-        .ekg-path { fill: none; stroke: var(--gold); stroke-width: 3; }
-        @keyframes ekgMove { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
 
-        h1 { color: var(--gold); font-size: 3rem; margin: 0; text-transform: uppercase; }
-        
-        main { max-width: 800px; margin: 0 auto; padding: 40px 20px; position: relative; z-index: 1; }
-        
+        .ekg-path {
+            fill: none;
+            stroke: var(--gold);
+            stroke-width: 3;
+        }
+
+        @keyframes ekgMove {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        h1 {
+            color: var(--gold);
+            font-size: 3.5rem;
+            margin: 0;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .title-sub {
+            font-size: 1.2rem;
+            color: #666;
+            font-weight: bold;
+            display: block;
+            margin-top: 10px;
+        }
+
+        main {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px 20px 60px;
+            position: relative;
+            z-index: 1;
+        }
+
         .intro-box {
             background: rgba(255, 255, 255, 0.95);
-            padding: 30px; border-radius: 12px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-            line-height: 1.8; border: 1px solid #eee;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+            border: 1px solid #f0f0f0;
+            line-height: 1.8;
+            font-size: 1.1rem;
+            color: #444;
+            margin-bottom: 40px;
         }
 
         .skills-grid {
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px; margin-top: 30px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
         }
+
         .skill-card {
-            background: rgba(255, 255, 255, 0.9); padding: 20px;
-            border-left: 4px solid var(--gold); border-radius: 5px;
+            padding: 25px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 8px;
+            border-left: 5px solid var(--gold);
+            transition: 0.3s;
+        }
+
+        .skill-card h3 {
+            margin-top: 0;
+            color: var(--gold);
+            text-transform: uppercase;
+        }
+
+        .skill-list {
+            list-style: none;
+            padding: 0;
+            font-size: 0.95rem;
+        }
+
+        .skill-list li::before {
+            content: "✓";
+            color: var(--gold);
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            color: #999;
+            font-size: 0.8rem;
+            background-color: rgba(249, 249, 249, 0.9);
         }
     </style>
 </head>
 <body>
 
-    <canvas id="neural-canvas"></canvas>
+    <canvas id="neuron-canvas"></canvas>
 
     <nav>
-        <a href="index.html">Home</a>
+        <a href="index.html" class="active">Home</a>
         <a href="philosophy.html">Philosophy</a>
         <a href="clinical.html">Clinical</a>
         <a href="credentials.html">Credentials</a>
@@ -106,71 +192,138 @@
             </svg>
         </div>
         <h1>Adrian Diaz</h1>
-        <span style="font-weight:bold; color:#666;">Registered Nurse | Industrial Engineer</span>
+        <span class="title-sub">Registered Nurse | Industrial Engineer</span>
     </header>
 
     <main>
-        <div class="intro-box">
-            <p>I am a <strong>Registered Nurse (RN)</strong> graduate from Activa Training Center with a unique edge, combining <strong>Industrial Engineering</strong> with clinical expertise to focus on safety and process optimization.</p>
-        </div>
+        <section class="intro-box">
+            <p>
+                I am a <strong>Registered Nurse (RN)</strong> graduate from Activa Training Center in Miami, FL, with a unique professional edge. By combining a <strong>Bachelor’s degree in Industrial Engineering</strong> with over two years of experience in Medical Administration, I approach nursing with a specialized focus on <strong>clinical safety, process optimization, and exceptional patient advocacy.</strong>
+            </p>
+        </section>
 
         <div class="skills-grid">
             <div class="skill-card">
-                <h3 style="color:var(--gold); margin-top:0;">Clinical</h3>
-                <p>Medication, Wound Care, EMR (Office Ally, Oscar CMS).</p>
+                <h3>Clinical Skills</h3>
+                <ul class="skill-list">
+                    <li>Medication Administration</li>
+                    <li>Wound Care & Vital Signs</li>
+                    <li>Neurovascular Assessments</li>
+                </ul>
             </div>
             <div class="skill-card">
-                <h3 style="color:var(--gold); margin-top:0;">Professional</h3>
-                <p>Process Optimization, Patient Advocacy, Bilingual.</p>
+                <h3>Health Systems</h3>
+                <ul class="skill-list">
+                    <li>EMR: Office Ally, Oscar CMS</li>
+                    <li>Florida SHOTS Certified</li>
+                    <li>Quest & LabCorp Systems</li>
+                </ul>
+            </div>
+            <div class="skill-card">
+                <h3>Professional & Tech Skills</h3>
+                <ul class="skill-list">
+                    <li>Process Optimization</li>
+                    <li>Patient Advocacy</li>
+                    <li>Bilingual (English/Spanish)</li>
+                </ul>
             </div>
         </div>
     </main>
 
+    <footer>
+        © 2026 Adrian Diaz | Miami Springs, FL | RN Professional Portfolio
+    </footer>
+
     <script>
-        const canvas = document.getElementById('neural-canvas');
+        const canvas = document.getElementById('neuron-canvas');
         const ctx = canvas.getContext('2d');
         let particles = [];
+        const mouse = { x: null, y: null, radius: 150 };
+
+        window.addEventListener('mousemove', (event) => {
+            mouse.x = event.x;
+            mouse.y = event.y;
+        });
 
         function init() {
             canvas.width = window.innerWidth;
             canvas.height = window.innerHeight;
             particles = [];
-            for (let i = 0; i < 80; i++) {
-                particles.push({
-                    x: Math.random() * canvas.width,
-                    y: Math.random() * canvas.height,
-                    vx: (Math.random() - 0.5) * 0.5,
-                    vy: (Math.random() - 0.5) * 0.5
-                });
+            let numberOfParticles = (canvas.height * canvas.width) / 9000;
+            for (let i = 0; i < numberOfParticles; i++) {
+                let size = (Math.random() * 2) + 1;
+                let x = (Math.random() * ((innerWidth - size * 2) - (size * 2)) + size * 2);
+                let y = (Math.random() * ((innerHeight - size * 2) - (size * 2)) + size * 2);
+                let directionX = (Math.random() * 2) - 1;
+                let directionY = (Math.random() * 2) - 1;
+                let color = 'rgba(144, 238, 144, 0.3)'; // Verde claro base
+
+                particles.push({x, y, directionX, directionY, size, color});
             }
         }
 
         function animate() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            ctx.fillStyle = "rgba(212, 175, 55, 0.5)";
-            
-            particles.forEach((p, i) => {
-                p.x += p.vx; p.y += p.vy;
-                if (p.x < 0 || p.x > canvas.width) p.vx *= -1;
-                if (p.y < 0 || p.y > canvas.height) p.vy *= -1;
+            requestAnimationFrame(animate);
+            ctx.clearRect(0, 0, innerWidth, innerHeight);
+
+            for (let i = 0; i < particles.length; i++) {
+                let p = particles[i];
+                p.x += p.directionX;
+                p.y += p.directionY;
+
+                if (p.x > canvas.width || p.x < 0) p.directionX = -p.directionX;
+                if (p.y > canvas.height || p.y < 0) p.directionY = -p.directionY;
+
+                // Detectar mouse para brillo
+                let dx = mouse.x - p.x;
+                let dy = mouse.y - p.y;
+                let distance = Math.sqrt(dx*dx + dy*dy);
                 
+                let currentOpacity = 0.2;
+                let currentColor = '144, 238, 144'; // Verde claro
+
+                if (distance < mouse.radius) {
+                    currentOpacity = 0.8;
+                    currentColor = '0, 255, 0'; // Verde brillante
+                    p.size = 3;
+                } else {
+                    p.size = 2;
+                }
+
                 ctx.beginPath();
-                ctx.arc(p.x, p.y, 2, 0, Math.PI * 2);
+                ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+                ctx.fillStyle = `rgba(${currentColor}, ${currentOpacity})`;
                 ctx.fill();
 
-                for (let j = i + 1; j < particles.length; j++) {
+                // Dibujar conexiones
+                for (let j = i; j < particles.length; j++) {
                     let p2 = particles[j];
-                    let dist = Math.hypot(p.x - p2.x, p.y - p2.y);
-                    if (dist < 120) {
-                        ctx.strokeStyle = `rgba(212, 175, 55, ${0.2 * (1 - dist/120)})`;
-                        ctx.beginPath(); ctx.moveTo(p.x, p.y); ctx.lineTo(p2.x, p2.y); ctx.stroke();
+                    let dx2 = p.x - p2.x;
+                    let dy2 = p.y - p2.y;
+                    let dist2 = Math.sqrt(dx2*dx2 + dy2*dy2);
+
+                    if (dist2 < 120) {
+                        let lineOpacity = 1 - (dist2 / 120);
+                        let isBright = (distance < mouse.radius);
+                        
+                        ctx.strokeStyle = isBright ? 
+                            `rgba(0, 255, 0, ${lineOpacity * 0.5})` : 
+                            `rgba(144, 238, 144, ${lineOpacity * 0.2})`;
+                        
+                        ctx.lineWidth = 1;
+                        ctx.beginPath();
+                        ctx.moveTo(p.x, p.y);
+                        ctx.lineTo(p2.x, p2.y);
+                        ctx.stroke();
                     }
                 }
-            });
-            requestAnimationFrame(animate);
+            }
         }
 
-        window.addEventListener('resize', init);
+        window.addEventListener('resize', () => {
+            init();
+        });
+
         init();
         animate();
     </script>
