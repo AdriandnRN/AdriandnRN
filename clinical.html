@@ -8,18 +8,20 @@
         :root {
             --gold: #D4AF37;
             --text-dark: #222222;
-            --diamond-bg: #FFFFFF;
+            --white: #FFFFFF;
+            --bg-soft: #f9f9f9;
         }
 
         body {
-            background-color: var(--diamond-bg) !important;
+            background-color: var(--white);
             color: var(--text-dark);
             font-family: 'Arial', sans-serif;
             margin: 0;
+            padding: 0;
             line-height: 1.6;
         }
 
-        /* NAVEGACIÓN INTERACTIVA */
+        /* NAVEGACIÓN */
         nav {
             text-align: center;
             padding: 25px 0;
@@ -38,8 +40,6 @@
             margin: 0 15px;
             text-transform: uppercase;
             font-size: 0.9rem;
-            position: relative;
-            padding-bottom: 5px;
             display: inline-block;
             transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
@@ -49,54 +49,114 @@
             transform: scale(1.15);
         }
 
-        nav a::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            display: block;
-            margin-top: 5px;
-            right: 0;
-            background: var(--text-dark);
-            transition: width 0.3s ease;
-        }
-
-        nav a:hover::after {
-            width: 100%;
-            left: 0;
-        }
-
         .active {
             color: var(--text-dark) !important;
             border-bottom: 2px solid var(--text-dark);
         }
 
-        /* Contenedor */
         main {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 40px 20px;
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 20px;
         }
 
         h1 {
             color: var(--gold);
             text-align: center;
-            font-size: 2.2rem;
-            margin-bottom: 30px;
+            font-size: 2.5rem;
+            text-transform: uppercase;
+            margin-bottom: 40px;
         }
 
-        /* Tarjetas de Experiencia Interactivas */
+        .clinical-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-top: 20px;
+        }
+
         .card {
-            background: #fffdf5;
+            background: var(--bg-soft);
             padding: 25px;
-            border-radius: 8px;
-            border: 1px solid #eee;
-            border-left: 6px solid var(--gold);
-            margin-bottom: 25px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-            transition: all 0.3s ease; /* Transición para la tarjeta */
+            border-radius: 12px;
+            border-top: 4px solid var(--gold);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            transition: 0.3s;
+            text-align: center;
         }
 
         .card:hover {
-            transform: translateY(-5px); /* Se eleva un poco */
-            box-shadow:
+            transform: translateY(-5px);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+        }
+
+        .card h3 {
+            color: var(--gold);
+            margin-top: 0;
+            font-size: 1.3rem;
+        }
+
+        .btn-view {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 10px 20px;
+            background-color: var(--gold);
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 5px;
+            transition: 0.3s;
+        }
+
+        .btn-view:hover {
+            background-color: var(--text-dark);
+        }
+
+        footer {
+            text-align: center;
+            padding: 60px 20px 20px;
+            color: #999;
+            font-size: 0.8rem;
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="philosophy.html">Philosophy</a>
+        <a href="clinical.html" class="active">Clinical</a>
+        <a href="credentials.html">Credentials</a>
+        <a href="contact.html">Contact</a>
+    </nav>
+
+    <main>
+        <h1>Clinical Experience</h1>
+        
+        <div class="clinical-grid">
+            <div class="card">
+                <h3>Reflective Journal</h3>
+                <p>Personal insights and clinical growth during nursing rotations.</p>
+                <a href="Reflective_Journal_Adrian.pdf" class="btn-view" target="_blank">📄 Open Journal</a>
+            </div>
+
+            <div class="card">
+                <h3>Skills Checklist</h3>
+                <p>Comprehensive list of clinical competencies and nursing procedures.</p>
+                <a href="Clinical_Skills_Checklist.pdf" class="btn-view" target="_blank">📄 View Checklist</a>
+            </div>
+
+            <div class="card">
+                <h3>Clinical Logs</h3>
+                <p>Detailed documentation of patient care and clinical interventions.</p>
+                <a href="Clinical_Reflective_Journals.pdf" class="btn-view" target="_blank">📄 View Logs</a>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        © 2026 Adrian Diaz | RN Clinical Portfolio
+    </footer>
+
+</body>
+</html>
