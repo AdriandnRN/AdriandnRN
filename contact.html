@@ -5,147 +5,61 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact | Adrian Diaz</title>
     <style>
+        :root {
+            --gold: #D4AF37;
+            --text-dark: #222222;
+            --diamond-bg: #FFFFFF;
+        }
+
         body {
-            background-color: #ffffff;
-            color: #222222;
+            background-color: var(--diamond-bg) !important;
+            color: var(--text-dark);
             font-family: 'Arial', sans-serif;
             margin: 0;
             padding: 0;
         }
         
+        /* NAVEGACIÓN INTERACTIVA */
         nav {
             text-align: center;
-            padding: 20px;
-            border-bottom: 4px solid #D4AF37;
-            background-color: #ffffff;
+            padding: 25px 0;
+            border-bottom: 4px solid var(--gold);
+            background-color: white;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
         }
 
         nav a {
             text-decoration: none;
-            color: #D4AF37;
+            color: var(--gold);
             font-weight: bold;
             margin: 0 15px;
             text-transform: uppercase;
             font-size: 0.9rem;
-        }
-
-        main {
-            max-width: 800px;
-            margin: 60px auto;
-            padding: 20px;
-            text-align: center;
-        }
-
-        h1 {
-            color: #D4AF37;
-            font-size: 2.5rem;
-            margin-bottom: 10px;
-            text-transform: uppercase;
-        }
-
-        .contact-card {
-            background-color: #f9f9f9;
-            border-radius: 15px;
-            padding: 40px;
-            margin-top: 30px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-            border-top: 5px solid #D4AF37;
-        }
-
-        .info-item {
-            margin-bottom: 25px;
-        }
-
-        .info-item h3 {
-            color: #D4AF37;
-            margin-bottom: 5px;
-            text-transform: uppercase;
-            font-size: 1rem;
-        }
-
-        .info-item p {
-            font-size: 1.2rem;
-            margin: 0;
-            color: #333;
-        }
-
-        .btn-contact {
+            position: relative;
+            padding-bottom: 5px;
             display: inline-block;
-            margin: 10px;
-            padding: 15px 30px;
-            background-color: #D4AF37;
-            color: white;
-            text-decoration: none;
-            font-weight: bold;
-            border-radius: 8px;
-            transition: 0.3s;
-            text-transform: uppercase;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
 
-        .btn-contact:hover {
-            background-color: #222;
-            transform: translateY(-2px);
+        nav a:hover {
+            color: var(--text-dark);
+            transform: scale(1.15);
         }
 
-        .availability {
-            margin-top: 30px;
-            font-style: italic;
-            color: #666;
-            border-top: 1px solid #eee;
-            padding-top: 20px;
+        nav a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            display: block;
+            margin-top: 5px;
+            right: 0;
+            background: var(--text-dark);
+            transition: width 0.3s ease;
         }
 
-        .footer-note {
-            margin-top: 60px;
-            font-size: 0.8rem;
-            color: #999;
-        }
-    </style>
-</head>
-<body>
-
-    <nav>
-        <a href="index.html">Home</a>
-        <a href="philosophy.html">Philosophy</a>
-        <a href="clinical.html">Clinical</a>
-        <a href="credentials.html">Credentials</a>
-        <a href="contact.html">Contact</a>
-    </nav>
-
-    <main>
-        <h1>Contact Me</h1>
-        <p>Available for nursing and clinical administration opportunities.</p>
-
-        <div class="contact-card">
-            <div class="info-item">
-                <h3>Location</h3>
-                <p>Miami Springs, FL</p>
-            </div>
-
-            <div class="info-item">
-                <h3>Phone</h3>
-                <p>(786) 218-7679</p>
-            </div>
-
-            <div class="info-item">
-                <h3>Email</h3>
-                <p>adriandn2022@gmail.com</p>
-            </div>
-
-            <div style="margin-top: 40px;">
-                <a href="tel:7862187679" class="btn-contact">📞 Call Now</a>
-                <a href="mailto:adriandn2022@gmail.com" class="btn-contact">✉️ Send Email</a>
-            </div>
-
-            <div class="availability">
-                <p>Bilingual: English & Spanish | Flexible Schedule</p>
-            </div>
-        </div>
-
-        <div class="footer-note">
-            © 2026 Adrian Diaz | Miami Springs, Florida
-        </div>
-    </main>
-
-</body>
-</html>
+        nav a:hover::after {
+            width: 100
