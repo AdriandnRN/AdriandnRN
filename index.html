@@ -6,9 +6,12 @@
     <title>Adrian Diaz | Professional RN Portfolio</title>
     <style>
         :root {
-            --gold: #D4AF37;
-            --neon-green: #90EE90; 
-            --electric-green: #00FF00; 
+            /* COLORES DIAMANTE BRILLANTE */
+            --diamond-main: #E0E0E0; /* Platino/Plateado base */
+            --diamond-flash: #FFFFFF; /* Blanco puro para destellos */
+            --diamond-glow: rgba(224, 224, 224, 0.8);
+            --neural-base: rgba(0, 255, 255, 0.15); /* Cian pálido base */
+            --neural-flash: rgba(255, 255, 255, 0.9); /* Blanco brillante al hover */
             --text-dark: #222222;
             --white: #FFFFFF;
         }
@@ -23,7 +26,7 @@
             position: relative;
         }
 
-        /* CANVAS DE RED NEURONAL INTERACTIVA */
+        /* CANVAS DE RED NEURONAL INTERACTIVA "DIAMANTE" */
         #neuron-canvas {
             position: fixed;
             top: 0;
@@ -34,64 +37,150 @@
             background-color: #fff;
         }
 
+        /* NAVEGACIÓN */
         nav {
             text-align: center;
             padding: 25px 0;
-            border-bottom: 4px solid var(--gold);
+            border-bottom: 4px solid var(--diamond-main);
             background-color: rgba(255, 255, 255, 0.9);
             position: sticky;
             top: 0;
             z-index: 1000;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
         }
 
         nav a {
             text-decoration: none;
-            color: var(--gold);
+            color: var(--diamond-main);
             font-weight: bold;
             margin: 0 15px;
             text-transform: uppercase;
             font-size: 0.9rem;
             transition: 0.3s;
+            display: inline-block;
         }
 
-        nav a:hover, .active { color: var(--text-dark) !important; }
+        nav a:hover, .active {
+            color: var(--text-dark) !important;
+            transform: scale(1.05);
+            text-shadow: 0 0 10px var(--diamond-glow);
+        }
 
-        header { text-align: center; padding: 60px 20px 40px; }
+        header {
+            text-align: center;
+            padding: 60px 20px 40px;
+        }
 
-        /* EKG ANIMATION */
+        /* EKG ANIMADO DIAMANTE CON PUNTO RECORRIÉNDOLO */
         .ekg-container {
-            width: 100%; max-width: 400px; height: 60px;
-            margin: 0 auto 20px; overflow: hidden; position: relative;
+            width: 100%;
+            max-width: 400px;
+            height: 60px;
+            margin: 0 auto 20px;
+            overflow: hidden;
+            position: relative;
         }
+
         .ekg-svg {
-            width: 200%; height: 100%; position: absolute;
+            width: 200%; /* El doble de ancho para el efecto infinito */
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
             animation: ekgMove 4s linear infinite;
         }
-        .ekg-path { fill: none; stroke: var(--gold); stroke-width: 3; }
-        @keyframes ekgMove { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
 
-        h1 { color: var(--gold); font-size: 3.5rem; margin: 0; text-transform: uppercase; letter-spacing: 2px; }
+        .ekg-path {
+            fill: none;
+            stroke: var(--diamond-main);
+            stroke-width: 3;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
 
-        main { max-width: 900px; margin: 0 auto; padding: 20px 20px 60px; z-index: 1; position: relative; }
+        /* PUNTO BRILLANTE QUE RECORRE EL EKG */
+        .ekg-dot {
+            width: 10px;
+            height: 10px;
+            background-color: var(--diamond-flash);
+            border-radius: 50%;
+            position: absolute;
+            top: 50%; /* Centrado verticalmente */
+            transform: translateY(-50%);
+            box-shadow: 0 0 15px var(--diamond-flash), 0 0 25px var(--diamond-flash);
+            animation: ekgDotMove 4s linear infinite;
+        }
+
+        @keyframes ekgMove {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); } /* Mueve la mitad del ancho */
+        }
+
+        @keyframes ekgDotMove {
+            0% { left: 0%; }
+            100% { left: 100%; } /* Recorre todo el ancho del contenedor */
+        }
+
+        h1 {
+            color: var(--diamond-main);
+            font-size: 3.5rem;
+            margin: 0;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            text-shadow: 0 0 15px var(--diamond-glow);
+        }
+
+        .title-sub {
+            font-size: 1.2rem;
+            color: #666;
+            font-weight: bold;
+            display: block;
+            margin-top: 10px;
+        }
+
+        main {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px 20px 60px;
+            position: relative;
+            z-index: 1; /* Asegura que el contenido esté sobre el canvas */
+        }
 
         .intro-box {
-            background: rgba(255, 255, 255, 0.96);
-            padding: 40px; border-radius: 12px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-            border: 1px solid #eee;
-            line-height: 1.8; margin-bottom: 40px;
-            transition: transform 0.3s ease;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+            border: 1px solid #f0f0f0;
+            line-height: 1.8;
+            font-size: 1.1rem;
+            color: #444;
+            margin-bottom: 40px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
-        .intro-box:hover { transform: translateY(-5px); border-color: var(--gold); }
 
-        /* RESALTADO DE TÓPICOS */
-        .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; }
+        .intro-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.05);
+            border-color: var(--diamond-main);
+        }
 
+        .intro-box strong {
+            color: var(--text-dark);
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        /* RESALTADO DE TÓPICOS CON ESTILO DIAMANTE */
         .skill-card {
             padding: 25px;
-            background: rgba(255, 255, 255, 0.95);
+            background: rgba(253, 253, 253, 0.9);
             border-radius: 8px;
-            border-left: 5px solid var(--gold);
+            border-left: 5px solid var(--diamond-main);
             transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             cursor: default;
         }
@@ -99,15 +188,51 @@
         .skill-card:hover {
             transform: scale(1.05);
             background: var(--white);
-            box-shadow: 0 15px 35px rgba(212, 175, 55, 0.2);
+            box-shadow: 0 15px 35px var(--diamond-glow);
             border-left-width: 10px;
         }
 
-        .skill-card h3 { color: var(--gold); text-transform: uppercase; margin-top: 0; }
-        .skill-list { list-style: none; padding: 0; font-size: 0.95rem; color: #555; }
-        .skill-list li::before { content: "✓"; color: var(--gold); margin-right: 10px; font-weight: bold; }
+        .skill-card h3 {
+            margin-top: 0;
+            color: var(--diamond-main);
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            text-shadow: 0 0 5px var(--diamond-glow);
+        }
 
-        footer { text-align: center; padding: 40px; color: #999; font-size: 0.8rem; }
+        .skill-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            font-size: 0.95rem;
+            color: #555;
+        }
+
+        .skill-list li {
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+        }
+
+        .skill-list li::before {
+            content: "✓";
+            color: var(--diamond-main);
+            font-weight: bold;
+            margin-right: 10px;
+            text-shadow: 0 0 3px var(--diamond-glow);
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            color: #999;
+            font-size: 0.8rem;
+            background-color: rgba(249, 249, 249, 0.9);
+            border-top: 1px solid #eee;
+            position: relative;
+            z-index: 1;
+        }
     </style>
 </head>
 <body>
@@ -127,14 +252,20 @@
             <svg class="ekg-svg" viewBox="0 0 800 100" preserveAspectRatio="none">
                 <path class="ekg-path" d="M0,50 L200,50 L210,40 L220,60 L230,50 L280,50 L290,20 L310,80 L320,50 L370,50 L380,45 L390,55 L400,50 L600,50 L610,40 L620,60 L630,50 L680,50 L690,20 L710,80 L720,50 L770,50 L780,45 L790,55 L800,50" />
             </svg>
-        </div>
+            <div class="ekg-dot"></div> </div>
+        
         <h1>Adrian Diaz</h1>
-        <span style="font-weight:bold; color:#666; display:block; margin-top:10px;">Registered Nurse | Industrial Engineer</span>
+        <span class="title-sub">Registered Nurse | Industrial Engineer</span>
     </header>
 
     <main>
         <section class="intro-box">
-            <p>I am a <strong>Registered Nurse (RN)</strong> graduate from Activa Training Center in Miami, FL. By combining a <strong>Bachelor’s degree in Industrial Engineering</strong> with over two years in Medical Administration, I approach nursing with a focus on clinical safety and process optimization.</p>
+            <p>
+                I am a <strong>Registered Nurse (RN)</strong> graduate from Activa Training Center in Miami, FL, with a unique professional edge. By combining a <strong>Bachelor’s degree in Industrial Engineering</strong> with over two years of experience in Medical Administration, I approach nursing with a specialized focus on <strong>clinical safety, process optimization, and exceptional patient advocacy.</strong>
+            </p>
+            <p>
+                Proficient in managing complex workflows and adhering to RN standards for evidence-based practice, I am dedicated to delivering high-quality care within modern health systems.
+            </p>
         </section>
 
         <div class="skills-grid">
@@ -155,21 +286,26 @@
                 </ul>
             </div>
             <div class="skill-card">
-                <h3>Professional & Tech</h3>
+                <h3>Professional & Tech Skills</h3>
                 <ul class="skill-list">
                     <li>Process Optimization</li>
                     <li>Patient Advocacy</li>
                     <li>Bilingual (English/Spanish)</li>
+                    <li>Critical Thinking & Analysis</li>
                 </ul>
             </div>
         </div>
     </main>
 
+    <footer>
+        © 2026 Adrian Diaz | Miami Springs, FL | RN Professional Portfolio
+    </footer>
+
     <script>
         const canvas = document.getElementById('neuron-canvas');
         const ctx = canvas.getContext('2d');
         let particles = [];
-        const mouse = { x: null, y: null, radius: 180 };
+        const mouse = { x: null, y: null, radius: 180 }; // Radio de interacción del mouse
 
         window.addEventListener('mousemove', (e) => { mouse.x = e.x; mouse.y = e.y; });
 
@@ -177,13 +313,13 @@
             canvas.width = window.innerWidth;
             canvas.height = window.innerHeight;
             particles = [];
-            // Densidad de neuronas
+            // Densidad de neuronas (ajustada para rendimiento)
             let quantity = (canvas.width * canvas.height) / 10000;
             for (let i = 0; i < quantity; i++) {
                 particles.push({
                     x: Math.random() * canvas.width,
                     y: Math.random() * canvas.height,
-                    vx: (Math.random() - 0.5) * 0.2, // VELOCIDAD MUY LENTA
+                    vx: (Math.random() - 0.5) * 0.2, // VELOCIDAD MUY LENTA (CALMADA)
                     vy: (Math.random() - 0.5) * 0.2,
                     size: Math.random() * 2 + 1
                 });
@@ -194,6 +330,7 @@
             ctx.clearRect(0, 0, canvas.width, canvas.height);
             particles.forEach((p, i) => {
                 p.x += p.vx; p.y += p.vy;
+                // Rebotar en los bordes
                 if (p.x < 0 || p.x > canvas.width) p.vx *= -1;
                 if (p.y < 0 || p.y > canvas.height) p.vy *= -1;
 
@@ -201,26 +338,42 @@
                 let dy = mouse.y - p.y;
                 let dist = Math.sqrt(dx*dx + dy*dy);
                 
-                // Efecto Eléctrico: Brillo al pasar el mouse
+                // EFECTO "DIAMANTE BRILLANTE" AL HOVER
                 let isGlowing = dist < mouse.radius;
                 ctx.beginPath();
-                ctx.arc(p.x, p.y, isGlowing ? 3 : p.size, 0, Math.PI * 2);
-                ctx.fillStyle = isGlowing ? 'rgba(0, 255, 0, 0.8)' : 'rgba(144, 238, 144, 0.3)';
-                if(isGlowing) ctx.shadowBlur = 10, ctx.shadowColor = "#00FF00";
-                else ctx.shadowBlur = 0;
+                ctx.arc(p.x, p.y, isGlowing ? 4 : p.size, 0, Math.PI * 2); // Más grande al hover
+                
+                // Color base (cian pálido) vs Color brillante (blanco puro)
+                ctx.fillStyle = isGlowing ? 'rgba(255, 255, 255, 0.9)' : 'rgba(0, 255, 255, 0.2)';
+                
+                // Añadir sombra/resplandor brillante al hover
+                if(isGlowing) {
+                    ctx.shadowBlur = 15;
+                    ctx.shadowColor = "#FFFFFF"; // Resplandor blanco puro
+                } else {
+                    ctx.shadowBlur = 0;
+                }
                 ctx.fill();
 
+                // DIBUJAR CONEXIONES (LÍNEAS)
                 for (let j = i + 1; j < particles.length; j++) {
                     let p2 = particles[j];
                     let dx2 = p.x - p2.x;
                     let dy2 = p.y - p2.y;
                     let dist2 = Math.sqrt(dx2*dx2 + dy2*dy2);
 
-                    if (dist2 < 130) {
-                        let opacity = (1 - dist2/130) * (isGlowing ? 0.6 : 0.2);
-                        ctx.strokeStyle = isGlowing ? `rgba(0, 255, 0, ${opacity})` : `rgba(144, 238, 144, ${opacity})`;
-                        ctx.lineWidth = isGlowing ? 1.5 : 0.8;
-                        ctx.beginPath(); ctx.moveTo(p.x, p.y); ctx.lineTo(p2.x, p2.y); ctx.stroke();
+                    if (dist2 < 130) { // Distancia máxima para conectar
+                        // La opacidad depende de la distancia y de si el mouse está cerca
+                        let opacity = (1 - dist2/130) * (isGlowing ? 0.7 : 0.2);
+                        
+                        // Color de línea base vs Color de línea brillante
+                        ctx.strokeStyle = isGlowing ? `rgba(255, 255, 255, ${opacity})` : `rgba(0, 255, 255, ${opacity})`;
+                        ctx.lineWidth = isGlowing ? 1.5 : 0.8; // Más gruesa al hover
+                        
+                        ctx.beginPath();
+                        ctx.moveTo(p.x, p.y);
+                        ctx.lineTo(p2.x, p2.y);
+                        ctx.stroke();
                     }
                 }
             });
