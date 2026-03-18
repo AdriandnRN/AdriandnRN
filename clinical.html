@@ -101,6 +101,61 @@
             font-size: 0.8rem;
         }
     </style>
+    <style>
+    .floating-contact {
+        position: fixed;
+        bottom: 25px;
+        right: 25px;
+        background-color: #D4AF37; /* Oro Profesional */
+        color: #ffffff !important;
+        padding: 12px 24px;
+        border-radius: 50px;
+        text-decoration: none;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        font-weight: bold;
+        font-family: Arial, sans-serif;
+        font-size: 16px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        z-index: 9999;
+        transition: all 0.3s ease;
+        border: 2px solid transparent;
+    }
+
+    .floating-contact:hover {
+        background-color: #222222; /* Cambia a negro al pasar el mouse */
+        transform: translateY(-5px) scale(1.05);
+        box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+        color: #D4AF37 !important;
+        border: 2px solid #D4AF37;
+    }
+
+    /* Animación sutil de entrada */
+    @keyframes fadeInUp {
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    .floating-contact {
+        animation: fadeInUp 0.8s ease-out;
+    }
+
+    /* Ocultar en pantallas muy pequeñas si estorba el contenido */
+    @media (max-width: 480px) {
+        .floating-contact {
+            padding: 10px 18px;
+            font-size: 14px;
+            bottom: 15px;
+            right: 15px;
+        }
+    }
+</style>
+
+<a href="contact.html" class="floating-contact">
+    <span style="font-size: 20px;">✉️</span>
+    <span>Contact Me</span>
+</a>
 </head>
 <body>
 
