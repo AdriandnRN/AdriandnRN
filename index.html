@@ -75,7 +75,6 @@
             background: white;
         }
 
-        /* --- INTERACTIVE SECTIONS --- */
         .interactive-section {
             margin-bottom: 30px;
             cursor: pointer;
@@ -90,27 +89,26 @@
             display: inline-block;
             margin-bottom: 10px;
             padding-bottom: 5px;
-            transition: color 0.3s ease;
+            transition: color 0.3s ease, border-color 0.3s ease;
         }
 
-        /* Hidden description state */
         .description {
             max-height: 0;
             overflow: hidden;
             opacity: 0;
-            transition: max-height 0.6s ease, opacity 0.4s ease, margin-top 0.3s ease;
+            transition: max-height 0.6s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.4s ease;
             margin-top: 0;
         }
 
-        /* Show description on hover */
         .interactive-section:hover .description {
-            max-height: 500px; /* Large enough to fit text */
+            max-height: 600px; 
             opacity: 1;
             margin-top: 15px;
         }
 
         .interactive-section:hover .section-title {
             color: var(--text-main);
+            border-color: var(--text-main);
         }
 
         p {
@@ -162,7 +160,7 @@
             }
             .header-profile { grid-column: 1; }
             .content-left { border-right: none; }
-            .description { opacity: 1; max-height: none; } /* Always show on mobile for better UX */
+            .description { opacity: 1; max-height: none; margin-top: 15px; }
         }
     </style>
 </head>
@@ -177,7 +175,7 @@
 
         <main class="content-left">
             <div class="interactive-section">
-                <div class="section-title">Professional Mission (Hover to view)</div>
+                <div class="section-title">Professional Mission</div>
                 <div class="description">
                     <p>
                         As a dedicated Registered Nurse, my mission is to provide proactive patient advocacy and maintain high standards of clinical continuity. I focus on merging sharp clinical observation with compassionate communication to ensure patient safety and improve outcomes in complex medical environments.
@@ -186,7 +184,7 @@
             </div>
 
             <div class="interactive-section">
-                <div class="section-title">Professional Introduction (Hover to view)</div>
+                <div class="section-title">Professional Introduction</div>
                 <div class="description">
                     <p>
                         My name is Adrian Diaz, and I am a Registered Nurse based in Miami, Florida. I am passionate about utilizing my clinical expertise and empathetic approach in specialized areas such as Medical-Surgical, Emergency, and ICU care. I value teamwork and evidence-based practice to deliver the highest level of patient-centered service.
