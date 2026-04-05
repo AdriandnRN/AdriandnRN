@@ -3,362 +3,203 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ADRIAN DIAZ | RN & SYSTEMS OPTIMIZER</title>
+    <title>Adrian Diaz | RN Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Great+Vibes&family=Inter:wght@400;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            /* Data-Grid Color Palette */
-            --bg-deep: #050A0F; /* Deepest blue/black */
-            --bg-card: #0A1929; /* Card background */
-            --data-blue: #00A3FF; /* Active/Data color */
-            --data-blue-dim: rgba(0, 163, 255, 0.1);
-            --medical-red: #FF3B3B; /* Accent for RN/Clinical */
-            --text-primary: #E6F1FF;
-            --text-secondary: #8892B0;
-            --font-main: 'Segoe UI', 'Roboto', sans-serif;
-            --font-mono: 'SFMono-Regular', Consolas, monospace;
+            --gold: #D4AF37;
+            --gold-glow: rgba(212, 175, 55, 0.6);
+            --leather-brown: #3d251e;
         }
 
-        body {
-            background-color: var(--bg-deep);
-            color: var(--text-primary);
-            font-family: var(--font-main);
+        body, html {
             margin: 0;
             padding: 0;
-            overflow-x: hidden;
+            height: 100%;
+            font-family: 'Inter', sans-serif;
+            background-color: var(--leather-brown);
+            overflow: hidden;
+        }
+
+        /* FONDO DE CUERO (Simulado con textura y gradiente) */
+        .book-cover {
+            height: 100vh;
+            width: 100vw;
+            background: 
+                radial-gradient(circle at center, rgba(0,0,0,0) 0%, rgba(0,0,0,0.4) 100%),
+                url('https://www.transparenttextures.com/patterns/leather.png'),
+                linear-gradient(135deg, #5d3a2e 0%, #2b1a15 100%);
             display: flex;
             flex-direction: column;
             align-items: center;
-        }
-
-        /* --- High-Tech Canvas Layer (Maintaining your logic) --- */
-        #neuron-canvas {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            background: radial-gradient(circle at center, transparent 0%, var(--bg-deep) 100%);
-        }
-
-        /* --- Navigation as Top Data Bar --- */
-        nav {
-            width: 100%;
-            background-color: rgba(10, 25, 41, 0.9);
-            border-bottom: 2px solid var(--data-blue);
-            backdrop-filter: blur(10px);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            padding: 15px 0;
-            display: flex;
             justify-content: center;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.5);
-        }
-
-        nav a {
-            text-decoration: none;
-            color: var(--text-secondary);
-            font-family: var(--font-mono);
-            font-size: 0.8rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            margin: 0 20px;
-            transition: 0.3s;
-        }
-
-        nav a:hover, nav a.active {
-            color: var(--data-blue);
-            text-shadow: 0 0 10px var(--data-blue);
-        }
-
-        /* --- Main Header Section with NAME BEAT --- */
-        header {
             text-align: center;
-            padding: 120px 20px 60px;
-            position: relative;
-        }
-
-        .name-container {
-            display: inline-block;
-            position: relative;
-            padding: 15px 40px; /* Padding for the beat border */
-        }
-
-        /* ESTILO DEL 'BEAT' ALREDEDOR DEL NOMBRE 
-          Usamos pseudo-elementos para crear el borde que se ilumina
-        */
-        .name-container::before, .name-container::after {
-            content: '';
-            position: absolute;
-            inset: 0;
-            border: 2px solid var(--data-blue);
-            border-radius: 8px; /* Matching corner radius */
-            opacity: 0.3; /* Base dim opacity */
-        }
-
-        /* Animación del Beat en el Nombre */
-        .name-container::after {
-            animation: beatPulse 2s linear infinite;
-            box-shadow: 0 0 20px var(--data-blue);
-            opacity: 0; /* Star hidden, animate in */
-        }
-
-        h1 {
-            font-size: 4.5rem;
-            font-weight: 800;
-            color: var(--text-primary);
-            margin: 0;
-            text-transform: uppercase;
-            letter-spacing: -3px;
-            position: relative;
-        }
-
-        .title-sub {
-            font-family: var(--font-mono);
-            font-size: 1.1rem;
-            color: var(--medical-red);
-            margin-top: 20px;
-            letter-spacing: 3px;
-            text-transform: uppercase;
-        }
-
-        /* --- Button with BORDER BEAT --- */
-        .open-button {
-            margin-top: 50px;
-            position: relative;
-            background: transparent;
-            border: none;
-            cursor: pointer;
-            padding: 20px 60px;
-            font-family: var(--font-mono);
-            color: var(--data-blue);
-            font-size: 1.2rem;
-            text-transform: uppercase;
-            letter-spacing: 4px;
-            overflow: hidden; /* Contains the beat */
-            transition: 0.3s;
-        }
-
-        .open-button:hover {
-            color: var(--text-primary);
-            text-shadow: 0 0 10px var(--data-blue);
-        }
-
-        /* Estilo base del botón */
-        .open-button span {
+            transition: transform 1s ease-in-out;
             position: relative;
             z-index: 2;
         }
 
-        /* ESTILO DEL 'BEAT' EN EL BOTÓN OPEN
-          Un elemento oculto que se revela en hover
-        */
-        .button-beat {
+        /* GRABADO EN ORO */
+        .brand {
+            position: relative;
+            padding: 20px;
+        }
+
+        .brand h1 {
+            font-family: 'Great Vibes', cursive;
+            font-size: 5rem;
+            color: var(--gold);
+            margin: 0;
+            text-shadow: 1px 1px 0px #000, 0px 0px 10px var(--gold-glow);
+        }
+
+        .brand h2 {
+            font-family: 'Cinzel', serif;
+            font-size: 1.5rem;
+            color: var(--gold);
+            letter-spacing: 5px;
+            margin-top: -10px;
+            opacity: 0.9;
+        }
+
+        /* BEAT ALREDEDOR DEL NOMBRE */
+        .brand::after {
+            content: '';
             position: absolute;
             inset: 0;
-            border: 2px solid var(--data-blue);
-            border-radius: 4px;
-            opacity: 0;
-            transition: opacity 0.3s;
+            border: 2px solid var(--gold);
+            border-radius: 15px;
+            animation: pulseBeat 2s infinite;
+            pointer-events: none;
         }
 
-        .open-button:hover .button-beat {
-            opacity: 1;
-            animation: buttonBeatGlow 2s ease-out infinite;
-        }
-
-        /* ANIMACIONES CSS (Los Beats) 
-        */
-
-        /* Pulso sutil para el nombre */
-        @keyframes beatPulse {
-            0% { opacity: 0; transform: scale(1); }
-            50% { opacity: 0.8; transform: scale(1.05); }
-            100% { opacity: 0; transform: scale(1.1); }
-        }
-
-        /* Resplandor pulsante para el botón */
-        @keyframes buttonBeatGlow {
-            0%, 100% { box-shadow: 0 0 5px var(--data-blue), inset 0 0 5px var(--data-blue); }
-            50% { box-shadow: 0 0 20px var(--data-blue), inset 0 0 15px var(--data-blue); }
-        }
-
-        /* --- Skills Data Cards --- */
-        main {
-            max-width: 1200px;
-            margin: 60px auto 100px;
-            padding: 20px 20px;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 30px;
+        /* BOTÓN OPEN CON BEAT EN EL BORDE */
+        .open-btn {
+            margin-top: 40px;
+            padding: 15px 50px;
+            background: transparent;
+            border: 2px solid var(--gold);
+            color: var(--gold);
+            font-family: 'Cinzel', serif;
+            font-size: 1.2rem;
+            cursor: pointer;
+            border-radius: 50px;
             position: relative;
-            z-index: 1;
-        }
-
-        .skill-card {
-            background-color: var(--bg-card);
-            padding: 30px;
-            border-radius: 12px;
-            border: 1px solid var(--data-blue-dim);
+            overflow: hidden;
             transition: 0.3s;
-        }
-
-        .skill-card:hover {
-            transform: translateY(-5px);
-            border-color: var(--data-blue);
-            box-shadow: 0 10px 40px var(--data-blue-dim);
-        }
-
-        .skill-card h3 {
-            font-family: var(--font-mono);
-            font-size: 1.1rem;
-            color: var(--data-blue);
             text-transform: uppercase;
-            letter-spacing: 2px;
-            border-bottom: 1px solid var(--data-blue-dim);
-            padding-bottom: 15px;
-            margin-bottom: 20px;
-            display: flex;
+        }
+
+        .open-btn:hover {
+            background: var(--gold);
+            color: white;
+            box-shadow: 0 0 20px var(--gold);
+        }
+
+        .btn-beat {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            border: 2px solid var(--gold);
+            border-radius: 50px;
+            animation: pulseBeat 1.5s infinite;
+        }
+
+        @keyframes pulseBeat {
+            0% { transform: scale(1); opacity: 0.8; }
+            100% { transform: scale(1.2); opacity: 0; }
+        }
+
+        /* CONTENIDO OCULTO (EL INTERIOR DEL LIBRO) */
+        #content-page {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: #fffcf5; /* Color papel antiguo */
+            display: none;
+            flex-direction: column;
             align-items: center;
+            padding-top: 50px;
+            z-index: 1;
+            overflow-y: auto;
         }
 
-        .skill-card.clinical h3::before { content: "🏥"; margin-right: 15px; }
-        .skill-card.systems h3::before { content: "💻"; margin-right: 15px; }
-
-        .skill-list {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-            font-size: 1rem;
-            color: var(--text-secondary);
+        nav {
+            margin-bottom: 40px;
         }
 
-        .skill-list li { margin-bottom: 12px; position: relative; padding-left: 25px; }
-        .skill-list li::before { content: "[+]"; font-family: var(--font-mono); color: var(--data-blue); position: absolute; left: 0; font-size: 0.8rem; }
-
-        footer {
-            width: 100%;
-            text-align: center;
-            padding: 50px 0;
-            background-color: rgba(10, 25, 41, 0.9);
-            border-top: 2px solid var(--data-blue);
-            color: var(--text-secondary);
-            font-family: var(--font-mono);
-            font-size: 0.8rem;
-            letter-spacing: 1px;
+        nav a {
+            margin: 0 15px;
+            text-decoration: none;
+            color: #444;
+            font-weight: bold;
             text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
         }
 
-        @media (max-width: 768px) { h1 { font-size: 2.8rem; } main { grid-template-columns: 1fr; } }
+        nav a:hover { color: var(--gold); }
+
+        .nurse-description {
+            max-width: 600px;
+            text-align: center;
+            line-height: 1.8;
+            color: #333;
+            font-size: 1.1rem;
+            padding: 20px;
+        }
+
+        /* ANIMACIÓN DE APERTURA */
+        .book-open {
+            transform: translateY(-100%);
+        }
     </style>
 </head>
 <body>
-    <canvas id="neuron-canvas"></canvas>
-    
-    <nav>
-        <a href="index.html" class="active">/Overview</a>
-        <a href="philosophy.html">/Philosophy</a>
-        <a href="clinical.html">/Clinical</a>
-        <a href="credentials.html">/Credentials</a>
-        <a href="contact.html">/Contact</a>
-    </nav>
 
-    <header>
-        <div class="name-container">
+    <div class="book-cover" id="cover">
+        <div class="brand">
             <h1>Adrian Diaz</h1>
+            <h2>RN Portfolio</h2>
         </div>
-        <div class="title-sub">::Registered Nurse | Systems Optimizer::</div>
 
-        <button class="open-button">
-            <span>Open</span>
-            <div class="button-beat"></div>
+        <button class="open-btn" onclick="openBook()">
+            Open
+            <div class="btn-beat"></div>
         </button>
-    </header>
+    </div>
 
-    <main>
-        <div class="skill-card clinical">
-            <h3>Clinical Expertise</h3>
-            <ul class="skill-list">
-                <li>Advanced Medication Administration</li>
-                <li>Wound Care & Vital Signs</li>
-                <li>Comprehensive Neurovascular Assessments</li>
-                <li>Acute & Critical Care Support</li>
-            </ul>
+    <div id="content-page">
+        <nav>
+            <a href="index.html">Overview</a>
+            <a href="philosophy.html">Philosophy</a>
+            <a href="clinical.html">Clinical</a>
+            <a href="credentials.html">Credentials</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+
+        <div class="nurse-description">
+            <h2 style="font-family: 'Cinzel'; color: var(--leather-brown);">Registered Nurse</h2>
+            <p>
+                Dedicated **Registered Nurse (RN)** graduate from Activa Training Center. 
+                Committed to delivering high-quality patient care through evidence-based practice 
+                and humanized clinical safety. Specialized in acute care, medication administration, 
+                and patient advocacy, I strive to provide compassionate care and ethical excellence 
+                in every clinical setting.
+            </p>
         </div>
-
-        <div class="skill-card systems">
-            <h3>Healthcare Systems</h3>
-            <ul class="skill-list">
-                <li>EHR Mastery: **eClinicalWorks (eCW)**, Office Ally</li>
-                <li>Certified: Florida SHOTS (Vaccine Records)</li>
-                <li>HIPAA Compliance & Data Integrity</li>
-            </ul>
-        </div>
-    </main>
-
-    <footer>
-        :: © 2026 ADRIAN DIAZ | Miami Springs, FL | Registered Nurse Portfolio ::
-    </footer>
+    </div>
 
     <script>
-        const canvas = document.getElementById('neuron-canvas');
-        const ctx = canvas.getContext('2d');
-        let particles = [];
-        const mouse = { x: null, y: null, radius: 180 };
-
-        window.addEventListener('mousemove', (e) => { mouse.x = e.x; mouse.y = e.y; });
-
-        function init() {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-            particles = [];
-            let quantity = (canvas.width * canvas.height) / 10000;
-            for (let i = 0; i < quantity; i++) {
-                particles.push({
-                    x: Math.random() * canvas.width,
-                    y: Math.random() * canvas.height,
-                    vx: (Math.random() - 0.5) * 0.2, vy: (Math.random() - 0.5) * 0.2,
-                    size: Math.random() * 2 + 1
-                });
-            }
+        function openBook() {
+            // Desliza la portada hacia arriba
+            document.getElementById('cover').classList.add('book-open');
+            // Muestra el contenido
+            setTimeout(() => {
+                document.getElementById('content-page').style.display = 'flex';
+                document.body.style.overflow = 'auto';
+            }, 500);
         }
-
-        function animate() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            particles.forEach((p, i) => {
-                p.x += p.vx; p.y += p.vy;
-                if (p.x < 0 || p.x > canvas.width) p.vx *= -1;
-                if (p.y < 0 || p.y > canvas.height) p.vy *= -1;
-
-                let dx = mouse.x - p.x;
-                let dy = mouse.y - p.y;
-                let dist = Math.sqrt(dx*dx + dy*dy);
-                let isGlowing = dist < mouse.radius;
-
-                ctx.beginPath();
-                ctx.arc(p.x, p.y, isGlowing ? 4 : p.size, 0, Math.PI * 2);
-                ctx.fillStyle = isGlowing ? 'rgba(0, 163, 255, 0.8)' : 'rgba(0, 163, 255, 0.1)';
-                if(isGlowing) { ctx.shadowBlur = 10; ctx.shadowColor = "#00A3FF"; } else { ctx.shadowBlur = 0; }
-                ctx.fill();
-
-                for (let j = i + 1; j < particles.length; j++) {
-                    let p2 = particles[j];
-                    let dx2 = p.x - p2.x;
-                    let dy2 = p.y - p2.y;
-                    let dist2 = Math.sqrt(dx2*dx2 + dy2*dy2);
-                    if (dist2 < 130) {
-                        let opacity = (1 - dist2/130) * (isGlowing ? 0.5 : 0.08);
-                        ctx.strokeStyle = `rgba(0, 163, 255, ${opacity})`;
-                        ctx.lineWidth = isGlowing ? 1.2 : 0.8;
-                        ctx.beginPath(); ctx.moveTo(p.x, p.y); ctx.lineTo(p2.x, p2.y); ctx.stroke();
-                    }
-                }
-            });
-            requestAnimationFrame(animate);
-        }
-        window.addEventListener('resize', init);
-        init(); animate();
     </script>
+
 </body>
 </html>
