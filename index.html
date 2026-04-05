@@ -1,195 +1,250 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Adrian Diaz | RN Portfolio</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Inter:wght@400;700&family=Great+Vibes&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Inter:wght@300;400;700;800&family=Great+Vibes&display=swap" rel="stylesheet">
     <style>
         :root {
             --gold: #D4AF37;
-            --paper: #fdfaf0;
-            --leather: #3d251e;
+            --paper: #FCFAF5;
+            --leather: #3D251E;
+            --text-dark: #1A1A1A;
+            --text-gray: #666;
         }
 
         body, html {
             margin: 0; padding: 0;
             height: 100%; width: 100%;
             font-family: 'Inter', sans-serif;
-            background: #1a1a1a;
+            background: #000;
             overflow: hidden;
         }
 
-        /* ESCENA DE LA MESA */
+        /* WOODEN TABLE SCENE */
         .table-scene {
             width: 100vw;
             height: 100vh;
             background: 
-                linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)),
+                linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.4)),
                 url('https://images.unsplash.com/photo-1499750310107-5fef28a66643?q=80&w=2070&auto=format&fit=crop');
             background-size: cover;
             background-position: center;
             display: flex;
             align-items: center;
             justify-content: center;
-            perspective: 2500px; /* Perspectiva profunda para efecto distante */
+            perspective: 2500px;
         }
 
-        /* ESTRUCTURA DEL CUADERNO */
+        /* THE NOTEBOOK STRUCTURE */
         .notebook {
             width: 450px;
-            height: 580px;
+            height: 600px;
             position: relative;
             transform-style: preserve-3d;
-            transform: rotateX(15deg) rotateY(-5deg); /* Inclinación tipo Pinterest */
-            transition: transform 1.5s ease;
+            transform: rotateX(10deg) rotateY(-5deg) translateZ(0);
+            transition: transform 1.5s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        /* TAPA (COVER) */
+        /* FRONT COVER */
         .cover {
             position: absolute;
             width: 100%; height: 100%;
             background: var(--leather) url('https://www.transparenttextures.com/patterns/leather.png');
-            border-radius: 5px 15px 15px 5px;
-            box-shadow: 15px 15px 40px rgba(0,0,0,0.6);
+            border-radius: 5px 20px 20px 5px;
+            box-shadow: 20px 20px 50px rgba(0,0,0,0.7);
             z-index: 10;
-            transform-origin: left; /* Punto de giro de la bisagra */
+            transform-origin: left;
             transition: transform 1.2s cubic-bezier(0.645, 0.045, 0.355, 1);
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
             backface-visibility: hidden;
-            border-left: 12px solid #2b1a15;
+            border-left: 10px solid #2B1A15;
         }
 
         .cover h1 {
             font-family: 'Great Vibes', cursive;
-            font-size: 4rem;
+            font-size: 4.5rem;
             color: var(--gold);
             margin: 0;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.4);
+            text-shadow: 2px 2px 5px rgba(0,0,0,0.5);
         }
 
-        /* BOTÓN OPEN INTERACTIVO */
-        .open-btn {
-            margin-top: 40px;
-            padding: 15px 45px;
-            background: transparent;
-            border: 2px solid var(--gold);
-            color: var(--gold);
+        .cover p {
             font-family: 'Cinzel', serif;
-            font-size: 1rem;
+            color: var(--gold);
+            letter-spacing: 5px;
+            font-size: 0.9rem;
+            margin-top: 10px;
+            opacity: 0.8;
+        }
+
+        /* INTERACTIVE OPEN BUTTON */
+        .open-btn {
+            margin-top: 50px;
+            padding: 15px 50px;
+            background: transparent;
+            border: 1px solid var(--gold);
+            color: var(--gold);
+            font-family: 'Inter', sans-serif;
+            font-weight: 300;
+            font-size: 0.8rem;
+            letter-spacing: 4px;
             cursor: pointer;
             border-radius: 50px;
             position: relative;
-            transition: all 0.3s ease;
+            transition: all 0.4s ease;
+            text-transform: uppercase;
         }
 
         .open-btn:hover {
             background: var(--gold);
             color: white;
-            box-shadow: 0 0 20px var(--gold);
-            transform: scale(1.05);
+            letter-spacing: 6px;
+            box-shadow: 0 0 30px rgba(212, 175, 55, 0.4);
         }
 
         .open-btn::after {
             content: '';
             position: absolute;
-            inset: -6px;
-            border: 2px solid var(--gold);
+            inset: -5px;
+            border: 1px solid var(--gold);
             border-radius: 50px;
-            animation: beat 1.5s infinite;
+            animation: pulse 2s infinite;
         }
 
-        @keyframes beat {
-            0% { transform: scale(1); opacity: 1; }
+        @keyframes pulse {
+            0% { transform: scale(1); opacity: 0.8; }
             100% { transform: scale(1.4); opacity: 0; }
         }
 
-        /* PÁGINAS INTERIORES */
+        /* INNER PAGES */
         .pages {
             position: absolute;
-            width: 100%; height: 100%;
+            width: 200%; /* Spans double width when open */
+            height: 100%;
             background: var(--paper);
             display: grid;
             grid-template-columns: 1fr 1fr;
-            transform-style: preserve-3d;
             z-index: 5;
-            box-shadow: 5px 5px 20px rgba(0,0,0,0.3);
-            border-radius: 0 5px 5px 0;
-            width: 200%; /* El cuaderno se duplica al abrirse */
+            box-shadow: 10px 10px 40px rgba(0,0,0,0.2);
+            border-radius: 0 10px 10px 0;
             left: 0;
             opacity: 0;
-            transition: opacity 0.3s ease;
+            transition: opacity 0.4s ease;
         }
 
-        /* PÁGINA IZQUIERDA */
+        /* LEFT PAGE (Profile) */
         .page-left {
-            padding: 50px;
-            border-right: 2px solid rgba(0,0,0,0.05);
+            padding: 60px;
             display: flex;
             flex-direction: column;
             align-items: center;
+            justify-content: center;
             text-align: center;
+            border-right: 1px solid rgba(0,0,0,0.05);
         }
 
         .profile-img {
-            width: 160px; height: 160px;
+            width: 140px; height: 140px;
             border-radius: 50%;
-            background: #eee;
-            margin-bottom: 20px;
-            border: 6px solid white;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            background: #F0F0F0;
+            margin-bottom: 30px;
+            filter: grayscale(100%);
+            transition: filter 0.5s ease;
             object-fit: cover;
+            border: 1px solid #EEE;
         }
 
-        /* PÁGINA DERECHA (BOTONES DINÁMICOS) */
+        .page-left:hover .profile-img { filter: grayscale(0%); }
+
+        .page-left h2 { 
+            font-family: 'Inter', sans-serif; 
+            font-weight: 800; 
+            font-size: 1.8rem;
+            margin: 0;
+            color: var(--text-dark);
+            text-transform: uppercase;
+            letter-spacing: -1px;
+        }
+
+        .page-left .title {
+            color: var(--gold);
+            font-weight: 700;
+            font-size: 0.8rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-top: 5px;
+            margin-bottom: 25px;
+        }
+
+        .page-left .bio {
+            font-size: 0.9rem;
+            line-height: 1.8;
+            color: var(--text-gray);
+            max-width: 300px;
+        }
+
+        /* RIGHT PAGE (Links) */
         .page-right {
-            padding: 50px;
+            padding: 60px;
             display: flex;
             flex-direction: column;
             justify-content: center;
-            gap: 20px;
+            gap: 15px;
         }
 
         .nav-link {
-            padding: 18px;
-            background: white;
-            border: 1px solid #e0e0e0;
+            padding: 20px;
+            border-bottom: 1px solid #EEE;
             text-decoration: none;
-            color: #333;
-            font-weight: 700;
+            color: var(--text-dark);
+            font-weight: 400;
+            font-size: 0.75rem;
             text-transform: uppercase;
-            text-align: center;
-            border-radius: 8px;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            position: relative;
-            overflow: hidden;
+            letter-spacing: 3px;
+            transition: all 0.3s ease;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-link::after {
+            content: '→';
+            opacity: 0;
+            transform: translateX(-10px);
+            transition: all 0.3s ease;
         }
 
         .nav-link:hover {
-            background: var(--leather);
-            color: white;
-            transform: scale(1.05) translateX(10px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+            color: var(--gold);
+            padding-left: 10px;
         }
 
-        /* ANIMACIÓN AL ABRIR */
+        .nav-link:hover::after {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        /* OPEN STATE ANIMATIONS */
         .is-open {
-            transform: rotateX(0deg) rotateY(0deg) translateX(25%); /* Centra el cuaderno abierto */
+            transform: rotateX(0deg) rotateY(0deg) translateX(25%);
         }
         .is-open .cover {
-            transform: rotateY(-180deg); /* Abre la tapa totalmente */
+            transform: rotateY(-180deg);
         }
         .is-open .pages {
             opacity: 1;
         }
 
         @media (max-width: 900px) {
-            .notebook { width: 320px; height: 480px; }
-            .pages { grid-template-columns: 1fr; width: 100%; transform: none; left: 0; }
+            .notebook { width: 320px; height: 500px; }
+            .pages { grid-template-columns: 1fr; width: 100%; transform: none; left: 0; overflow-y: auto;}
             .is-open { transform: none; }
+            .page-left, .page-right { padding: 30px; }
         }
     </style>
 </head>
@@ -200,18 +255,18 @@
             
             <div class="cover">
                 <h1>Adrian Diaz</h1>
-                <p style="color: var(--gold); font-family: 'Cinzel'; letter-spacing: 3px;">RN PORTFOLIO</p>
-                <button class="open-btn" onclick="abrirCuaderno()">OPEN</button>
+                <p>RN PORTFOLIO</p>
+                <button class="open-btn" onclick="openBook()">Open</button>
             </div>
 
             <div class="pages">
                 <div class="page-left">
-                    <img src="tu-foto.jpg" alt="Adrian Diaz" class="profile-img">
-                    <h2 style="font-family: 'Cinzel'; margin-bottom: 5px;">Adrian Diaz</h2>
-                    <p style="color: var(--gold); font-weight: bold; margin-top: 0;">Registered Nurse</p>
-                    <p style="font-size: 0.95rem; line-height: 1.6; color: #555;">
-                        Enfermero dedicado a la excelencia clínica y la seguridad del paciente. 
-                        Enfoque en cuidados humanizados y optimización de procesos.
+                    <img src="profile.jpg" alt="Adrian Diaz" class="profile-img">
+                    <h2>Adrian Diaz</h2>
+                    <div class="title">Registered Nurse</div>
+                    <p class="bio">
+                        Dedicated RN focused on clinical excellence and patient safety. 
+                        Specialized in acute care, humanized treatment, and healthcare optimization.
                     </p>
                 </div>
                 <div class="page-right">
@@ -227,9 +282,8 @@
     </div>
 
     <script>
-        function abrirCuaderno() {
-            const nb = document.getElementById('notebook');
-            nb.classList.add('is-open');
+        function openBook() {
+            document.getElementById('notebook').classList.add('is-open');
         }
     </script>
 
