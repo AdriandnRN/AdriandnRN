@@ -12,126 +12,148 @@
             --white: #FFFFFF;
             --text-main: #1A1A1A;
             --text-muted: #555;
-            --bg-glass: rgba(255, 255, 255, 0.8);
+            --bg-glass: rgba(255, 255, 255, 0.85);
         }
 
         body {
             margin: 0;
             padding: 0;
             font-family: 'Inter', sans-serif;
-            background-color: #f4f4f4;
-            color: var(--text-main);
+            background-color: #000;
             height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
             overflow: hidden;
-            perspective: 1000px; /* Base para efecto 3D */
+            perspective: 2000px; /* Enhanced 3D Perspective */
         }
 
-        /* FONDO DE RED NEURONAL */
+        /* INTERACTIVE DIAMOND NEURAL NETWORK BACKGROUND */
         #neuron-canvas {
             position: fixed;
             top: 0; left: 0;
             width: 100%; height: 100%;
             z-index: -1;
-            background: radial-gradient(circle, #fff 0%, #e0e0e0 100%);
+            background: radial-gradient(circle, #ffffff 0%, #dcdcdc 100%);
         }
 
-        /* CONTENEDOR PRINCIPAL DIVIDIDO EN DOS */
+        /* 3D MAIN CONTAINER (Andy's Structure) */
         .main-container {
             display: grid;
             grid-template-columns: 1.2fr 0.8fr;
             width: 90%;
-            max-width: 1100px;
+            max-width: 1150px;
             background: var(--bg-glass);
-            backdrop-filter: blur(15px);
-            border-radius: 20px;
-            box-shadow: 0 25px 50px rgba(0,0,0,0.1);
-            border: 1px solid rgba(255,255,255,0.4);
+            backdrop-filter: blur(20px);
+            border-radius: 24px;
+            box-shadow: 0 40px 100px rgba(0,0,0,0.2);
+            border: 1px solid rgba(255,255,255,0.6);
             overflow: hidden;
             transform-style: preserve-3d;
-            transition: transform 0.1s ease;
+            transition: transform 0.1s ease-out;
         }
 
-        /* LADO IZQUIERDO: Nombre y Descripción (Estilo Andy) */
+        /* LEFT SIDE: Identity & Mission */
         .left-side {
-            padding: 60px;
+            padding: 80px 60px;
             border-right: 1px solid rgba(0,0,0,0.05);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .gold-bar {
+            width: 60px;
+            height: 5px;
+            background: var(--gold);
+            margin-bottom: 25px;
+            border-radius: 2px;
         }
 
         .left-side h1 {
-            font-size: 3.5rem;
+            font-size: 4rem;
             font-weight: 800;
             margin: 0;
             color: var(--text-main);
-            letter-spacing: -2px;
+            letter-spacing: -3px;
             text-transform: uppercase;
+            line-height: 0.9;
         }
 
         .left-side .role {
-            font-size: 1.1rem;
+            font-size: 1rem;
             font-weight: 700;
             color: var(--gold);
             text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-bottom: 30px;
+            letter-spacing: 3px;
+            margin: 15px 0 35px;
             display: block;
         }
 
         .left-side p {
-            font-size: 1.1rem;
-            line-height: 1.8;
+            font-size: 1.15rem;
+            line-height: 1.9;
             color: var(--text-muted);
-            max-width: 500px;
+            max-width: 480px;
         }
 
-        /* LADO DERECHO: Botones Interactivos 3D */
+        /* RIGHT SIDE: Interactive 3D Navigation */
         .right-side {
-            padding: 60px;
+            padding: 80px 60px;
             display: flex;
             flex-direction: column;
             justify-content: center;
-            gap: 20px;
-            background: rgba(184, 134, 11, 0.03);
+            gap: 18px;
+            background: rgba(184, 134, 11, 0.02);
         }
 
         .nav-button {
             text-decoration: none;
             background: var(--white);
-            color: var(--gold);
-            padding: 20px 30px;
-            border-radius: 12px;
+            color: var(--text-main);
+            padding: 22px 35px;
+            border-radius: 16px;
             font-weight: 800;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             text-transform: uppercase;
             letter-spacing: 2px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            transform: translateZ(20px); /* Elevación 3D */
-            border: 1px solid transparent;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+            transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+            transform: translateZ(30px); /* 3D Pop */
+            border: 1px solid rgba(184, 134, 11, 0.1);
         }
 
         .nav-button:hover {
-            transform: translateZ(50px) scale(1.05); /* Salta hacia adelante */
+            transform: translateZ(60px) scale(1.03); /* Dynamic 3D Jump */
             background: var(--gold);
             color: var(--white);
-            box-shadow: 0 15px 30px rgba(184, 134, 11, 0.3);
+            box-shadow: 0 20px 40px rgba(184, 134, 11, 0.3);
             border-color: var(--gold-bright);
         }
 
         .nav-button span {
-            font-size: 1.2rem;
+            font-size: 1.3rem;
+            transition: transform 0.3s ease;
         }
 
-        /* RESPONSIVO */
-        @media (max-width: 900px) {
-            .main-container { grid-template-columns: 1fr; height: 90vh; overflow-y: auto; }
-            .left-side, .right-side { padding: 40px; }
-            .left-side h1 { font-size: 2.5rem; }
+        .nav-button:hover span {
+            transform: translateX(8px);
+        }
+
+        /* MOBILE RESPONSIVE */
+        @media (max-width: 950px) {
+            .main-container {
+                grid-template-columns: 1fr;
+                height: 95vh;
+                width: 95%;
+                overflow-y: auto;
+            }
+            .left-side, .right-side { padding: 50px 30px; }
+            .left-side h1 { font-size: 3rem; }
+            body { overflow: auto; }
         }
     </style>
 </head>
@@ -141,11 +163,11 @@
 
     <div class="main-container" id="card">
         <div class="left-side">
-            <div style="width: 50px; height: 4px; background: var(--gold); margin-bottom: 20px;"></div>
-            <h1>Adrian Diaz</h1>
+            <div class="gold-bar"></div>
+            <h1>Adrian<br>Diaz</h1>
             <span class="role">Registered Nurse | Industrial Engineer</span>
             <p>
-                Combining clinical excellence with industrial engineering precision. I focus on <strong>process optimization, clinical safety, and high-impact patient advocacy</strong> to deliver superior healthcare outcomes.
+                Bridging clinical expertise with industrial engineering precision. I specialize in <strong>workflow optimization, clinical safety, and patient advocacy</strong> to drive superior outcomes in modern healthcare environments.
             </p>
         </div>
 
@@ -159,43 +181,52 @@
     </div>
 
     <script>
-        // --- EFECTO 3D DE LA TARJETA ---
+        // --- 3D CARD TILT EFFECT ---
         const card = document.getElementById('card');
         document.addEventListener('mousemove', (e) => {
-            let xAxis = (window.innerWidth / 2 - e.pageX) / 25;
-            let yAxis = (window.innerHeight / 2 - e.pageY) / 25;
+            let xAxis = (window.innerWidth / 2 - e.pageX) / 35;
+            let yAxis = (window.innerHeight / 2 - e.pageY) / 35;
             card.style.transform = `rotateY(${xAxis}deg) rotateX(${yAxis}deg)`;
         });
 
-        // --- ANIMACIÓN DE FONDO (DIAMANTE) ---
+        // --- DIAMOND NEURAL NETWORK ANIMATION ---
         const canvas = document.getElementById('neuron-canvas');
         const ctx = canvas.getContext('2d');
         let particles = [];
+        
         function init() {
             canvas.width = window.innerWidth;
             canvas.height = window.innerHeight;
-            for (let i = 0; i < 100; i++) {
+            particles = [];
+            for (let i = 0; i < 80; i++) {
                 particles.push({
                     x: Math.random() * canvas.width,
                     y: Math.random() * canvas.height,
-                    vx: (Math.random() - 0.5) * 0.5,
-                    vy: (Math.random() - 0.5) * 0.5,
+                    vx: (Math.random() - 0.5) * 0.4,
+                    vy: (Math.random() - 0.5) * 0.4,
                     size: 2
                 });
             }
         }
+
         function animate() {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
             particles.forEach(p => {
                 p.x += p.vx; p.y += p.vy;
                 if (p.x < 0 || p.x > canvas.width) p.vx *= -1;
                 if (p.y < 0 || p.y > canvas.height) p.vy *= -1;
-                ctx.fillStyle = 'rgba(184, 134, 11, 0.2)';
-                ctx.beginPath(); ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2); ctx.fill();
+                
+                ctx.fillStyle = 'rgba(184, 134, 11, 0.25)';
+                ctx.beginPath();
+                ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+                ctx.fill();
             });
             requestAnimationFrame(animate);
         }
-        init(); animate();
+
+        window.addEventListener('resize', init);
+        init();
+        animate();
     </script>
 </body>
 </html>
