@@ -131,15 +131,14 @@
             box-shadow: 0 20px 50px rgba(0,0,0,0.08);
             border: 1px solid #f0f0f0;
             transform-style: preserve-3d;
-            transition: transform 0.3s ease-out, box-shadow 0.3s ease; /* Transiciones suaves */
+            transition: transform 0.3s ease-out, box-shadow 0.3s ease;
             max-width: 500px;
             cursor: pointer;
         }
 
-        /* EFFECT: SCALE UP AND ENHANCE SHADOW ON HOVER */
         .vision-card:hover {
-            transform: scale(1.08); /* Se agranda un 8% */
-            box-shadow: 0 30px 70px rgba(184, 134, 11, 0.2); /* Sombra dorada */
+            transform: scale(1.08);
+            box-shadow: 0 30px 70px rgba(184, 134, 11, 0.2);
         }
 
         .section-title {
@@ -220,6 +219,7 @@
             <a href="philosophy.html" class="active">Philosophy</a>
             <a href="clinical.html">Clinical</a>
             <a href="credentials.html">Credentials</a>
+            <a href="development.html">Development</a>
             <a href="contact.html">Contact</a>
         </nav>
 
@@ -243,14 +243,12 @@
         const card = document.getElementById('vision-card');
         document.addEventListener('mousemove', (e) => {
             if (window.innerWidth > 900) {
-                let xAxis = (window.innerWidth / 2 - e.pageX) / 45; // Suavizado
-                let yAxis = (window.innerHeight / 2 - e.pageY) / 45; // Suavizado
-                // Aplicamos la rotación, la escala se maneja con CSS :hover
+                let xAxis = (window.innerWidth / 2 - e.pageX) / 45;
+                let yAxis = (window.innerHeight / 2 - e.pageY) / 45;
                 card.style.transform = `rotateY(${xAxis}deg) rotateX(${yAxis}deg)`;
             }
         });
 
-        // Limpieza de transformación al salir del mouse para evitar conflictos con CSS
         card.addEventListener('mouseleave', () => {
             card.style.transform = `rotateY(0deg) rotateX(0deg)`;
         });
