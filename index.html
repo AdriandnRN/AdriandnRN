@@ -4,160 +4,204 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Adrian Diaz | RN & Industrial Engineer Portfolio</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;800&family=Lexend:wght@400;600&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-color: #F9F7F2; /* Crema suave de fondo */
-            --sage-green: #6B705C; /* Verde salvia profesional */
-            --accent-gold: #B7965F; /* Oro envejecido */
-            --text-main: #333533;
-            --white: #FFFFFF;
+            --primary-blue: #1A365D; /* Deep Professional Blue */
+            --medical-blue: #3182CE; /* Tech Blue */
+            --bg-white: #FFFFFF;
+            --light-gray: #F7FAFC;
+            --text-main: #2D3748;
+            --text-muted: #718096;
+            --accent-border: #E2E8F0;
         }
 
         body {
-            background-color: var(--bg-color);
+            background-color: var(--bg-white);
             color: var(--text-main);
             font-family: 'Inter', sans-serif;
             margin: 0;
-            line-height: 1.6;
+            padding: 0;
+            line-height: 1.5;
         }
 
-        /* Fondo Interactivo Sutil */
+        /* Subtle Interactive Background */
         #neuron-canvas {
             position: fixed;
             top: 0;
             left: 0;
             z-index: -1;
-            opacity: 0.4;
+            opacity: 0.15; /* Very subtle for a clean look */
         }
 
         nav {
-            padding: 30px;
-            text-align: center;
-            background: transparent;
+            display: flex;
+            justify-content: center;
+            padding: 20px;
+            background: var(--bg-white);
+            border-bottom: 1px solid var(--accent-border);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
         }
 
         nav a {
-            margin: 0 20px;
+            margin: 0 15px;
             text-decoration: none;
-            color: var(--sage-green);
-            font-weight: 600;
-            font-size: 0.8rem;
-            letter-spacing: 2px;
+            color: var(--text-muted);
+            font-weight: 500;
+            font-size: 0.85rem;
             text-transform: uppercase;
-            transition: 0.3s;
+            letter-spacing: 1px;
+            transition: 0.2s;
         }
 
-        nav a:hover {
-            color: var(--accent-gold);
+        nav a:hover, nav a.active {
+            color: var(--medical-blue);
         }
 
         header {
-            max-width: 900px;
-            margin: 60px auto;
-            text-align: center;
-            border-bottom: 1px solid rgba(107, 112, 92, 0.2);
-            padding-bottom: 60px;
+            max-width: 1100px;
+            margin: 80px auto 40px;
+            padding: 0 40px;
         }
 
         h1 {
-            font-family: 'Playfair Display', serif;
-            font-size: 4.5rem;
+            font-family: 'Lexend', sans-serif;
+            font-size: 3.5rem;
+            font-weight: 800;
+            color: var(--primary-blue);
             margin: 0;
-            color: var(--sage-green);
-            font-weight: 700;
+            line-height: 1;
         }
 
         .subtitle {
-            font-family: 'Playfair Display', serif;
-            font-style: italic;
-            font-size: 1.4rem;
-            color: var(--accent-gold);
+            font-size: 1.2rem;
+            color: var(--medical-blue);
+            font-weight: 600;
             margin-top: 10px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
         }
 
         main {
-            max-width: 900px;
+            max-width: 1100px;
             margin: 0 auto;
-            padding: 40px 20px;
+            padding: 0 40px 100px;
         }
 
-        .profile-section {
+        .hero-section {
             display: grid;
-            grid-template-columns: 1fr 1.5fr;
-            gap: 60px;
-            align-items: center;
-            margin-bottom: 80px;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 80px;
+            margin-top: 60px;
+            align-items: start;
         }
 
-        .profile-image {
-            width: 100%;
-            border-radius: 200px 200px 0 0; /* Forma orgánica tipo arco */
-            filter: grayscale(20%);
-            border: 1px solid var(--accent-gold);
-            padding: 10px;
+        .profile-content h2 {
+            font-family: 'Lexend', sans-serif;
+            font-size: 2rem;
+            color: var(--primary-blue);
+            margin-bottom: 24px;
         }
 
-        .bio-text {
+        .profile-content p {
             font-size: 1.1rem;
-            color: #555;
-            text-align: justify;
-        }
-
-        .bio-text h2 {
-            font-family: 'Playfair Display', serif;
-            color: var(--sage-green);
-            font-size: 2.2rem;
+            color: var(--text-muted);
             margin-bottom: 20px;
         }
 
-        .skills-container {
+        .stat-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-top: 40px;
+        }
+
+        .stat-item {
+            border-left: 3px solid var(--medical-blue);
+            padding-left: 20px;
+        }
+
+        .stat-item span {
+            display: block;
+            font-weight: 800;
+            font-size: 1.5rem;
+            color: var(--primary-blue);
+        }
+
+        .stat-item label {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            font-weight: 600;
+        }
+
+        .featured-image {
+            width: 100%;
+            height: 500px;
+            background-color: var(--light-gray);
+            border-radius: 4px;
+            overflow: hidden;
+            border: 1px solid var(--accent-border);
+            /* Replace with your photo or a high-tech lab image */
+            background-image: url('https://images.unsplash.com/photo-1581056771107-24ca5f033842?q=80&w=1200&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .skills-section {
+            margin-top: 100px;
+            padding-top: 60px;
+            border-top: 1px solid var(--accent-border);
+        }
+
+        .skills-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 40px;
-            margin-top: 60px;
         }
 
-        .skill-box h3 {
-            font-family: 'Playfair Display', serif;
-            border-bottom: 1px solid var(--accent-gold);
-            padding-bottom: 10px;
-            color: var(--sage-green);
+        .skill-group h3 {
+            font-size: 0.9rem;
+            color: var(--medical-blue);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 20px;
         }
 
-        .skill-box ul {
+        .skill-group ul {
             list-style: none;
             padding: 0;
-            font-size: 0.95rem;
+            margin: 0;
         }
 
-        .skill-box li {
-            margin-bottom: 12px;
-            padding-left: 20px;
-            position: relative;
-        }
-
-        .skill-box li::before {
-            content: "•";
-            position: absolute;
-            left: 0;
-            color: var(--accent-gold);
+        .skill-group li {
+            padding: 12px 0;
+            border-bottom: 1px solid #f0f0f0;
+            font-weight: 500;
+            font-size: 1rem;
+            display: flex;
+            justify-content: space-between;
         }
 
         footer {
+            background-color: var(--light-gray);
+            padding: 60px 40px;
             text-align: center;
-            padding: 80px 20px;
+            border-top: 1px solid var(--accent-border);
             font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            text-transform: uppercase;
             letter-spacing: 1px;
-            color: var(--sage-green);
-            opacity: 0.7;
         }
 
-        /* Estilo para móviles */
-        @media (max-width: 768px) {
-            h1 { font-size: 3rem; }
-            .profile-section { grid-template-columns: 1fr; }
-            .skills-container { grid-template-columns: 1fr; }
+        @media (max-width: 900px) {
+            h1 { font-size: 2.5rem; }
+            .hero-section { grid-template-columns: 1fr; }
+            .skills-grid { grid-template-columns: 1fr; }
+            .featured-image { height: 300px; order: -1; }
         }
     </style>
 </head>
@@ -165,69 +209,78 @@
     <canvas id="neuron-canvas"></canvas>
     
     <nav>
-        <a href="index.html">Home</a>
+        <a href="index.html" class="active">Overview</a>
         <a href="philosophy.html">Philosophy</a>
-        <a href="clinical.html">Clinical</a>
+        <a href="clinical.html">Clinical Records</a>
         <a href="credentials.html">Credentials</a>
         <a href="contact.html">Contact</a>
     </nav>
 
     <header>
         <h1>Adrian Diaz</h1>
-        <div class="subtitle">Registered Nurse & Industrial Engineer</div>
+        <div class="subtitle">RN / Industrial Engineer / Systems Optimizer</div>
     </header>
 
     <main>
-        <section class="profile-section">
-            <img src="https://images.unsplash.com/photo-1559839734-2b71f1e3c770?q=80&w=800&auto=format&fit=crop" alt="Professional Nurse" class="profile-image">
-            <div class="bio-text">
-                <h2>Professional Profile</h2>
+        <section class="hero-section">
+            <div class="profile-content">
+                <h2>Clinical Precision meets <br>Operational Excellence.</h2>
                 <p>
-                    I am an <strong>RN graduate</strong> from Activa Training Center, uniquely positioned at the intersection of healthcare and systems engineering. My background in <strong>Industrial Engineering</strong> allows me to see the hospital not just as a care facility, but as a complex system ripe for optimization.
+                    I am an <strong>RN graduate</strong> from Activa Training Center, leveraging an <strong>Industrial Engineering</strong> background to modernize patient care. My focus is on reducing clinical friction through optimized workflows and evidence-based practice.
                 </p>
-                <p>
-                    My mission is to deliver high-touch patient care backed by high-efficiency workflows, ensuring that clinical safety and patient advocacy are always driven by data and evidence-based practice.
-                </p>
+                
+                <div class="stat-grid">
+                    <div class="stat-item">
+                        <span>RN</span>
+                        <label>Licensed Degree</label>
+                    </div>
+                    <div class="stat-item">
+                        <span>BSIE</span>
+                        <label>Industrial Eng.</label>
+                    </div>
+                </div>
             </div>
+            <div class="featured-image"></div>
         </section>
 
-        <section class="skills-container">
-            <div class="skill-box">
-                <h3>Clinical</h3>
-                <ul>
-                    <li>Advanced Med Admin</li>
-                    <li>Wound Care</li>
-                    <li>Neuro Assessment</li>
-                    <li>Critical Care</li>
-                </ul>
-            </div>
-            <div class="skill-box">
-                <h3>Systems</h3>
-                <ul>
-                    <li>eClinicalWorks (eCW)</li>
-                    <li>Florida SHOTS</li>
-                    <li>Insurance Portals</li>
-                    <li>HIPAA Compliance</li>
-                </ul>
-            </div>
-            <div class="skill-box">
-                <h3>Engineering</h3>
-                <ul>
-                    <li>Workflow Design</li>
-                    <li>Root Cause Analysis</li>
-                    <li>Process Optimization</li>
-                    <li>Analytical Thinking</li>
-                </ul>
+        <section class="skills-section">
+            <div class="skills-grid">
+                <div class="skill-group">
+                    <h3>Clinical Practice</h3>
+                    <ul>
+                        <li>Advanced Medication <span>+</span></li>
+                        <li>Wound Care <span>+</span></li>
+                        <li>Neurovascular Assessment <span>+</span></li>
+                        <li>Critical Care <span>+</span></li>
+                    </ul>
+                </div>
+                <div class="skill-group">
+                    <h3>Technical Systems</h3>
+                    <ul>
+                        <li>eClinicalWorks (eCW) <span>+</span></li>
+                        <li>Florida SHOTS <span>+</span></li>
+                        <li>Insurance Portals <span>+</span></li>
+                        <li>HIPAA Data Security <span>+</span></li>
+                    </ul>
+                </div>
+                <div class="skill-group">
+                    <h3>Systems Engineering</h3>
+                    <ul>
+                        <li>Process Optimization <span>+</span></li>
+                        <li>Root Cause Analysis <span>+</span></li>
+                        <li>Workflow Engineering <span>+</span></li>
+                        <li>Strategic Advocacy <span>+</span></li>
+                    </ul>
+                </div>
             </div>
         </section>
     </main>
 
     <footer>
-        © 2026 ADRIAN DIAZ | MIAMI SPRINGS, FL | PROFESSIONAL PORTFOLIO
+        © 2026 Adrian Diaz Portfolio | Miami Springs, FL | Clinical Data Systems
     </footer>
 
     <script>
-        // Mantenemos tu efecto de partículas pero más sutil para encajar con el nuevo estilo
         const canvas = document.getElementById('neuron-canvas');
         const ctx = canvas.getContext('2d');
         let particles = [];
@@ -235,20 +288,19 @@
             canvas.width = window.innerWidth;
             canvas.height = window.innerHeight;
             particles = [];
-            for (let i = 0; i < 50; i++) {
+            for (let i = 0; i < 60; i++) {
                 particles.push({
                     x: Math.random() * canvas.width,
                     y: Math.random() * canvas.height,
-                    vx: (Math.random() - 0.5) * 0.2,
-                    vy: (Math.random() - 0.5) * 0.2,
-                    size: 2
+                    vx: (Math.random() - 0.5) * 0.3,
+                    vy: (Math.random() - 0.5) * 0.3,
+                    size: 1.5
                 });
             }
         }
         function animate() {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
-            ctx.fillStyle = "#6B705C";
-            ctx.strokeStyle = "rgba(107, 112, 92, 0.1)";
+            ctx.fillStyle = "#3182CE";
             particles.forEach(p => {
                 p.x += p.vx; p.y += p.vy;
                 if (p.x < 0 || p.x > canvas.width) p.vx *= -1;
