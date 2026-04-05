@@ -3,340 +3,365 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Adrian Diaz | Professional Portfolio</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Great+Vibes&display=swap" rel="stylesheet">
+    <title>Adrian Diaz | Professional RN Portfolio</title>
     <style>
         :root {
-            /* Tus colores profesionales (Azul Oscuro + Neón) */
-            --bg-deep: #050A0F; 
-            --bg-card: #0A1929;
-            --data-blue: #00A3FF; /* Azul Neón */
-            --data-blue-dim: rgba(0, 163, 255, 0.1);
-            --medical-red: #FF3B3B;
-            --text-primary: #E6F1FF;
-            --text-secondary: #8892B0;
+            --gold: #D4AF37; /* COLOR ORO ORIGINAL */
+            --gold-light: #f4e4ad;
+            
+            /* NUEVO COLOR DIAMANTE PARA LA RED */
+            --diamond-base: rgba(224, 224, 224, 0.2); /* Platino sutil base */
+            --diamond-flash: rgba(255, 255, 255, 0.9); /* Blanco puro brillante al hover */
+            
+            --text-dark: #222222;
+            --white: #FFFFFF;
+            --bg-soft: #fdfdfd;
         }
 
-        body, html {
-            margin: 0; padding: 0;
-            height: 100%; width: 100%;
-            font-family: 'Inter', sans-serif;
-            background-color: var(--bg-deep);
-            overflow: hidden; /* Evita scroll antes de abrir */
-            perspective: 2500px; /* Clave para el efecto 3D */
-        }
-
-        /* --- ESCENA 3D INICIAL (Cuaderno Cerrado) --- */
-        #portfolio-scene {
-            width: 100vw; height: 100vh;
-            display: flex; align-items: center; justify-content: center;
-            transition: transform 1.5s cubic-bezier(0.645, 0.045, 0.355, 1);
-            position: relative; z-index: 10;
-        }
-
-        /* El cuaderno (inspirado en el 'padfolio') */
-        .notebook {
-            width: 450px; height: 600px;
-            position: relative;
-            transform-style: preserve-3d;
-            transform: rotateX(10deg) rotateY(-5deg); /* Inclinación 3D inicial */
-            transition: transform 1.5s;
-        }
-
-        /* PORTADA DEL CUADERNO */
-        .cover {
-            position: absolute;
-            width: 100%; height: 100%;
-            background: #2b1a15 url('https://www.transparenttextures.com/patterns/leather.png');
-            border-radius: 5px 20px 20px 5px;
-            box-shadow: 20px 20px 50px rgba(0,0,0,0.7);
-            z-index: 10;
-            transform-origin: left;
-            transition: transform 1.2s;
-            display: flex; flex-direction: column; align-items: center; justify-content: center;
-            border-left: 10px solid #1a1a1a;
-            backface-visibility: hidden;
-        }
-
-        .cover h1 {
-            font-family: 'Great Vibes', cursive;
-            font-size: 5rem;
-            color: rgba(212, 175, 55, 0.8); /* Oro Embosado */
+        body {
+            background-color: var(--white);
+            color: var(--text-dark);
+            font-family: 'Arial', sans-serif;
             margin: 0;
-        }
-
-        .cover p {
-            color: rgba(212, 175, 55, 0.8);
-            letter-spacing: 5px; text-transform: uppercase;
-            font-size: 0.9rem;
-        }
-
-        /* BOTÓN OPEN CON BEAT NEÓN */
-        .open-btn {
-            margin-top: 50px;
-            padding: 15px 50px;
-            background: transparent;
-            border: 2px solid var(--data-blue);
-            color: var(--data-blue);
-            font-family: 'Inter', sans-serif;
-            font-weight: bold;
-            font-size: 1rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            cursor: pointer;
-            border-radius: 50px;
+            padding: 0;
+            overflow-x: hidden;
             position: relative;
-            transition: all 0.3s ease;
         }
 
-        .open-btn:hover {
-            color: white;
-            background: var(--data-blue);
-            box-shadow: 0 0 20px var(--data-blue);
-        }
-
-        .open-btn::after {
-            content: '';
-            position: absolute;
-            inset: -5px;
-            border: 2px solid var(--data-blue);
-            border-radius: 50px;
-            animation: beatPulse 1.5s infinite;
-        }
-
-        @keyframes beatPulse {
-            0% { transform: scale(1); opacity: 1; }
-            100% { transform: scale(1.3); opacity: 0; }
-        }
-
-        /* --- INTERIOR (Layout de Andy, Colores Tuyos, Efecto 3D) --- */
-        #content-page {
-            position: fixed;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
-            background-color: var(--bg-deep);
-            color: var(--text-primary);
-            display: none;
-            flex-direction: column;
-            z-index: 1;
-            overflow-y: auto;
-        }
-
-        /* Tus Partículas de Neuronas (Integradas) */
+        /* CANVAS DE RED NEURONAL INTERACTIVA "DIAMANTE" */
         #neuron-canvas {
             position: fixed;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
             z-index: -1;
-            background: radial-gradient(circle at center, transparent 0%, var(--bg-deep) 100%);
+            background-color: #fff;
         }
 
-        /* Navegación Estilo Andy (Arriba) */
+        /* NAVEGACIÓN (MANTIENE ORO) */
         nav {
-            background-color: rgba(10, 25, 41, 0.9);
-            border-bottom: 2px solid var(--data-blue);
-            backdrop-filter: blur(10px);
-            position: sticky; top: 0; z-index: 1000;
-            padding: 15px 0;
-            display: flex; justify-content: center;
+            text-align: center;
+            padding: 25px 0;
+            border-bottom: 4px solid var(--gold);
+            background-color: rgba(255, 255, 255, 0.95);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
         }
 
         nav a {
             text-decoration: none;
-            color: var(--text-secondary);
-            font-weight: 700;
-            font-size: 0.8rem;
+            color: var(--gold);
+            font-weight: bold;
+            margin: 0 15px;
             text-transform: uppercase;
-            letter-spacing: 1.5px;
-            margin: 0 20px;
+            font-size: 0.9rem;
             transition: 0.3s;
+            display: inline-block;
         }
 
-        nav a:hover, nav a.active {
-            color: var(--data-blue);
-            border-bottom: 2px solid var(--data-blue);
+        nav a:hover, .active {
+            color: var(--text-dark) !important;
+            transform: scale(1.05);
         }
 
-        /* --- Layout de Andy (Mismo Estilo Visual) --- */
         header {
             text-align: center;
-            padding: 80px 20px;
-            border-bottom: 1px solid var(--data-blue-dim);
+            padding: 60px 20px 40px;
         }
 
-        header h1 {
-            font-size: 3rem;
-            font-weight: 800;
+        /* EKG ANIMADO ORO */
+        .ekg-container {
+            width: 100%;
+            max-width: 400px;
+            height: 60px;
+            margin: 0 auto 20px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .ekg-svg {
+            width: 200%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            animation: ekgMove 4s linear infinite;
+        }
+
+        .ekg-path {
+            fill: none;
+            stroke: var(--gold);
+            stroke-width: 3;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        @keyframes ekgMove {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        h1 {
+            color: var(--gold);
+            font-size: 3.5rem;
             margin: 0;
+            letter-spacing: 2px;
+            text-transform: uppercase;
         }
 
-        header .role {
+        .title-sub {
             font-size: 1.2rem;
-            color: var(--medical-red);
-            font-weight: 400;
+            color: #666;
+            font-weight: bold;
+            display: block;
             margin-top: 10px;
         }
 
-        /* Mismo Layout de Bloques que Andy */
-        .section-container {
+        main {
             max-width: 900px;
-            margin: 40px auto;
-            padding: 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            border-bottom: 1px solid var(--data-blue-dim);
-            padding-bottom: 40px;
+            margin: 0 auto;
+            padding: 20px 20px 60px;
+            position: relative;
+            z-index: 1;
         }
 
-        .section-container h2 {
-            font-size: 1.2rem;
+        .intro-box {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+            border: 1px solid #f0f0f0;
+            line-height: 1.8;
+            font-size: 1.1rem;
+            color: #444;
+            margin-bottom: 40px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .intro-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.05);
+            border-color: var(--gold);
+        }
+
+        .intro-box strong {
+            color: var(--text-dark);
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        /* RESALTADO DE TÓPICOS ORO */
+        .skill-card {
+            padding: 25px;
+            background: rgba(253, 253, 253, 0.9);
+            border-radius: 8px;
+            border-left: 5px solid var(--gold);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            cursor: default;
+        }
+
+        .skill-card:hover {
+            transform: scale(1.05);
+            background: var(--white);
+            box-shadow: 0 15px 35px rgba(212, 175, 55, 0.2);
+            border-left-width: 10px;
+        }
+
+        .skill-card h3 {
+            margin-top: 0;
+            color: var(--gold);
+            font-size: 1.1rem;
             text-transform: uppercase;
             letter-spacing: 1px;
-            color: var(--data-blue);
+        }
+
+        .skill-list {
+            list-style: none;
+            padding: 0;
             margin: 0;
+            font-size: 0.95rem;
+            color: #555;
         }
 
-        .section-content {
-            flex: 0 0 70%;
-            color: var(--text-secondary);
-            font-size: 1.1rem;
-            line-height: 1.8;
+        .skill-list li {
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
         }
 
-        /* --- Animaciones 3D de Apertura --- */
-        .opened .notebook {
-            transform: rotateX(0deg) rotateY(0deg) scale(0.9);
-        }
-        .opened .cover {
-            transform: rotateY(-170deg); /* Se abre la portada */
-        }
-        .opened #portfolio-scene {
-            transform: translateY(-100%); /* Desliza la portada hacia arriba */
+        .skill-list li::before {
+            content: "✓";
+            color: var(--gold);
+            font-weight: bold;
+            margin-right: 10px;
         }
 
-        @media (max-width: 768px) {
-            .cover h1 { font-size: 3.5rem; }
-            .notebook { width: 300px; height: 450px; }
-            .section-container { flex-direction: column; }
-            .section-content { flex: 0 0 100%; margin-top: 10px; }
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            color: #999;
+            font-size: 0.8rem;
+            background-color: rgba(249, 249, 249, 0.9);
+            border-top: 1px solid #eee;
+            position: relative;
+            z-index: 1;
         }
     </style>
 </head>
 <body>
 
-    <div id="portfolio-scene">
-        <div class="notebook">
-            <div class="cover">
-                <h1>AD</h1>
-                <p>RN PORTFOLIO</p>
-                <button class="open-btn" onclick="openPortfolio()">OPEN</button>
+    <canvas id="neuron-canvas"></canvas>
+
+    <nav>
+        <a href="index.html" class="active">Home</a>
+        <a href="philosophy.html">Philosophy</a>
+        <a href="clinical.html">Clinical</a>
+        <a href="credentials.html">Credentials</a>
+        <a href="contact.html">Contact</a>
+    </nav>
+
+    <header>
+        <div class="ekg-container">
+            <svg class="ekg-svg" viewBox="0 0 800 100" preserveAspectRatio="none">
+                <path class="ekg-path" d="M0,50 L200,50 L210,40 L220,60 L230,50 L280,50 L290,20 L310,80 L320,50 L370,50 L380,45 L390,55 L400,50 L600,50 L610,40 L620,60 L630,50 L680,50 L690,20 L710,80 L720,50 L770,50 L780,45 L790,55 L800,50" />
+            </svg>
+        </div>
+        
+        <h1>Adrian Diaz</h1>
+        <span class="title-sub">Registered Nurse | Industrial Engineer</span>
+    </header>
+
+    <main>
+        <section class="intro-box">
+            <p>
+                I am a <strong>Registered Nurse (RN)</strong> graduate from Activa Training Center in Miami, FL, with a unique professional edge. By combining a <strong>Bachelor’s degree in Industrial Engineering</strong> with over two years of experience in Medical Administration, I approach nursing with a specialized focus on <strong>clinical safety, process optimization, and exceptional patient advocacy.</strong>
+            </p>
+            <p>
+                Proficient in managing complex workflows and adhering to RN standards for evidence-based practice, I am dedicated to delivering high-quality care within modern health systems.
+            </p>
+        </section>
+
+        <div class="skills-grid">
+            <div class="skill-card">
+                <h3>Clinical Skills</h3>
+                <ul class="skill-list">
+                    <li>Medication Administration</li>
+                    <li>Wound Care & Vital Signs</li>
+                    <li>Neurovascular Assessments</li>
+                </ul>
             </div>
-            <div id="content-page">
-                <canvas id="neuron-canvas"></canvas>
-                
-                <nav>
-                    <a href="index.html" class="active">Overview</a>
-                    <a href="philosophy.html">Philosophy</a>
-                    <a href="clinical.html">Clinical</a>
-                    <a href="credentials.html">Credentials</a>
-                    <a href="contact.html">Contact</a>
-                </nav>
-
-                <header>
-                    <h1>ADRIAN DIAZ</h1>
-                    <div class="role">Registered Nurse | Systems Optimizer</div>
-                </header>
-
-                <div class="section-container">
-                    <h2>Profile</h2>
-                    <div class="section-content">
-                        Dedicated **Registered Nurse (RN)** focused on clinical excellence and patient safety. 
-                        Integrating Industrial Engineering principles to optimize healthcare delivery and operational workflows.
-                    </div>
-                </div>
-
-                <div class="section-container">
-                    <h2>Clinical Expertise</h2>
-                    <div class="section-content">
-                        Advanced medication administration, wound care, critical assessments, and patient education. Experienced in EHR management with **eClinicalWorks (eCW)**.
-                    </div>
-                </div>
+            <div class="skill-card">
+                <h3>Health Systems</h3>
+                <ul class="skill-list">
+                    <li>EMR: Office Ally, Oscar CMS</li>
+                    <li>Florida SHOTS Certified</li>
+                    <li>Quest & LabCorp Systems</li>
+                </ul>
+            </div>
+            <div class="skill-card">
+                <h3>Professional & Tech Skills</h3>
+                <ul class="skill-list">
+                    <li>Process Optimization</li>
+                    <li>Patient Advocacy</li>
+                    <li>Bilingual (English/Spanish)</li>
+                    <li>Critical Thinking & Analysis</li>
+                </ul>
             </div>
         </div>
-    </div>
+    </main>
+
+    <footer>
+        © 2026 Adrian Diaz | Miami Springs, FL | RN Professional Portfolio
+    </footer>
 
     <script>
-        function openPortfolio() {
-            // Animaciones de apertura 3D
-            document.body.classList.add('opened');
-            
-            // Re-enabling scroll and showing content page
-            setTimeout(() => {
-                document.getElementById('content-page').style.display = 'flex';
-                document.body.style.overflow = 'auto'; // Re-enable scrolling
-                initCanvas(); // Start background interaction
-            }, 500); // Trigger after cover slides halfway
-        }
-
-        // --- Tus Partículas de Neuronas (Mantenidas) ---
-        // (Este código es exactamente el tuyo, solo encapsulado)
         const canvas = document.getElementById('neuron-canvas');
         const ctx = canvas.getContext('2d');
         let particles = [];
-        const mouse = { x: null, y: null, radius: 180 };
+        const mouse = { x: null, y: null, radius: 180 }; // Radio de interacción del mouse
 
-        function initCanvas() {
+        window.addEventListener('mousemove', (e) => { mouse.x = e.x; mouse.y = e.y; });
+
+        function init() {
             canvas.width = window.innerWidth;
             canvas.height = window.innerHeight;
             particles = [];
+            // Densidad de neuronas (ajustada para rendimiento)
             let quantity = (canvas.width * canvas.height) / 10000;
             for (let i = 0; i < quantity; i++) {
                 particles.push({
                     x: Math.random() * canvas.width,
                     y: Math.random() * canvas.height,
-                    vx: (Math.random() - 0.5) * 0.2, vy: (Math.random() - 0.5) * 0.2,
+                    vx: (Math.random() - 0.5) * 0.2, // VELOCIDAD MUY LENTA (CALMADA)
+                    vy: (Math.random() - 0.5) * 0.2,
                     size: Math.random() * 2 + 1
                 });
             }
-            animate();
         }
 
         function animate() {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
             particles.forEach((p, i) => {
                 p.x += p.vx; p.y += p.vy;
+                // Rebotar en los bordes
                 if (p.x < 0 || p.x > canvas.width) p.vx *= -1;
                 if (p.y < 0 || p.y > canvas.height) p.vy *= -1;
 
                 let dx = mouse.x - p.x;
                 let dy = mouse.y - p.y;
                 let dist = Math.sqrt(dx*dx + dy*dy);
+                
+                // EFECTO "DIAMANTE BRILLANTE" AL HOVER
                 let isGlowing = dist < mouse.radius;
-
                 ctx.beginPath();
-                ctx.arc(p.x, p.y, isGlowing ? 4 : p.size, 0, Math.PI * 2);
-                ctx.fillStyle = isGlowing ? 'rgba(0, 163, 255, 0.8)' : 'rgba(0, 163, 255, 0.1)';
-                if(isGlowing) { ctx.shadowBlur = 10; ctx.shadowColor = "#00A3FF"; } else { ctx.shadowBlur = 0; }
+                ctx.arc(p.x, p.y, isGlowing ? 4 : p.size, 0, Math.PI * 2); // Más grande al hover
+                
+                // Color base (platino sutil) vs Color brillante (blanco puro)
+                ctx.fillStyle = isGlowing ? 'rgba(255, 255, 255, 0.9)' : 'rgba(224, 224, 224, 0.2)';
+                
+                // Añadir sombra/resplandor brillante al hover
+                if(isGlowing) {
+                    ctx.shadowBlur = 15;
+                    ctx.shadowColor = "#FFFFFF"; // Resplandor blanco puro
+                } else {
+                    ctx.shadowBlur = 0;
+                }
                 ctx.fill();
 
+                // DIBUJAR CONEXIONES (LÍNEAS)
                 for (let j = i + 1; j < particles.length; j++) {
                     let p2 = particles[j];
                     let dx2 = p.x - p2.x;
                     let dy2 = p.y - p2.y;
                     let dist2 = Math.sqrt(dx2*dx2 + dy2*dy2);
-                    if (dist2 < 130) {
-                        let opacity = (1 - dist2/130) * (isGlowing ? 0.5 : 0.08);
-                        ctx.strokeStyle = `rgba(0, 163, 255, ${opacity})`;
-                        ctx.lineWidth = isGlowing ? 1.2 : 0.8;
-                        ctx.beginPath(); ctx.moveTo(p.x, p.y); ctx.lineTo(p2.x, p2.y); ctx.stroke();
+
+                    if (dist2 < 130) { // Distancia máxima para conectar
+                        // La opacidad depende de la distancia y de si el mouse está cerca
+                        let opacity = (1 - dist2/130) * (isGlowing ? 0.7 : 0.2);
+                        
+                        // Color de línea base vs Color de línea brillante
+                        ctx.strokeStyle = isGlowing ? `rgba(255, 255, 255, ${opacity})` : `rgba(224, 224, 224, ${opacity})`;
+                        ctx.lineWidth = isGlowing ? 1.5 : 0.8; // Más gruesa al hover
+                        
+                        ctx.beginPath();
+                        ctx.moveTo(p.x, p.y);
+                        ctx.lineTo(p2.x, p2.y);
+                        ctx.stroke();
                     }
                 }
             });
             requestAnimationFrame(animate);
         }
-        window.addEventListener('resize', initCanvas);
-        window.addEventListener('mousemove', (e) => { mouse.x = e.x; mouse.y = e.y; });
+
+        window.addEventListener('resize', init);
+        init(); animate();
     </script>
 </body>
 </html>
