@@ -3,230 +3,161 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Adrian Diaz | Professional RN & Industrial Engineer Portfolio</title>
+    <title>Adrian Diaz | RN & Industrial Engineer Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
         :root {
-            /* Pinterest-Inspired Palette */
-            --teal-deep: #008080;
-            --teal-light: #00a0a0;
-            --cream-bg: #fcfaf5;
-            --gold: #d4af37;
-            --text-dark: #333333;
-            --text-light: #666666;
-            --white: #ffffff;
-            /* Medical Red */
-            --medical-red: #e03131;
+            --bg-color: #F9F7F2; /* Crema suave de fondo */
+            --sage-green: #6B705C; /* Verde salvia profesional */
+            --accent-gold: #B7965F; /* Oro envejecido */
+            --text-main: #333533;
+            --white: #FFFFFF;
         }
 
         body {
-            background-color: var(--cream-bg);
-            color: var(--text-dark);
-            font-family: 'Georgia', serif; /* A more academic/clinical font */
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            font-family: 'Inter', sans-serif;
             margin: 0;
-            padding: 0;
-            overflow-x: hidden;
-            position: relative;
+            line-height: 1.6;
         }
 
-        /* --- Unified Background Layer --- */
+        /* Fondo Interactivo Sutil */
         #neuron-canvas {
             position: fixed;
             top: 0;
             left: 0;
-            width: 100%;
-            height: 100%;
             z-index: -1;
-            background-image:
-                /* Part 1: Subtle watermark-style clinical/industrial icons */
-                url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Cg fill-opacity='0.03' fill='%23008080'%3E%3Cpath d='M30,20 l10,0 a10,10 0 0 1 10,10 a10,10 0 0 1 -10,10 l-10,0 a10,10 0 0 1 -10,-10 a10,10 0 0 1 10,-10 z M60,60 h20 v20 h-20 v-20'/%3E%3Cpath d='M30,60 a20,20 0 1 0 0,40 a20,20 0 1 0 0,-40 z M70,20 a20,20 0 1 1 0,40 a20,20 0 1 1 0,-40 z'/%3E%3Cpath d='M10 10 h10 v10 h-10 Z M80 80 h10 v10 h-10 Z'/%3E%3C/g%3E%3C/svg%3E"),
-                /* Part 2: Gradient background */
-                linear-gradient(135deg, var(--white) 0%, #e0f2f1 100%);
-            background-blend-mode: overlay;
-        }
-
-        /* --- Custom Nurse/Engineer Top Banner --- */
-        .page-banner {
-            background: linear-gradient(rgba(0, 128, 128, 0.9), rgba(0, 128, 128, 0.9)), url('https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?q=80&w=2000&auto=format&fit=crop'); /* PlaceHolder for Clinical/Tech Image */
-            background-size: cover;
-            background-position: center;
-            color: var(--white);
-            text-align: center;
-            padding: 100px 20px 60px;
-            position: relative;
-            border-bottom: 8px solid var(--gold);
-        }
-
-        .page-banner::after {
-            content: '';
-            position: absolute;
-            bottom: -8px;
-            left: 50%;
-            transform: translateX(-50%);
-            border-left: 15px solid transparent;
-            border-right: 15px solid transparent;
-            border-top: 15px solid var(--gold);
-        }
-
-        .page-banner h1 {
-            font-size: 4rem;
-            margin: 0;
-            letter-spacing: 3px;
-            text-transform: uppercase;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-        }
-
-        .page-banner .subtitle {
-            font-family: 'Helvetica', sans-serif;
-            font-size: 1.2rem;
-            font-weight: 300;
-            letter-spacing: 2px;
-            display: block;
-            margin-top: 15px;
-            opacity: 0.9;
+            opacity: 0.4;
         }
 
         nav {
+            padding: 30px;
             text-align: center;
-            padding: 20px 0;
-            background-color: var(--white);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            background: transparent;
         }
 
         nav a {
-            text-decoration: none;
-            color: var(--teal-deep);
-            font-family: 'Helvetica', sans-serif;
-            font-weight: bold;
             margin: 0 20px;
+            text-decoration: none;
+            color: var(--sage-green);
+            font-weight: 600;
+            font-size: 0.8rem;
+            letter-spacing: 2px;
             text-transform: uppercase;
-            font-size: 0.9rem;
             transition: 0.3s;
-            display: inline-block;
-            letter-spacing: 1px;
-            padding: 5px 0;
-            border-bottom: 2px solid transparent;
         }
 
-        nav a:hover, nav a.active {
-            color: var(--gold);
-            border-bottom: 2px solid var(--gold);
+        nav a:hover {
+            color: var(--accent-gold);
         }
 
-        /* --- Main Content Cards --- */
+        header {
+            max-width: 900px;
+            margin: 60px auto;
+            text-align: center;
+            border-bottom: 1px solid rgba(107, 112, 92, 0.2);
+            padding-bottom: 60px;
+        }
+
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 4.5rem;
+            margin: 0;
+            color: var(--sage-green);
+            font-weight: 700;
+        }
+
+        .subtitle {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-size: 1.4rem;
+            color: var(--accent-gold);
+            margin-top: 10px;
+        }
+
         main {
-            max-width: 1100px;
+            max-width: 900px;
             margin: 0 auto;
-            padding: 40px 20px 80px;
-            position: relative;
-            z-index: 1;
+            padding: 40px 20px;
         }
 
-        .content-card {
-            background: rgba(255, 255, 255, 0.98);
-            padding: 50px;
-            border-radius: 20px;
-            box-shadow: 0 15px 40px rgba(0,0,0,0.08);
-            border: 1px solid rgba(0, 128, 128, 0.1);
-            line-height: 2.0;
-            font-size: 1.1rem;
-            color: var(--text-dark);
-            margin-bottom: 50px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .content-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 6px;
-            height: 100%;
-            background-color: var(--gold);
-        }
-
-        .content-card h2 {
-            font-size: 2rem;
-            color: var(--teal-deep);
-            border-bottom: 2px solid var(--gold-light);
-            padding-bottom: 15px;
-            margin-bottom: 30px;
-        }
-
-        .content-card strong {
-            color: var(--teal-deep);
-        }
-
-        /* --- Skills Grid --- */
-        .skills-grid {
+        .profile-section {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 30px;
-        }
-
-        .skill-card {
-            padding: 35px;
-            background: var(--white);
-            border-radius: 15px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.03);
-            border: 1px solid #f0f0f0;
-            transition: all 0.3s ease;
-            position: relative;
-        }
-
-        .skill-card:hover {
-            transform: translateY(-8px) scale(1.02);
-            box-shadow: 0 15px 35px rgba(212, 175, 55, 0.15);
-            border-color: rgba(212, 175, 55, 0.3);
-        }
-
-        .skill-card h3 {
-            margin-top: 0;
-            color: var(--teal-deep);
-            font-size: 1.3rem;
-            text-transform: uppercase;
-            font-family: 'Helvetica', sans-serif;
-            margin-bottom: 25px;
-            display: flex;
+            grid-template-columns: 1fr 1.5fr;
+            gap: 60px;
             align-items: center;
+            margin-bottom: 80px;
         }
 
-        /* Add icons before skill titles using CSS (or use FontAwesome) */
-        .skill-card.clinical h3::before { content: '🏥 '; margin-right: 10px; color: var(--medical-red); }
-        .skill-card.systems h3::before { content: '💻 '; margin-right: 10px; }
-        .skill-card.technical h3::before { content: '⚙️ '; margin-right: 10px; }
+        .profile-image {
+            width: 100%;
+            border-radius: 200px 200px 0 0; /* Forma orgánica tipo arco */
+            filter: grayscale(20%);
+            border: 1px solid var(--accent-gold);
+            padding: 10px;
+        }
 
-        .skill-list {
+        .bio-text {
+            font-size: 1.1rem;
+            color: #555;
+            text-align: justify;
+        }
+
+        .bio-text h2 {
+            font-family: 'Playfair Display', serif;
+            color: var(--sage-green);
+            font-size: 2.2rem;
+            margin-bottom: 20px;
+        }
+
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+            margin-top: 60px;
+        }
+
+        .skill-box h3 {
+            font-family: 'Playfair Display', serif;
+            border-bottom: 1px solid var(--accent-gold);
+            padding-bottom: 10px;
+            color: var(--sage-green);
+        }
+
+        .skill-box ul {
             list-style: none;
             padding: 0;
-            margin: 0;
-            font-size: 1.05rem;
-            color: var(--text-light);
+            font-size: 0.95rem;
         }
 
-        .skill-list li {
-            margin-bottom: 15px;
-            display: flex;
-            align-items: center;
+        .skill-box li {
+            margin-bottom: 12px;
+            padding-left: 20px;
+            position: relative;
         }
 
-        .skill-list li::before {
-            content: "✦"; /* Elegant marker */
-            color: var(--gold);
-            margin-right: 15px;
-            font-size: 1.2rem;
+        .skill-box li::before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: var(--accent-gold);
         }
 
         footer {
             text-align: center;
-            padding: 60px 20px;
-            color: var(--white);
-            font-size: 0.95rem;
-            background-color: var(--teal-deep);
-            border-top: 4px solid var(--gold);
+            padding: 80px 20px;
+            font-size: 0.8rem;
+            letter-spacing: 1px;
+            color: var(--sage-green);
+            opacity: 0.7;
+        }
+
+        /* Estilo para móviles */
+        @media (max-width: 768px) {
+            h1 { font-size: 3rem; }
+            .profile-section { grid-template-columns: 1fr; }
+            .skills-container { grid-template-columns: 1fr; }
         }
     </style>
 </head>
@@ -234,141 +165,100 @@
     <canvas id="neuron-canvas"></canvas>
     
     <nav>
-        <a href="index.html" class="active">Home</a>
+        <a href="index.html">Home</a>
         <a href="philosophy.html">Philosophy</a>
         <a href="clinical.html">Clinical</a>
         <a href="credentials.html">Credentials</a>
         <a href="contact.html">Contact</a>
     </nav>
 
-    <header class="page-banner">
+    <header>
         <h1>Adrian Diaz</h1>
-        <span class="subtitle">Registered Nurse (RN) | Industrial Engineer (BS)</span>
+        <div class="subtitle">Registered Nurse & Industrial Engineer</div>
     </header>
 
     <main>
-        <section class="content-card">
-            <h2>Professional Profile</h2>
-            <p>
-                I am a <strong>Registered Nurse (RN)</strong> graduate from Activa Training Center with a unique, interdisciplinary edge. By seamlessly integrating a <strong>Bachelor’s degree in Industrial Engineering</strong> with extensive experience in Medical Administration, I approach nursing through the lens of <strong>systems optimization, enhanced clinical safety, and dedicated patient advocacy.</strong>
-            </p>
-            <p>
-                Committed to evidence-based practice, I leverage my analytical background to streamline clinical workflows and deliver superior, compassionate care within modern, complex healthcare environments.
-            </p>
+        <section class="profile-section">
+            <img src="https://images.unsplash.com/photo-1559839734-2b71f1e3c770?q=80&w=800&auto=format&fit=crop" alt="Professional Nurse" class="profile-image">
+            <div class="bio-text">
+                <h2>Professional Profile</h2>
+                <p>
+                    I am an <strong>RN graduate</strong> from Activa Training Center, uniquely positioned at the intersection of healthcare and systems engineering. My background in <strong>Industrial Engineering</strong> allows me to see the hospital not just as a care facility, but as a complex system ripe for optimization.
+                </p>
+                <p>
+                    My mission is to deliver high-touch patient care backed by high-efficiency workflows, ensuring that clinical safety and patient advocacy are always driven by data and evidence-based practice.
+                </p>
+            </div>
         </section>
 
-        <div class="skills-grid">
-            <div class="skill-card clinical">
-                <h3>Clinical Expertise</h3>
-                <ul class="skill-list">
-                    <li>Advanced Medication Administration</li>
-                    <li>Wound Care Management & Assessment</li>
-                    <li>Comprehensive Neurovascular Assessments</li>
-                    <li>Acute & Critical Care Support</li>
-                    <li>Vital Signs Monitoring & Analysis</li>
+        <section class="skills-container">
+            <div class="skill-box">
+                <h3>Clinical</h3>
+                <ul>
+                    <li>Advanced Med Admin</li>
+                    <li>Wound Care</li>
+                    <li>Neuro Assessment</li>
+                    <li>Critical Care</li>
                 </ul>
             </div>
-
-            <div class="skill-card systems">
-                <h3>Healthcare Systems</h3>
-                <ul class="skill-list">
-                    <li>EMR Systems: eClinicalWorks, Office Ally</li>
-                    <li>Florida SHOTS Certified (Vaccine Records)</li>
-                    <li>Lab Interface Management (Quest/LabCorp)</li>
-                    <li>HIPAA Compliance & Data Security</li>
-                    <li>Insurance Portal Management (Availity)</li>
+            <div class="skill-box">
+                <h3>Systems</h3>
+                <ul>
+                    <li>eClinicalWorks (eCW)</li>
+                    <li>Florida SHOTS</li>
+                    <li>Insurance Portals</li>
+                    <li>HIPAA Compliance</li>
                 </ul>
             </div>
-
-            <div class="skill-card technical">
-                <h3>The Engineering Edge</h3>
-                <ul class="skill-list">
-                    <li>Process Design & Workflow Optimization</li>
-                    <li>Root Cause Analysis (RCA)</li>
-                    <li>Analytical Critical Thinking</li>
-                    <li>Strategic Patient Advocacy</li>
-                    <li>Bilingual: Professional English & Spanish</li>
+            <div class="skill-box">
+                <h3>Engineering</h3>
+                <ul>
+                    <li>Workflow Design</li>
+                    <li>Root Cause Analysis</li>
+                    <li>Process Optimization</li>
+                    <li>Analytical Thinking</li>
                 </ul>
             </div>
-        </div>
+        </section>
     </main>
 
     <footer>
-        © 2026 Adrian Diaz | Miami Springs, FL | RN Professional Portfolio
+        © 2026 ADRIAN DIAZ | MIAMI SPRINGS, FL | PROFESSIONAL PORTFOLIO
     </footer>
 
     <script>
-        // --- Your Interactive Neuron/Particle Code (maintained but customized) ---
+        // Mantenemos tu efecto de partículas pero más sutil para encajar con el nuevo estilo
         const canvas = document.getElementById('neuron-canvas');
         const ctx = canvas.getContext('2d');
         let particles = [];
-        const mouse = { x: null, y: null, radius: 180 };
-
-        window.addEventListener('mousemove', (e) => { mouse.x = e.x; mouse.y = e.y; });
-
         function init() {
             canvas.width = window.innerWidth;
             canvas.height = window.innerHeight;
             particles = [];
-            // Quantity based on screen size, less dense for elegance
-            let quantity = (canvas.width * canvas.height) / 15000;
-            for (let i = 0; i < quantity; i++) {
+            for (let i = 0; i < 50; i++) {
                 particles.push({
                     x: Math.random() * canvas.width,
                     y: Math.random() * canvas.height,
-                    vx: (Math.random() - 0.5) * 0.15, // Slower for elegance
-                    vy: (Math.random() - 0.5) * 0.15,
-                    size: Math.random() * 1.5 + 0.5 // Smaller particles
+                    vx: (Math.random() - 0.5) * 0.2,
+                    vy: (Math.random() - 0.5) * 0.2,
+                    size: 2
                 });
             }
         }
-
         function animate() {
-            // Clear only the moving particle layer
             ctx.clearRect(0, 0, canvas.width, canvas.height);
-            
-            particles.forEach((p, i) => {
+            ctx.fillStyle = "#6B705C";
+            ctx.strokeStyle = "rgba(107, 112, 92, 0.1)";
+            particles.forEach(p => {
                 p.x += p.vx; p.y += p.vy;
                 if (p.x < 0 || p.x > canvas.width) p.vx *= -1;
                 if (p.y < 0 || p.y > canvas.height) p.vy *= -1;
-
-                let dx = mouse.x - p.x;
-                let dy = mouse.y - p.y;
-                let dist = Math.sqrt(dx*dx + dy*dy);
-                let isGlowing = dist < mouse.radius;
-
                 ctx.beginPath();
-                ctx.arc(p.x, p.y, isGlowing ? 3 : p.size, 0, Math.PI * 2);
-                
-                // Color change to Teal/Gold
-                ctx.fillStyle = isGlowing ? 'rgba(212, 175, 55, 0.7)' : 'rgba(0, 128, 128, 0.15)';
-                if(isGlowing) {
-                    ctx.shadowBlur = 15;
-                    ctx.shadowColor = "#D4AF37";
-                } else {
-                    ctx.shadowBlur = 0;
-                }
+                ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
                 ctx.fill();
-
-                for (let j = i + 1; j < particles.length; j++) {
-                    let p2 = particles[j];
-                    let dx2 = p.x - p2.x;
-                    let dy2 = p.y - p2.y;
-                    let dist2 = Math.sqrt(dx2*dx2 + dy2*dy2);
-                    if (dist2 < 120) {
-                        let opacity = (1 - dist2/120) * (isGlowing ? 0.4 : 0.08);
-                        ctx.strokeStyle = isGlowing ? `rgba(212, 175, 55, ${opacity})` : `rgba(0, 128, 128, ${opacity})`;
-                        ctx.lineWidth = isGlowing ? 1.0 : 0.6;
-                        ctx.beginPath();
-                        ctx.moveTo(p.x, p.y);
-                        ctx.lineTo(p2.x, p2.y);
-                        ctx.stroke();
-                    }
-                }
             });
             requestAnimationFrame(animate);
         }
-
         window.addEventListener('resize', init);
         init();
         animate();
