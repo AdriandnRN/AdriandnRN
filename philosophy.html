@@ -1,90 +1,220 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Philosophy | Adrian Diaz</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;800&display=swap" rel="stylesheet">
     <style>
-        :root { --gold: #D4AF37; --text-dark: #222222; --white: #FFFFFF; }
-        body { background-color: var(--white); color: var(--text-dark); font-family: 'Arial', sans-serif; margin: 0; padding: 0; line-height: 1.6; }
+        :root {
+            --gold: #B8860B;
+            --gold-bright: #D4AF37;
+            --white: #FFFFFF;
+            --text-main: #1A1A1A;
+            --text-muted: #555;
+            --bg-light: #fdfdfd;
+        }
 
-        /* NAVEGACIÓN */
+        * { box-sizing: border-box; }
+
+        body, html {
+            margin: 0; padding: 0;
+            height: 100%; width: 100%;
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-light);
+            color: var(--text-main);
+            overflow: hidden;
+        }
+
+        /* FLOATING HOME BUTTON */
+        .floating-home {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 2000;
+            background: var(--gold);
+            color: white;
+            text-decoration: none;
+            padding: 12px 20px;
+            border-radius: 50px;
+            font-weight: 800;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            box-shadow: 0 4px 15px rgba(184, 134, 11, 0.3);
+            transition: 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .floating-home:hover {
+            background: var(--text-main);
+            transform: scale(1.05);
+        }
+
+        /* MAIN CONTAINER (Matching Index Structure) */
+        .container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: auto 1fr;
+            height: 100vh;
+            width: 100vw;
+        }
+
+        /* HEADER SECTION */
+        .header-profile {
+            grid-column: 1 / span 2;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 0 20px;
+            background: white;
+            border-bottom: 1px solid #eee;
+        }
+
+        .header-profile h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin: 0;
+            text-transform: uppercase;
+            letter-spacing: -1.5px;
+            color: var(--gold);
+        }
+
+        /* TOP NAVIGATION (Home Removed) */
         nav {
+            grid-column: 1 / span 2;
             text-align: center;
-            padding: 25px 0;
-            border-bottom: 4px solid var(--gold);
-            background-color: white;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            padding: 15px 0;
+            background: white;
+            border-bottom: 1px solid #eee;
         }
 
         nav a {
             text-decoration: none;
             color: var(--gold);
-            font-weight: bold;
+            font-weight: 700;
             margin: 0 15px;
             text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+            transition: 0.3s;
+        }
+
+        nav a:hover, .active {
+            color: var(--text-main);
+            border-bottom: 2px solid var(--text-main);
+        }
+
+        /* LEFT CONTENT: PHILOSOPHY TEXT */
+        .content-left {
+            padding: 60px;
+            overflow-y: auto;
+            border-right: 1px solid #eee;
+            background: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .section-title {
             font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--gold);
+            border-bottom: 2px solid var(--gold-bright);
             display: inline-block;
-            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            margin-bottom: 25px;
+            padding-bottom: 5px;
         }
 
-        nav a:hover { color: var(--text-dark); transform: scale(1.15); }
-        .active { color: var(--text-dark) !important; border-bottom: 2px solid var(--text-dark); }
-
-        main { max-width: 850px; margin: 60px auto; padding: 20px; }
-        h1 { color: var(--gold); text-align: center; font-size: 2.5rem; text-transform: uppercase; }
-
-        .philosophy-container {
-            background: #fffdf5;
-            padding: 40px;
-            border-radius: 15px;
-            border-left: 5px solid var(--gold);
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-            margin-top: 30px;
+        blockquote {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            color: var(--text-muted);
+            margin: 0;
+            font-style: italic;
+            border-left: 4px solid var(--gold-bright);
+            padding-left: 20px;
         }
 
-        .pdf-section { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; margin-top: 40px; }
+        /* RIGHT CONTENT: PDF BUTTONS */
+        .content-right {
+            padding: 60px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 20px;
+            background: #fafafa;
+        }
 
         .btn-pdf {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            padding: 15px 25px;
-            border: 2px solid var(--gold);
-            color: var(--gold);
             text-decoration: none;
-            font-weight: bold;
-            border-radius: 8px;
-            transition: 0.3s;
+            background: white;
+            color: var(--text-main);
+            padding: 25px 35px;
+            border-radius: 12px;
+            font-weight: 800;
+            font-size: 0.85rem;
             text-transform: uppercase;
+            letter-spacing: 2px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            border: 1px solid #eee;
+            transition: 0.3s ease;
         }
 
-        .btn-pdf:hover { background-color: var(--gold); color: white; transform: translateY(-3px); }
+        .btn-pdf:hover {
+            background: var(--gold);
+            color: white;
+            transform: translateX(10px);
+            box-shadow: 0 10px 25px rgba(184, 134, 11, 0.2);
+        }
+
+        .btn-pdf span { font-size: 1.2rem; }
+
+        @media (max-width: 900px) {
+            .container { grid-template-columns: 1fr; grid-template-rows: auto auto auto auto; height: auto; }
+            .header-profile, nav { grid-column: 1; }
+            .content-left { border-right: none; }
+            body { overflow: auto; }
+        }
     </style>
 </head>
 <body>
 
-    <nav>
-        <a href="index.html">Home</a>
-        <a href="philosophy.html" class="active">Philosophy</a>
-        <a href="clinical.html">Clinical</a>
-        <a href="credentials.html">Credentials</a>
-        <a href="contact.html">Contact</a>
-    </nav>
+    <a href="index.html" class="floating-home">
+        <span>←</span> HOME
+    </a>
 
-    <main>
-        <h1>Nursing Philosophy</h1>
-        <div class="philosophy-container">
-            <p>"My nursing philosophy is rooted in the integration of evidence-based practice, clinical excellence, and deep compassion."</p>
-            <div class="pdf-section">
-                <a href="Nursing_Philosophy1.pdf" class="btn-pdf" target="_blank">📄 View Philosophy 1</a>
-                <a href="Nursing_Philosophy2.pdf" class="btn-pdf" target="_blank">📄 View Philosophy 2</a>
-            </div>
-        </div>
-    </main>
+    <div class="container">
+        <header class="header-profile">
+            <h1>Nursing Philosophy</h1>
+        </header>
+
+        <nav>
+            <a href="philosophy.html" class="active">Philosophy</a>
+            <a href="clinical.html">Clinical</a>
+            <a href="credentials.html">Credentials</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+
+        <main class="content-left">
+            <div class="section-title">Core Values</div>
+            <blockquote>
+                "My nursing philosophy is rooted in the integration of evidence-based practice, clinical excellence, and deep compassion."
+            </blockquote>
+        </main>
+
+        <aside class="content-right">
+            <a href="Nursing_Philosophy1.pdf" class="btn-pdf" target="_blank">View Philosophy 1 <span>📄</span></a>
+            <a href="Nursing_Philosophy2.pdf" class="btn-pdf" target="_blank">View Philosophy 2 <span>📄</span></a>
+        </aside>
+    </div>
 
 </body>
 </html>
