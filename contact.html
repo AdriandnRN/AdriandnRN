@@ -4,183 +4,284 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact | Adrian Diaz</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
-            --gold: #D4AF37;
-            --text-dark: #222222;
+            --gold: #B8860B;
+            --gold-bright: #D4AF37;
             --white: #FFFFFF;
-            --light-grey: #f9f9f9;
+            --text-main: #1A1A1A;
+            --text-muted: #555;
+            --bg-light: #fdfdfd;
         }
 
-        body {
-            background-color: var(--white);
-            color: var(--text-dark);
-            font-family: 'Arial', sans-serif;
-            margin: 0;
-            padding: 0;
+        * { box-sizing: border-box; }
+
+        body, html {
+            margin: 0; padding: 0;
+            height: 100%; width: 100%;
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-light);
+            color: var(--text-main);
+            overflow: hidden;
+        }
+
+        /* HOME BUBBLE (Bottom Right) */
+        .home-bubble {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 2000;
+            width: 65px;
+            height: 65px;
+            background: var(--gold);
+            color: white;
+            text-decoration: none;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 0.75rem;
+            letter-spacing: 1px;
+            box-shadow: 0 10px 25px rgba(184, 134, 11, 0.4);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            animation: floatBubble 3s ease-in-out infinite;
+        }
+
+        .home-bubble:hover {
+            transform: scale(1.2) rotate(10deg);
+            background: var(--text-main);
+        }
+
+        @keyframes floatBubble {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-12px); }
+        }
+
+        /* MAIN CONTAINER */
+        .container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: auto auto 1fr;
+            height: 100vh;
+            width: 100vw;
+            background: white;
+            position: relative;
+        }
+
+        /* PULSE LINE EFFECT (Middle) */
+        .container::after {
+            content: "";
+            position: absolute;
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            width: 80%; height: 2px;
+            background: linear-gradient(90deg, transparent, var(--gold-bright), transparent);
+            opacity: 0.2;
+            z-index: 0;
+            animation: pulseLine 4s infinite;
+        }
+
+        @keyframes pulseLine {
+            0%, 100% { width: 60%; opacity: 0.1; }
+            50% { width: 90%; opacity: 0.4; }
+        }
+
+        /* HEADER & NAV */
+        .header-profile {
+            grid-column: 1 / span 2;
             display: flex;
             flex-direction: column;
-            min-height: 100vh;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 0 20px;
+            background: white;
+            border-bottom: 1px solid #eee;
         }
 
-        /* NAVIGATION */
+        .header-profile h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin: 0;
+            text-transform: uppercase;
+            letter-spacing: -1.5px;
+            color: var(--gold);
+        }
+
         nav {
+            grid-column: 1 / span 2;
             text-align: center;
-            padding: 25px 0;
-            border-bottom: 4px solid var(--gold);
-            background-color: white;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            padding: 15px 0;
+            background: white;
+            border-bottom: 1px solid #eee;
         }
 
         nav a {
             text-decoration: none;
             color: var(--gold);
-            font-weight: bold;
+            font-weight: 700;
             margin: 0 15px;
             text-transform: uppercase;
-            font-size: 0.9rem;
-            display: inline-block;
+            font-size: 0.85rem;
             transition: 0.3s;
         }
 
-        nav a:hover {
-            color: var(--text-dark);
-            transform: scale(1.1);
+        nav a:hover, .active {
+            color: var(--text-main);
+            border-bottom: 2px solid var(--text-main);
         }
 
-        .active {
-            color: var(--text-dark) !important;
-            border-bottom: 2px solid var(--text-dark);
-        }
-
-        main {
-            flex: 1;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 40px 20px;
-        }
-
-        .contact-card {
-            background: var(--light-grey);
-            width: 100%;
-            max-width: 500px;
-            padding: 50px;
-            border-radius: 20px;
-            text-align: center;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-            border-top: 5px solid var(--gold);
-        }
-
-        h1 {
-            color: var(--gold);
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-bottom: 30px;
-        }
-
-        .contact-info {
-            margin-bottom: 40px;
-        }
-
-        .contact-info p {
-            font-size: 1.1rem;
-            margin: 20px 0;
-            color: #444;
-        }
-
-        .contact-info strong {
-            color: var(--text-dark);
-            display: block;
-            text-transform: uppercase;
-            font-size: 0.8rem;
-            letter-spacing: 1px;
-            margin-bottom: 5px;
-        }
-
-        .button-group {
+        /* CONTENT AREAS */
+        .content-left, .content-right {
+            padding: 40px 60px;
+            overflow-y: auto;
+            background: white;
             display: flex;
             flex-direction: column;
-            gap: 15px;
-            align-items: center;
+            justify-content: center;
+            gap: 25px;
+            z-index: 1;
+            perspective: 1200px;
         }
 
-        @media (min-width: 480px) {
-            .button-group {
-                flex-direction: row;
-                justify-content: center;
-            }
-        }
+        .content-left { border-right: 1px solid #eee; }
+        .content-right { background: #fafafa; }
 
-        .btn {
-            display: inline-block;
+        /* 3D INDEPENDENT CONTACT CARD */
+        .contact-card {
+            background: #fff;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            border: 1px solid #f0f0f0;
             text-decoration: none;
-            padding: 15px 30px;
-            border-radius: 50px;
-            font-weight: bold;
-            transition: 0.3s;
-            min-width: 160px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            transform-style: preserve-3d;
+            transition: transform 0.1s ease-out, box-shadow 0.3s ease;
+            cursor: pointer;
         }
 
-        .btn-email {
+        .contact-card:hover {
+            box-shadow: 0 25px 60px rgba(184, 134, 11, 0.2);
+            border-color: var(--gold-bright);
+        }
+
+        .contact-card strong {
+            display: block;
+            color: var(--gold);
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+            transform: translateZ(30px);
+        }
+
+        .contact-card h3 {
+            margin: 0;
+            color: var(--text-main);
+            font-size: 1.2rem;
+            transform: translateZ(50px);
+        }
+
+        .btn-action {
+            margin-top: 20px;
+            color: var(--gold);
+            font-weight: 800;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            border: 1.5px solid var(--gold);
+            padding: 12px 25px;
+            border-radius: 50px;
+            transition: 0.3s;
+            transform: translateZ(60px);
+            text-decoration: none;
+        }
+
+        .contact-card:hover .btn-action {
             background-color: var(--gold);
             color: white;
-            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+            transform: translateZ(70px) scale(1.1);
         }
 
-        .btn-call {
-            background-color: var(--text-dark);
-            color: white;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-        }
-
-        .btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 6px 20px rgba(0,0,0,0.2);
-            opacity: 0.9;
-        }
-
-        footer {
-            text-align: center;
-            padding: 30px;
-            color: #999;
-            font-size: 0.8rem;
+        @media (max-width: 900px) {
+            .container { grid-template-columns: 1fr; grid-template-rows: auto auto auto auto; height: auto; }
+            .content-left { border-right: none; }
+            .contact-card { transform: none !important; }
+            body { overflow: auto; }
         }
     </style>
 </head>
 <body>
 
-    <nav>
-        <a href="index.html">Home</a>
-        <a href="philosophy.html">Philosophy</a>
-        <a href="clinical.html">Clinical</a>
-        <a href="credentials.html">Credentials</a>
-        <a href="contact.html" class="active">Contact</a>
-    </nav>
+    <a href="index.html" class="home-bubble">HOME</a>
 
-    <main>
-        <div class="contact-card">
+    <div class="container">
+        <header class="header-profile">
             <h1>Get In Touch</h1>
-            
-            <div class="contact-info">
-                <p><strong>Location</strong> Miami Springs, Florida</p>
-                <p><strong>Email</strong> adriandn2022@gmail.com</p>
-                <p><strong>Phone</strong> (786) 302-3112</p>
+        </header>
+
+        <nav>
+            <a href="philosophy.html">Philosophy</a>
+            <a href="clinical.html">Clinical</a>
+            <a href="credentials.html">Credentials</a>
+            <a href="contact.html" class="active">Contact</a>
+        </nav>
+
+        <main class="content-left">
+            <div class="contact-card tilt-card">
+                <strong>Location</strong>
+                <h3>Miami Springs, Florida</h3>
             </div>
 
-            <div class="button-group">
-                <a href="mailto:adriandn2022@gmail.com" class="btn btn-email">Email Me</a>
-                <a href="tel:7863023112" class="btn btn-call">Call Me</a>
+            <div class="contact-card tilt-card">
+                <strong>Current Status</strong>
+                <h3>Registered Nurse (RN)</h3>
             </div>
-        </div>
-    </main>
+        </main>
 
-    <footer>
-        © 2026 Adrian Diaz | Professional Nursing Portfolio
-    </footer>
+        <aside class="content-right">
+            <a href="mailto:adriandn2022@gmail.com" class="contact-card tilt-card">
+                <strong>Email Address</strong>
+                <h3>adriandn2022@gmail.com</h3>
+                <span class="btn-action">Email Me</span>
+            </a>
 
+            <a href="tel:7863023112" class="contact-card tilt-card">
+                <strong>Phone Number</strong>
+                <h3>(786) 302-3112</h3>
+                <span class="btn-action">Call Me</span>
+            </a>
+        </aside>
+    </div>
+
+    <script>
+        const cards = document.querySelectorAll('.tilt-card');
+
+        cards.forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                if (window.innerWidth > 900) {
+                    const rect = card.getBoundingClientRect();
+                    const x = e.clientX - rect.left;
+                    const y = e.clientY - rect.top;
+                    
+                    const centerX = rect.width / 2;
+                    const centerY = rect.height / 2;
+                    
+                    const rotateX = (centerY - y) / 12;
+                    const rotateY = (x - centerX) / 12;
+                    
+                    card.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.06)`;
+                }
+            });
+
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = `rotateX(0deg) rotateY(0deg) scale(1)`;
+            });
+        });
+    </script>
 </body>
 </html>
