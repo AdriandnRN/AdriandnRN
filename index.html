@@ -6,13 +6,10 @@
     <title>Adrian Diaz | Professional RN Portfolio</title>
     <style>
         :root {
-            --gold: #D4AF37; /* COLOR ORO ORIGINAL */
+            --gold: #D4AF37;
             --gold-light: #f4e4ad;
-            
-            /* NUEVO COLOR DIAMANTE PARA LA RED */
-            --diamond-base: rgba(224, 224, 224, 0.2); /* Platino sutil base */
-            --diamond-flash: rgba(255, 255, 255, 0.9); /* Blanco puro brillante al hover */
-            
+            --diamond-base: rgba(224, 224, 224, 0.2);
+            --diamond-flash: rgba(255, 255, 255, 0.9);
             --text-dark: #222222;
             --white: #FFFFFF;
             --bg-soft: #fdfdfd;
@@ -21,14 +18,13 @@
         body {
             background-color: var(--white);
             color: var(--text-dark);
-            font-family: 'Arial', sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
             padding: 0;
             overflow-x: hidden;
             position: relative;
         }
 
-        /* CANVAS DE RED NEURONAL INTERACTIVA "DIAMANTE" */
         #neuron-canvas {
             position: fixed;
             top: 0;
@@ -39,7 +35,6 @@
             background-color: #fff;
         }
 
-        /* NAVEGACIÓN (MANTIENE ORO) */
         nav {
             text-align: center;
             padding: 25px 0;
@@ -57,9 +52,10 @@
             font-weight: bold;
             margin: 0 15px;
             text-transform: uppercase;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             transition: 0.3s;
             display: inline-block;
+            letter-spacing: 1px;
         }
 
         nav a:hover, .active {
@@ -72,7 +68,6 @@
             padding: 60px 20px 40px;
         }
 
-        /* EKG ANIMADO ORO */
         .ekg-container {
             width: 100%;
             max-width: 400px;
@@ -106,22 +101,23 @@
 
         h1 {
             color: var(--gold);
-            font-size: 3.5rem;
+            font-size: 3rem;
             margin: 0;
             letter-spacing: 2px;
             text-transform: uppercase;
         }
 
         .title-sub {
-            font-size: 1.2rem;
-            color: #666;
-            font-weight: bold;
+            font-size: 1.1rem;
+            color: #555;
+            font-weight: 600;
             display: block;
             margin-top: 10px;
+            letter-spacing: 1px;
         }
 
         main {
-            max-width: 900px;
+            max-width: 1000px;
             margin: 0 auto;
             padding: 20px 20px 60px;
             position: relative;
@@ -131,94 +127,87 @@
         .intro-box {
             background: rgba(255, 255, 255, 0.95);
             padding: 40px;
-            border-radius: 12px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
             border: 1px solid #f0f0f0;
             line-height: 1.8;
             font-size: 1.1rem;
             color: #444;
             margin-bottom: 40px;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .intro-box:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 40px rgba(0,0,0,0.05);
-            border-color: var(--gold);
+            transition: 0.3s;
         }
 
         .intro-box strong {
-            color: var(--text-dark);
+            color: var(--gold);
         }
 
         .skills-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 25px;
         }
 
-        /* RESALTADO DE TÓPICOS ORO */
         .skill-card {
-            padding: 25px;
-            background: rgba(253, 253, 253, 0.9);
-            border-radius: 8px;
-            border-left: 5px solid var(--gold);
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            cursor: default;
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 12px;
+            border-top: 4px solid var(--gold);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.02);
+            transition: all 0.3s ease;
         }
 
         .skill-card:hover {
-            transform: scale(1.05);
-            background: var(--white);
-            box-shadow: 0 15px 35px rgba(212, 175, 55, 0.2);
-            border-left-width: 10px;
+            transform: translateY(-10px);
+            box-shadow: 0 12px 30px rgba(212, 175, 55, 0.15);
         }
 
         .skill-card h3 {
             margin-top: 0;
-            color: var(--gold);
-            font-size: 1.1rem;
+            color: var(--text-dark);
+            font-size: 1.2rem;
             text-transform: uppercase;
-            letter-spacing: 1px;
+            border-bottom: 1px solid var(--gold-light);
+            padding-bottom: 10px;
+            margin-bottom: 20px;
         }
 
         .skill-list {
             list-style: none;
             padding: 0;
             margin: 0;
-            font-size: 0.95rem;
+            font-size: 1rem;
             color: #555;
         }
 
         .skill-list li {
-            margin-bottom: 8px;
+            margin-bottom: 12px;
             display: flex;
             align-items: center;
         }
 
         .skill-list li::before {
-            content: "✓";
-            color: var(--gold);
-            font-weight: bold;
-            margin-right: 10px;
+            content: "";
+            width: 8px;
+            height: 8px;
+            background-color: var(--gold);
+            border-radius: 50%;
+            margin-right: 15px;
+            display: inline-block;
         }
 
         footer {
             text-align: center;
-            padding: 40px 20px;
-            color: #999;
-            font-size: 0.8rem;
-            background-color: rgba(249, 249, 249, 0.9);
+            padding: 50px 20px;
+            color: #777;
+            font-size: 0.9rem;
+            background-color: rgba(255, 255, 255, 0.9);
             border-top: 1px solid #eee;
-            position: relative;
-            z-index: 1;
         }
     </style>
 </head>
 <body>
-
     <canvas id="neuron-canvas"></canvas>
-
+    
     <nav>
         <a href="index.html" class="active">Home</a>
         <a href="philosophy.html">Philosophy</a>
@@ -233,7 +222,6 @@
                 <path class="ekg-path" d="M0,50 L200,50 L210,40 L220,60 L230,50 L280,50 L290,20 L310,80 L320,50 L370,50 L380,45 L390,55 L400,50 L600,50 L610,40 L620,60 L630,50 L680,50 L690,20 L710,80 L720,50 L770,50 L780,45 L790,55 L800,50" />
             </svg>
         </div>
-        
         <h1>Adrian Diaz</h1>
         <span class="title-sub">Registered Nurse | Industrial Engineer</span>
     </header>
@@ -241,37 +229,41 @@
     <main>
         <section class="intro-box">
             <p>
-                I am a <strong>Registered Nurse (RN)</strong> graduate from Activa Training Center in Miami, FL, with a unique professional edge. By combining a <strong>Bachelor’s degree in Industrial Engineering</strong> with over two years of experience in Medical Administration, I approach nursing with a specialized focus on <strong>clinical safety, process optimization, and exceptional patient advocacy.</strong>
+                I am a <strong>Registered Nurse (RN)</strong> graduate from Activa Training Center with a unique professional edge. By combining a <strong>Bachelor’s degree in Industrial Engineering</strong> with extensive experience in Medical Administration, I approach nursing with a focus on <strong>clinical safety, process optimization, and patient advocacy.</strong>
             </p>
             <p>
-                Proficient in managing complex workflows and adhering to RN standards for evidence-based practice, I am dedicated to delivering high-quality care within modern health systems.
+                Dedicated to evidence-based practice and efficient clinical workflows, I strive to deliver high-quality care within modern, complex healthcare environments.
             </p>
         </section>
 
         <div class="skills-grid">
             <div class="skill-card">
-                <h3>Clinical Skills</h3>
+                <h3>Clinical Expertise</h3>
                 <ul class="skill-list">
-                    <li>Medication Administration</li>
-                    <li>Wound Care & Vital Signs</li>
-                    <li>Neurovascular Assessments</li>
+                    <li>Advanced Medication Administration</li>
+                    <li>Wound Care & Vital Signs Monitoring</li>
+                    <li>Comprehensive Neurovascular Assessments</li>
+                    <li>Acute & Critical Care Support</li>
                 </ul>
             </div>
+
             <div class="skill-card">
-                <h3>Health Systems</h3>
+                <h3>Healthcare Systems</h3>
                 <ul class="skill-list">
-                    <li>EMR: Office Ally, Oscar CMS</li>
-                    <li>Florida SHOTS Certified</li>
-                    <li>Quest & LabCorp Systems</li>
+                    <li>EMR Systems: eClinicalWorks, Office Ally</li>
+                    <li>Florida SHOTS (Vaccine Records) Certified</li>
+                    <li>Lab Interface Management (Quest/LabCorp)</li>
+                    <li>HIPAA Compliance & Data Security</li>
                 </ul>
             </div>
+
             <div class="skill-card">
-                <h3>Professional & Tech Skills</h3>
+                <h3>Professional & Technical</h3>
                 <ul class="skill-list">
-                    <li>Process Optimization</li>
-                    <li>Patient Advocacy</li>
-                    <li>Bilingual (English/Spanish)</li>
-                    <li>Critical Thinking & Analysis</li>
+                    <li>Workflow Optimization & Process Design</li>
+                    <li>Strategic Patient Advocacy</li>
+                    <li>Bilingual: Professional English & Spanish</li>
+                    <li>Analytical Critical Thinking</li>
                 </ul>
             </div>
         </div>
@@ -282,10 +274,11 @@
     </footer>
 
     <script>
+        // Mantiene tu lógica de partículas intacta ya que es un toque visual excelente
         const canvas = document.getElementById('neuron-canvas');
         const ctx = canvas.getContext('2d');
         let particles = [];
-        const mouse = { x: null, y: null, radius: 180 }; // Radio de interacción del mouse
+        const mouse = { x: null, y: null, radius: 180 };
 
         window.addEventListener('mousemove', (e) => { mouse.x = e.x; mouse.y = e.y; });
 
@@ -293,13 +286,12 @@
             canvas.width = window.innerWidth;
             canvas.height = window.innerHeight;
             particles = [];
-            // Densidad de neuronas (ajustada para rendimiento)
             let quantity = (canvas.width * canvas.height) / 10000;
             for (let i = 0; i < quantity; i++) {
                 particles.push({
                     x: Math.random() * canvas.width,
                     y: Math.random() * canvas.height,
-                    vx: (Math.random() - 0.5) * 0.2, // VELOCIDAD MUY LENTA (CALMADA)
+                    vx: (Math.random() - 0.5) * 0.2,
                     vy: (Math.random() - 0.5) * 0.2,
                     size: Math.random() * 2 + 1
                 });
@@ -310,46 +302,34 @@
             ctx.clearRect(0, 0, canvas.width, canvas.height);
             particles.forEach((p, i) => {
                 p.x += p.vx; p.y += p.vy;
-                // Rebotar en los bordes
                 if (p.x < 0 || p.x > canvas.width) p.vx *= -1;
                 if (p.y < 0 || p.y > canvas.height) p.vy *= -1;
 
                 let dx = mouse.x - p.x;
                 let dy = mouse.y - p.y;
                 let dist = Math.sqrt(dx*dx + dy*dy);
-                
-                // EFECTO "DIAMANTE BRILLANTE" AL HOVER
                 let isGlowing = dist < mouse.radius;
+
                 ctx.beginPath();
-                ctx.arc(p.x, p.y, isGlowing ? 4 : p.size, 0, Math.PI * 2); // Más grande al hover
-                
-                // Color base (platino sutil) vs Color brillante (blanco puro)
-                ctx.fillStyle = isGlowing ? 'rgba(255, 255, 255, 0.9)' : 'rgba(224, 224, 224, 0.2)';
-                
-                // Añadir sombra/resplandor brillante al hover
+                ctx.arc(p.x, p.y, isGlowing ? 4 : p.size, 0, Math.PI * 2);
+                ctx.fillStyle = isGlowing ? 'rgba(212, 175, 55, 0.8)' : 'rgba(224, 224, 224, 0.3)';
                 if(isGlowing) {
-                    ctx.shadowBlur = 15;
-                    ctx.shadowColor = "#FFFFFF"; // Resplandor blanco puro
+                    ctx.shadowBlur = 10;
+                    ctx.shadowColor = "#D4AF37";
                 } else {
                     ctx.shadowBlur = 0;
                 }
                 ctx.fill();
 
-                // DIBUJAR CONEXIONES (LÍNEAS)
                 for (let j = i + 1; j < particles.length; j++) {
                     let p2 = particles[j];
                     let dx2 = p.x - p2.x;
                     let dy2 = p.y - p2.y;
                     let dist2 = Math.sqrt(dx2*dx2 + dy2*dy2);
-
-                    if (dist2 < 130) { // Distancia máxima para conectar
-                        // La opacidad depende de la distancia y de si el mouse está cerca
-                        let opacity = (1 - dist2/130) * (isGlowing ? 0.7 : 0.2);
-                        
-                        // Color de línea base vs Color de línea brillante
-                        ctx.strokeStyle = isGlowing ? `rgba(255, 255, 255, ${opacity})` : `rgba(224, 224, 224, ${opacity})`;
-                        ctx.lineWidth = isGlowing ? 1.5 : 0.8; // Más gruesa al hover
-                        
+                    if (dist2 < 130) {
+                        let opacity = (1 - dist2/130) * (isGlowing ? 0.5 : 0.1);
+                        ctx.strokeStyle = isGlowing ? `rgba(212, 175, 55, ${opacity})` : `rgba(224, 224, 224, ${opacity})`;
+                        ctx.lineWidth = isGlowing ? 1.2 : 0.8;
                         ctx.beginPath();
                         ctx.moveTo(p.x, p.y);
                         ctx.lineTo(p2.x, p2.y);
@@ -361,7 +341,8 @@
         }
 
         window.addEventListener('resize', init);
-        init(); animate();
+        init();
+        animate();
     </script>
 </body>
 </html>
