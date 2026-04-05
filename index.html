@@ -15,30 +15,24 @@
             --bg-light: #fdfdfd;
         }
 
-        * {
-            box-sizing: border-box;
-        }
+        * { box-sizing: border-box; }
 
         body, html {
-            margin: 0;
-            padding: 0;
-            height: 100%;
-            width: 100%;
+            margin: 0; padding: 0;
+            height: 100%; width: 100%;
             font-family: 'Inter', sans-serif;
             background-color: var(--bg-light);
             color: var(--text-main);
         }
 
-        /* MAIN WRAPPER - FULL SCREEN */
         .container {
             display: grid;
-            grid-template-columns: 1fr 1fr; /* Two columns for content */
-            grid-template-rows: auto 1fr;  /* Top row for photo, bottom for text */
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: auto 1fr;
             height: 100vh;
             width: 100vw;
         }
 
-        /* TOP SECTION: PROFILE PHOTO CENTERED */
         .header-profile {
             grid-column: 1 / span 2;
             display: flex;
@@ -50,8 +44,7 @@
         }
 
         .profile-img {
-            width: 160px;
-            height: 160px;
+            width: 160px; height: 160px;
             border-radius: 50%;
             border: 4px solid var(--white);
             box-shadow: 0 10px 30px rgba(0,0,0,0.1);
@@ -75,7 +68,6 @@
             letter-spacing: 3px;
         }
 
-        /* LEFT SECTION: MISSION & INTRO */
         .content-left {
             padding: 60px;
             overflow-y: auto;
@@ -83,14 +75,10 @@
             background: white;
         }
 
-        /* RIGHT SECTION: BUTTONS */
-        .content-right {
-            padding: 60px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            gap: 20px;
-            background: #fafafa;
+        /* --- INTERACTIVE SECTIONS --- */
+        .interactive-section {
+            margin-bottom: 30px;
+            cursor: pointer;
         }
 
         .section-title {
@@ -100,18 +88,47 @@
             color: var(--gold);
             border-bottom: 2px solid var(--gold-bright);
             display: inline-block;
-            margin-bottom: 20px;
+            margin-bottom: 10px;
             padding-bottom: 5px;
+            transition: color 0.3s ease;
+        }
+
+        /* Hidden description state */
+        .description {
+            max-height: 0;
+            overflow: hidden;
+            opacity: 0;
+            transition: max-height 0.6s ease, opacity 0.4s ease, margin-top 0.3s ease;
+            margin-top: 0;
+        }
+
+        /* Show description on hover */
+        .interactive-section:hover .description {
+            max-height: 500px; /* Large enough to fit text */
+            opacity: 1;
+            margin-top: 15px;
+        }
+
+        .interactive-section:hover .section-title {
+            color: var(--text-main);
         }
 
         p {
             font-size: 1rem;
             line-height: 1.8;
             color: var(--text-muted);
-            margin-bottom: 30px;
+            margin: 0;
         }
 
-        /* BUTTONS STYLING */
+        .content-right {
+            padding: 60px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 20px;
+            background: #fafafa;
+        }
+
         .nav-button {
             text-decoration: none;
             background: white;
@@ -137,20 +154,15 @@
             box-shadow: 0 10px 25px rgba(184, 134, 11, 0.2);
         }
 
-        .nav-button span {
-            font-size: 1.2rem;
-        }
-
-        /* RESPONSIVE FOR MOBILE */
         @media (max-width: 900px) {
             .container {
                 grid-template-columns: 1fr;
                 grid-template-rows: auto auto auto;
                 height: auto;
-                overflow-y: visible;
             }
             .header-profile { grid-column: 1; }
             .content-left { border-right: none; }
+            .description { opacity: 1; max-height: none; } /* Always show on mobile for better UX */
         }
     </style>
 </head>
@@ -164,18 +176,26 @@
         </header>
 
         <main class="content-left">
-            <div class="section-title">Professional Mission</div>
-            <p>
-                As a dedicated Registered Nurse, my mission is to provide proactive patient advocacy and maintain high standards of clinical continuity. I focus on merging sharp clinical observation with compassionate communication to ensure patient safety and improve outcomes in complex medical environments.
-            </p>
+            <div class="interactive-section">
+                <div class="section-title">Professional Mission (Hover to view)</div>
+                <div class="description">
+                    <p>
+                        As a dedicated Registered Nurse, my mission is to provide proactive patient advocacy and maintain high standards of clinical continuity. I focus on merging sharp clinical observation with compassionate communication to ensure patient safety and improve outcomes in complex medical environments.
+                    </p>
+                </div>
+            </div>
 
-            <div class="section-title">Professional Introduction</div>
-            <p>
-                My name is Adrian Diaz, and I am a Registered Nurse based in Miami, Florida. I am passionate about utilizing my clinical expertise and empathetic approach in specialized areas such as Medical-Surgical, Emergency, and ICU care. I value teamwork and evidence-based practice to deliver the highest level of patient-centered service.
-            </p>
-            <p>
-                I chose nursing because of the profound impact that consistent, bedside monitoring has on a patient's recovery. By establishing strong professional bonds, I can detect subtle clinical changes early, allowing for fast interventions that prevent complications and ensure the best possible care.
-            </p>
+            <div class="interactive-section">
+                <div class="section-title">Professional Introduction (Hover to view)</div>
+                <div class="description">
+                    <p>
+                        My name is Adrian Diaz, and I am a Registered Nurse based in Miami, Florida. I am passionate about utilizing my clinical expertise and empathetic approach in specialized areas such as Medical-Surgical, Emergency, and ICU care. I value teamwork and evidence-based practice to deliver the highest level of patient-centered service.
+                    </p>
+                    <p style="margin-top: 15px;">
+                        I chose nursing because of the profound impact that consistent, bedside monitoring has on a patient's recovery. By establishing strong professional bonds, I can detect subtle clinical changes early, allowing for fast interventions that prevent complications and ensure the best possible care.
+                    </p>
+                </div>
+            </div>
         </main>
 
         <aside class="content-right">
