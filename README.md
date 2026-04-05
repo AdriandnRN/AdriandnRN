@@ -1,72 +1,54 @@
-Professional Profile
+# Adrian Diaz | Registered Nurse & Industrial Engineer 🏥⚙️
 
-I am a Registered Nurse (RN) graduated from Activa Training Center in Miami, FL. My professional background is unique: I combine a Bachelor’s degree in Industrial Engineering with over two years of experience in Medical Administration. This allows me to approach nursing with a focus on clinical safety, process optimization, and exceptional patient advocacy. I am highly proficient in managing complex patient workflows and adhering to RN standards for evidence-based practice.
----
-
-📁 Professional Portfolio & Evidence
-*Click to view my professional documentation:*
-
-* 📄 **[Professional Resume / CV](./Adrian_Diaz_RN_Resume.pdf)**
-* 📋 **[Clinical Skills Competency Checklist](./Clinical_Skills_Checklist.pdf)** - Evidence of mastered skills (Apgar, IV, Wound Care).
-* 📝 **Clinical Reflective Journals** - Insights from rotations at Select Specialty Hospital and Palazzo Mental Health.
-  * [Journal: Select Specialty Hospital](./Clinical_Reflective_Journals.pdf)
-  * [Journal: Palazzo Mental Health](./Reflective%20Journal%20Adrian.pdf)
-  
-* 🎓 **Nursing Philosophy Statement** - My commitment to the nursing profession.
-  * [Philosophy Paper - Part 1](./Nursing_Philosophy1.pdf)
-  * [Philosophy Paper - Part 2](./Nursing_Philosophy2.pdf)
-
-## 📚 Education
-
-* **Associate Degree in Nursing (ADN)**
-    * **Activa Training Center**, Miami, FL | Completion: April 2026
-    * *Clinical Focus:* Critical care, Mental Health, and Pediatric nursing.
-* **Bachelor of Science in Industrial Engineering**
-    * University of Pinar del Río, Cuba
-
----
-
-## 🏥 Clinical Experience & Rotations
-
-### **Student Nurse | Activa Training Center**
-* **Select Specialty Hospital (Miami Lakes):** Provided care for complex patients, focusing on therapeutic communication, medication administration, and psychological safety for patients with PTSD and Schizophrenia.
-* **Palazzo Mental Health:** Gained hands-on experience in community mental health, addressing trauma-informed care and holistic support.
-* **Maternity & Pediatrics:** Proficient in newborn assessments (APGAR), metabolic screening, and pediatric physical assessments.
-
-### **Medical Front Desk Receptionist | Barroso Medical Services LLC**
-*2023 – Present*
-* Manage high-volume patient workflows and insurance authorizations (Florida Blue, Availity, Sunshine Health).
-* Expert management of **Florida SHOTS** (vaccine records) and school forms (680/3040).
-* Ensure full **HIPAA compliance** in records management and patient communications.
-
----
-
-## 🛠️ Skills & Competencies
-
-| Clinical Skills | Professional & Tech Skills | Health Systems |
-| :--- | :--- | :--- |
-| ✓ Basic Life Support (BLS) | ✓ Bilingual (English & Spanish) | ✓ Florida SHOTS Certified |
-| ✓ Medication Administration | ✓ Critical Thinking & Analysis | ✓ EMR: Office Ally, Oscar CMS |
-| ✓ Wound Care & Vital Signs | ✓ Patient Advocacy | ✓ Insurance Portals (Availity) |
-| ✓ Neurovascular Assessments | ✓ Problem-Solving | ✓ Lab Systems (Quest, LabCorp) |
-
----
-
-## 🏆 Certifications
-
-* **Basic Life Support (BLS)** – American Heart Association (AHA)
-* **Florida SHOTS Certified User**
-* **HIPAA Compliance Training**
-* **Advanced NCLEX-RN Prep** – Focused on ATI Med-Surg and Maternal-Newborn standards.
-
----
-
-## 📞 Let's Connect!
-
-* 📧 **Email:** adriandn2022@gmail.com
-* 📱 **Phone:** (786) 218-7679
-
----
 <p align="center">
-  <img src="https://komarev.com/ghpvc/?username=AdriandnRN&color=blue&style=flat-square&label=Profile+Views" alt="Visitor Count" />
+  <img src="https://img.shields.io/badge/RN-Registered%20Nurse-red?style=for-the-badge&logo=redcross" />
+  <img src="https://img.shields.io/badge/BS-Industrial%20Engineering-blue?style=for-the-badge&logo=engine" />
+  <img src="https://img.shields.io/badge/Bilingual-English%20%26%20Spanish-green?style=for-the-badge" />
+</p>
+
+### 🌟 Professional Profile
+I am a **Registered Nurse (RN)** graduate from [Activa Training Center](https://adriandnrn.github.io/AdriandnRN/index.html) with a unique professional edge. By combining a **Bachelor’s degree in Industrial Engineering** with extensive experience in Medical Administration, I approach nursing with a specialized focus on **clinical safety, process optimization, and exceptional patient advocacy.**
+
+---
+
+### 📁 Professional Portfolio & Evidence
+*Click the icons below to view my professional documentation and clinical evidence:*
+
+| Document | Description |
+| :--- | :--- |
+| 📄 **[Professional Resume](Adrian_Diaz_RN_Resume.pdf)** | Detailed summary of my background, skills, and clinical rotations. |
+| 📋 **[Skills Competency Checklist](Clinical_Skills_Checklist.pdf)** | Evidence of mastered skills including IV therapy, Wound Care, and APGAR. |
+| 📝 **[Clinical Reflective Journals](Clinical_Reflective_Journals.pdf)** | Insights from rotations at Select Specialty Hospital and Palazzo Mental Health. |
+| 🎓 **[Nursing Philosophy](Nursing_Philosophy1.pdf)** | My core values regarding humanized care and professional ethics. |
+
+---
+
+### 🛠️ Core Competencies
+
+#### **Clinical Excellence**
+- **Life Support:** Basic Life Support (BLS) - American Heart Association.
+- **Acute Care:** Medication administration, neurovascular assessments, and vital signs monitoring.
+- **Mental Health:** Trauma-informed care and psychological safety protocols.
+
+#### **Systems & Optimization (The Engineering Edge)**
+- **EMR/EHR Proficiency:** Expert in **eClinicalWorks (eCW)**, Office Ally, and Oscar CMS.
+- **Health Logistics:** Managing patient workflows, Florida SHOTS (vaccine records), and insurance portals (Availity).
+- **Process Improvement:** Applying engineering methodologies to reduce clinical errors and improve efficiency.
+
+---
+
+### 🏥 Clinical Experience & Training
+- **Select Specialty Hospital:** High-acuity patient care and complex medication management.
+- **Palazzo Mental Health:** Community-based mental health support and holistic care.
+- **Barroso Medical Services:** Managing high-volume workflows and ensuring strict **HIPAA compliance**.
+
+---
+
+### 📞 Let's Connect
+<a href="mailto:adriandn2022@gmail.com"><img src="https://img.shields.io/badge/Email-adriandn2022%40gmail.com-blue?style=flat-square&logo=gmail"></a>
+<a href="tel:7862187679"><img src="https://img.shields.io/badge/Phone-(786)%20218--7679-green?style=flat-square&logo=whatsapp"></a>
+
+---
+<p align="right">
+  <img src="https://komarev.com/ghpvc/?username=AdriandnRN&color=blue" alt="Visitor Count" />
 </p>
