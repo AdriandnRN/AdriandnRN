@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Professional Development | Adrian Diaz</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --gold: #B8860B;
+            --gold-bright: #D4AF37;
+            --white: #FFFFFF;
+            --text-main: #1A1A1A;
+            --text-muted: #555;
+            --bg-light: #fdfdfd;
+        }
+
+        * { box-sizing: border-box; }
+
+        body, html {
+            margin: 0; padding: 0;
+            height: 100%; width: 100%;
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-light);
+            color: var(--text-main);
+            overflow: hidden;
+        }
+
+        /* HOME BUBBLE */
+        .home-bubble {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 2000;
+            width: 65px;
+            height: 65px;
+            background: var(--gold);
+            color: white;
+            text-decoration: none;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 0.75rem;
+            letter-spacing: 1px;
+            box-shadow: 0 10px 25px rgba(184, 134, 11, 0.4);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            animation: floatBubble 3s ease-in-out infinite;
+        }
+
+        .home-bubble:hover {
+            transform: scale(1.2) rotate(10deg);
+            background: var(--text-main);
+        }
+
+        @keyframes floatBubble {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-12px); }
+        }
+
+        /* MAIN CONTAINER */
+        .container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: auto auto 1fr;
+            height: 100vh;
+            width: 100vw;
+            background: white;
+            position: relative;
+        }
+
+        /* MEDICAL PULSE LINE */
+        .container::after {
+            content: "";
+            position: absolute;
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            width: 80%; height: 2px;
+            background: linear-gradient(90deg, transparent, var(--gold-bright), transparent);
+            opacity: 0.2;
+            z-index: 0;
+            animation: pulseLine 4s infinite;
+        }
+
+        @keyframes pulseLine {
+            0%, 100% { width: 60%; opacity: 0.1; }
+            50% { width: 90%; opacity: 0.4; }
+        }
+
+        .header-profile {
+            grid-column: 1 / span 2;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 0 20px;
+            background: white;
+            border-bottom: 1px solid #eee;
+        }
+
+        .header-profile h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin: 0;
+            text-transform: uppercase;
+            letter-spacing: -1.5px;
+            color: var(--gold);
+        }
+
+        nav {
+            grid-column: 1 / span 2;
+            text-align: center;
+            padding: 15px 0;
+            background: white;
+            border-bottom: 1px solid #eee;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--gold);
+            font-weight: 700;
+            margin: 0 15px;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            transition: 0.3s;
+        }
+
+        nav a:hover, .active {
+            color: var(--text-main);
+            border-bottom: 2px solid var(--text-main);
+        }
+
+        /* CONTENT AREAS */
+        .content-left, .content-right {
+            padding: 40px 60px;
+            background: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            z-index: 1;
+            perspective: 1200px;
+        }
+
+        .content-left { border-right: 1px solid #eee; }
+        .content-right { background: #fafafa; }
+
+        /* 3D TILT CARD */
+        .dev-card {
+            background: #fff;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.06);
+            border: 1px solid #f0f0f0;
+            transform-style: preserve-3d;
+            transition: transform 0.1s ease-out, box-shadow 0.3s ease;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .dev-card:hover {
+            box-shadow: 0 25px 60px rgba(184, 134, 11, 0.15);
+            transform: scale(1.05);
+        }
+
+        .section-title {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--gold);
+            border-bottom: 2px solid var(--gold-bright);
+            display: inline-block;
+            margin-bottom: 20px;
+            padding-bottom: 5px;
+            transform: translateZ(30px);
+        }
+
+        .dev-card h3 {
+            margin: 0 0 15px;
+            font-size: 1.2rem;
+            transform: translateZ(40px);
+        }
+
+        .dev-card p {
+            font-size: 1rem;
+            line-height: 1.7;
+            color: var(--text-muted);
+            text-align: justify;
+            transform: translateZ(20px);
+        }
+
+        @media (max-width: 900px) {
+            .container { grid-template-columns: 1fr; grid-template-rows: auto auto auto auto; height: auto; }
+            .content-left { border-right: none; }
+            .dev-card { transform: none !important; margin-bottom: 20px; }
+            body { overflow: auto; }
+        }
+    </style>
+</head>
+<body>
+
+    <a href="index.html" class="home-bubble">HOME</a>
+
+    <div class="container">
+        <header class="header-profile">
+            <h1>Professional Development</h1>
+        </header>
+
+        <nav>
+            <a href="philosophy.html">Philosophy</a>
+            <a href="clinical.html">Clinical</a>
+            <a href="credentials.html">Credentials</a>
+            <a href="development.html" class="active">Development</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+
+        <main class="content-left">
+            <div class="dev-card tilt-card">
+                <div class="section-title">Continuing Education</div>
+                <h3>Lifelong Learning & Mastery</h3>
+                <p>
+                    I am deeply committed to the continuous evolution of my clinical skills and theoretical knowledge. My strategic goal is to complete a Bachelor of Science in Nursing (BSN) and subsequently pursue advanced practice as a Nurse Practitioner. I believe that professional excellence is a journey of constant refinement.
+                </p>
+            </div>
+        </main>
+
+        <aside class="content-right">
+            <div class="dev-card tilt-card">
+                <div class="section-title">Career Goals</div>
+                <h3>Vision for Excellence</h3>
+                <p>
+                    My professional trajectory is defined by a dedication to evidence-based practice and adaptability across specialized clinical environments. I commit to staying at the forefront of healthcare innovation, ensuring that my delivery of patient-centered care is always comprehensive, progressive, and deeply rooted in advocacy.
+                </p>
+            </div>
+        </aside>
+    </div>
+
+    <script>
+        const cards = document.querySelectorAll('.tilt-card');
+        cards.forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                if (window.innerWidth > 900) {
+                    const rect = card.getBoundingClientRect();
+                    const x = e.clientX - rect.left;
+                    const y = e.clientY - rect.top;
+                    const centerX = rect.width / 2;
+                    const centerY = rect.height / 2;
+                    const rotateX = (centerY - y) / 12;
+                    const rotateY = (x - centerX) / 12;
+                    card.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.08)`;
+                }
+            });
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = `rotateX(0deg) rotateY(0deg) scale(1)`;
+            });
+        });
+    </script>
+</body>
+</html>
