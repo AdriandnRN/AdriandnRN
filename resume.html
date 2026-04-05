@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume | Adrian Diaz, RN</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --gold: #B8860B;
+            --gold-light: #f9f5e8;
+            --text-dark: #1A1A1A;
+            --text-gray: #4A4A4A;
+            --white: #FFFFFF;
+        }
+
+        * { box-sizing: border-box; }
+        body {
+            margin: 0; padding: 0;
+            font-family: 'Inter', sans-serif;
+            background-color: #f4f4f4;
+            color: var(--text-dark);
+        }
+
+        /* Botón Flotante para descargar o volver */
+        .back-btn {
+            position: fixed;
+            top: 20px; left: 20px;
+            background: var(--gold);
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: 700;
+            font-size: 0.8rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            z-index: 1000;
+            transition: 0.3s;
+        }
+        .back-btn:hover { background: var(--text-dark); transform: scale(1.05); }
+
+        .resume-container {
+            max-width: 900px;
+            margin: 40px auto;
+            background: var(--white);
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            box-shadow: 0 0 40px rgba(0,0,0,0.1);
+            min-height: 1100px;
+        }
+
+        /* COLUMNA IZQUIERDA (Sidebar) */
+        .sidebar {
+            background-color: var(--text-dark);
+            color: var(--white);
+            padding: 40px 30px;
+        }
+
+        .sidebar h2 {
+            color: var(--gold);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-top: 30px;
+            border-bottom: 1px solid #333;
+            padding-bottom: 5px;
+        }
+
+        .contact-info, .skills-list, .certs-list {
+            list-style: none;
+            padding: 0;
+            margin: 15px 0;
+        }
+
+        .sidebar li {
+            font-size: 0.85rem;
+            margin-bottom: 10px;
+            color: #ccc;
+            line-height: 1.4;
+        }
+
+        .sidebar strong { color: var(--white); display: block; margin-top: 5px; }
+
+        .skill-tag {
+            display: inline-block;
+            background: #333;
+            padding: 5px 10px;
+            border-radius: 4px;
+            margin: 3px;
+            font-size: 0.75rem;
+        }
+
+        /* COLUMNA DERECHA (Contenido Principal) */
+        .main-content {
+            padding: 50px 60px;
+        }
+
+        header {
+            border-bottom: 3px solid var(--gold);
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.8rem;
+            font-weight: 800;
+            letter-spacing: -1px;
+            text-transform: uppercase;
+        }
+
+        header .subtitle {
+            color: var(--gold);
+            font-weight: 700;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            font-size: 1rem;
+        }
+
+        .summary p {
+            font-size: 0.95rem;
+            line-height: 1.7;
+            color: var(--text-gray);
+            font-style: italic;
+        }
+
+        .section-title {
+            font-size: 1.1rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            color: var(--text-dark);
+            margin: 30px 0 15px;
+            display: flex;
+            align-items: center;
+        }
+
+        .section-title::after {
+            content: "";
+            flex: 1;
+            height: 1px;
+            background: #eee;
+            margin-left: 15px;
+        }
+
+        .experience-item, .education-item {
+            margin-bottom: 25px;
+        }
+
+        .item-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+        }
+
+        .item-header h3 {
+            margin: 0;
+            font-size: 1rem;
+            color: var(--text-dark);
+        }
+
+        .date {
+            font-size: 0.8rem;
+            color: var(--gold);
+            font-weight: 700;
+        }
+
+        .company {
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: var(--text-gray);
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        ul.details {
+            padding-left: 18px;
+            margin: 10px 0;
+        }
+
+        ul.details li {
+            font-size: 0.88rem;
+            margin-bottom: 6px;
+            color: var(--text-gray);
+            line-height: 1.5;
+        }
+
+        @media (max-width: 800px) {
+            .resume-container { grid-template-columns: 1fr; }
+            .sidebar { order: 2; }
+            .main-content { order: 1; padding: 40px 30px; }
+        }
+
+        @media print {
+            .back-btn { display: none; }
+            body { background: white; }
+            .resume-container { box-shadow: none; margin: 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <a href="credentials.html" class="back-btn">← Back to Portfolio</a>
+
+    <div class="resume-container">
+        <aside class="sidebar">
+            <h2>Contact</h2>
+            <ul class="contact-info">
+                <li>📍 <strong>Location</strong> Miami Springs, FL</li>
+                <li>📞 <strong>Phone</strong> (786) 218 – 7679</li>
+                <li>✉️ <strong>Email</strong> adriandn2022@gmail.com</li>
+                <li>🌐 <strong>Bilingual</strong> English & Spanish</li>
+            </ul>
+
+            <h2>Technical Skills</h2>
+            <div class="skills-list">
+                <span class="skill-tag">EMR Systems</span>
+                <span class="skill-tag">Office Ally</span>
+                <span class="skill-tag">Oscar CMS</span>
+                <span class="skill-tag">Florida SHOTS</span>
+                <span class="skill-tag">Availity</span>
+                <span class="skill-tag">HIPAA Laws</span>
+                <span class="skill-tag">Phlebotomy</span>
+                <span class="skill-tag">EKG Interpretation</span>
+            </div>
+
+            <h2>Education</h2>
+            <div class="education-item">
+                <li style="color: white; list-style: none;"><strong>AS in Nursing (RN)</strong> Activa Training Center (2026)</li>
+                <li style="color: white; list-style: none; margin-top: 10px;"><strong>BS in Industrial Engineering</strong> Univ. of Pinar del Río, Cuba</li>
+            </div>
+
+            <h2>Certifications</h2>
+            <ul class="certs-list">
+                <li>RN License (Pending 2026)</li>
+                <li>BLS - American Heart Assoc.</li>
+                <li>Florida SHOTS Certified</li>
+                <li>HIPAA Compliance Training</li>
+            </ul>
+        </aside>
+
+        <main class="main-content">
+            <header>
+                <h1>Adrian Diaz</h1>
+                <div class="subtitle">Registered Nurse</div>
+            </header>
+
+            <section class="summary">
+                <p>
+                    Dedicated Registered Nurse with a strategic background in medical administration and patient workflow optimization. Expert in clinical documentation and evidence-based practice, committed to delivering high-quality, compassionate care in acute environments including Med-Surg, ER, and ICU.
+                </p>
+            </section>
+
+            <div class="section-title">Clinical Experience</div>
+            
+            <div class="experience-item">
+                <div class="item-header">
+                    <h3>Clinical Rotations (Academic)</h3>
+                    <span class="date">2024 - 2026</span>
+                </div>
+                <span class="company">Activa Training Center</span>
+                <ul class="details">
+                    <li><strong>Med-Surg & Telemetry:</strong> Managed multi-patient assignments, performing head-to-toe assessments and complex wound care.</li>
+                    <li><strong>Critical Care:</strong> Assisted in hemodynamic monitoring and emergency protocols for acute patients.</li>
+                    <li><strong>Pediatrics:</strong> Coordinated newborn screenings and pediatric immunizations.</li>
+                </ul>
+            </div>
+
+            <div class="section-title">Professional Experience</div>
+
+            <div class="experience-item">
+                <div class="item-header">
+                    <h3>Clinical Coordinator / Front Desk</h3>
+                    <span class="date">2023 - Present</span>
+                </div>
+                <span class="company">Barroso Medical Services LLC</span>
+                <ul class="details">
+                    <li>Optimized clinical documentation for high-volume general practice, maintaining 100% HIPAA compliance.</li>
+                    <li>Facilitated complex prior authorizations and referrals for major insurers (FL Blue, Aetna, etc.).</li>
+                    <li>Coordinated multidisciplinary home health services (OT, PT, ABA) and diagnostic logistics.</li>
+                </ul>
+            </div>
+
+            <div class="experience-item">
+                <div class="item-header">
+                    <h3>Front Desk Representative</h3>
+                    <span class="date">2022 - 2023</span>
+                </div>
+                <span class="company">Ramada Hotel</span>
+                <ul class="details">
+                    <li>Mastered de-escalation techniques and bilingual customer service in high-pressure environments.</li>
+                </ul>
+            </div>
+
+            <div class="section-title">Core Competencies</div>
+            <ul class="details">
+                <li><strong>Clinical:</strong> IV Insertion, Foley Catheterization, NG Tube Placement, Medication Admin.</li>
+                <li><strong>Administrative:</strong> Care Plan Development (POC), Medical Necessity Letters, Resource Mgmt.</li>
+            </ul>
+        </main>
+    </div>
+
+</body>
+</html>
