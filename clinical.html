@@ -134,15 +134,15 @@
 
         /* CONTENT AREAS */
         .content-left, .content-right {
-            padding: 40px 60px;
+            padding: 20px 60px;
             overflow-y: auto;
             background: white;
             display: flex;
             flex-direction: column;
             justify-content: center;
-            gap: 30px;
+            gap: 25px;
             z-index: 1;
-            perspective: 1000px; /* Perspective individual for cards */
+            perspective: 1000px;
         }
 
         .content-left { border-right: 1px solid #eee; }
@@ -151,7 +151,7 @@
         /* INDEPENDENT 3D CARD */
         .clinical-card {
             background: #fff;
-            padding: 35px;
+            padding: 30px;
             border-radius: 20px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.05);
             border: 1px solid #f0f0f0;
@@ -160,7 +160,7 @@
             cursor: pointer;
             text-align: center;
             width: 100%;
-            max-width: 450px;
+            max-width: 420px;
             margin: 0 auto;
         }
 
@@ -170,19 +170,19 @@
         }
 
         .clinical-card h3 {
-            font-size: 1.1rem;
+            font-size: 1.05rem;
             color: var(--gold);
-            margin: 0 0 15px;
+            margin: 0 0 10px;
             text-transform: uppercase;
             letter-spacing: 1.5px;
-            transform: translateZ(40px); /* Text pops out */
+            transform: translateZ(40px);
         }
 
         .clinical-card p {
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             color: var(--text-muted);
-            line-height: 1.6;
-            margin-bottom: 25px;
+            line-height: 1.5;
+            margin-bottom: 20px;
             transform: translateZ(30px);
         }
 
@@ -190,10 +190,10 @@
             text-decoration: none;
             background: var(--gold);
             color: white;
-            padding: 12px 25px;
+            padding: 10px 20px;
             border-radius: 8px;
             font-weight: 800;
-            font-size: 0.75rem;
+            font-size: 0.7rem;
             text-transform: uppercase;
             display: inline-block;
             transition: 0.3s;
@@ -225,6 +225,7 @@
             <a href="philosophy.html">Philosophy</a>
             <a href="clinical.html" class="active">Clinical</a>
             <a href="credentials.html">Credentials</a>
+            <a href="development.html">Development</a>
             <a href="contact.html">Contact</a>
         </nav>
 
@@ -248,35 +249,31 @@
                 <p>Detailed documentation of patient care and clinical interventions.</p>
                 <a href="Clinical_Reflective_Journals.pdf" class="btn-view" target="_blank">📄 View Logs</a>
             </div>
+
+            <div class="clinical-card tilt-card">
+                <h3>Lab Competencies</h3>
+                <p>Evaluations: Health Assessment, Peds, Maternal & Pharm.</p>
+                <a href="#" class="btn-view">📄 View Evaluations</a>
+            </div>
         </aside>
     </div>
 
     <script>
         const cards = document.querySelectorAll('.tilt-card');
-
         cards.forEach(card => {
             card.addEventListener('mousemove', (e) => {
                 if (window.innerWidth > 900) {
                     const rect = card.getBoundingClientRect();
-                    
-                    // Mouse position relative to the current card
                     const x = e.clientX - rect.left;
                     const y = e.clientY - rect.top;
-                    
                     const centerX = rect.width / 2;
                     const centerY = rect.height / 2;
-                    
-                    // Intensity of the tilt (higher number = softer tilt)
                     const rotateX = (centerY - y) / 10;
                     const rotateY = (x - centerX) / 10;
-                    
-                    // Combined Scale and Rotation
                     card.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.08)`;
                 }
             });
-
             card.addEventListener('mouseleave', () => {
-                // Reset smoothly when leaving the specific card
                 card.style.transform = `rotateX(0deg) rotateY(0deg) scale(1)`;
             });
         });
