@@ -120,10 +120,10 @@
             align-items: center;
             justify-content: center;
             border-right: 1px solid #eee;
-            perspective: 1500px; /* Perspective for the 3D block only */
+            perspective: 1500px;
         }
 
-        /* 3D INTERACTIVE BLOCK */
+        /* 3D INTERACTIVE & SCALING BLOCK */
         .vision-card {
             background: #fff;
             padding: 40px;
@@ -131,8 +131,15 @@
             box-shadow: 0 20px 50px rgba(0,0,0,0.08);
             border: 1px solid #f0f0f0;
             transform-style: preserve-3d;
-            transition: transform 0.1s ease-out;
+            transition: transform 0.3s ease-out, box-shadow 0.3s ease; /* Transiciones suaves */
             max-width: 500px;
+            cursor: pointer;
+        }
+
+        /* EFFECT: SCALE UP AND ENHANCE SHADOW ON HOVER */
+        .vision-card:hover {
+            transform: scale(1.08); /* Se agranda un 8% */
+            box-shadow: 0 30px 70px rgba(184, 134, 11, 0.2); /* Sombra dorada */
         }
 
         .section-title {
@@ -144,7 +151,7 @@
             display: inline-block;
             margin-bottom: 20px;
             padding-bottom: 5px;
-            transform: translateZ(30px); /* Pops out slightly */
+            transform: translateZ(30px);
         }
 
         blockquote {
@@ -155,7 +162,7 @@
             border-left: 4px solid var(--gold-bright);
             padding-left: 25px;
             text-align: justify;
-            transform: translateZ(50px); /* Text floats higher */
+            transform: translateZ(50px);
         }
 
         /* RIGHT CONTENT */
@@ -194,8 +201,8 @@
 
         @media (max-width: 900px) {
             .container { grid-template-columns: 1fr; grid-template-rows: auto auto auto auto; height: auto; }
-            .content-left { border-right: none; perspective: none; }
-            .vision-card { transform: none !important; }
+            .content-left { border-right: none; perspective: none; padding: 40px; }
+            .vision-card { transform: none !important; max-width: 100%; }
             body { overflow: auto; }
         }
     </style>
@@ -236,11 +243,16 @@
         const card = document.getElementById('vision-card');
         document.addEventListener('mousemove', (e) => {
             if (window.innerWidth > 900) {
-                // Calculation relative to the center of the viewport
-                let xAxis = (window.innerWidth / 2 - e.pageX) / 40;
-                let yAxis = (window.innerHeight / 2 - e.pageY) / 40;
+                let xAxis = (window.innerWidth / 2 - e.pageX) / 45; // Suavizado
+                let yAxis = (window.innerHeight / 2 - e.pageY) / 45; // Suavizado
+                // Aplicamos la rotación, la escala se maneja con CSS :hover
                 card.style.transform = `rotateY(${xAxis}deg) rotateX(${yAxis}deg)`;
             }
+        });
+
+        // Limpieza de transformación al salir del mouse para evitar conflictos con CSS
+        card.addEventListener('mouseleave', () => {
+            card.style.transform = `rotateY(0deg) rotateX(0deg)`;
         });
     </script>
 </body>
