@@ -7,162 +7,105 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-white: #FFFFFF;
-            --text-black: #000000;
+            --sage-green: #6B705C;
+            --text-black: #1A1A1A;
             --text-gray: #4A4A4A;
-            --text-light-gray: #888888;
-            --accent-blue: #3182CE;
-            --line-color: #E2E8F0;
+            --bg-canvas: #F4F1EA;
         }
 
         body {
-            background-color: var(--bg-white);
-            color: var(--text-black);
-            font-family: 'Inter', sans-serif;
             margin: 0;
             padding: 0;
-            line-height: 1.4;
-        }
-
-        /* Subtle interactive canvas background */
-        #neuron-canvas {
-            position: fixed;
-            top: 0;
-            left: 0;
-            z-index: -1;
-            opacity: 0.1;
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-canvas);
+            /* FONDO BOTÁNICO EXACTO */
+            background-image: url('https://www.transparenttextures.com/patterns/leaves.png'); 
+            background-attachment: fixed;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
         nav {
+            width: 100%;
             display: flex;
             justify-content: center;
-            padding: 30px 0;
+            padding: 25px 0;
             gap: 30px;
-            text-transform: uppercase;
-            font-size: 0.75rem;
-            letter-spacing: 1.5px;
-            font-weight: 700;
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(5px);
+            position: sticky;
+            top: 0;
+            z-index: 100;
         }
 
         nav a {
             text-decoration: none;
-            color: var(--text-light-gray);
-            transition: 0.2s;
-        }
-
-        nav a:hover, nav a.active {
-            color: var(--text-black);
-            border-bottom: 2px solid var(--text-black);
-        }
-
-        main {
-            max-width: 850px;
-            margin: 0 auto;
-            padding: 40px 20px 100px;
-        }
-
-        /* --- Header Section --- */
-        .header-section {
-            margin-bottom: 60px;
-        }
-
-        h1 {
-            font-size: 3.5rem;
-            font-weight: 800;
-            margin: 0;
-            letter-spacing: -1px;
-        }
-
-        .role-title {
-            font-size: 1.1rem;
-            font-weight: 400;
             color: var(--text-gray);
-            margin-top: 5px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
         }
 
-        /* --- Layout Block (Pinterest Style) --- */
-        .section-container {
+        nav a.active { color: var(--text-black); border-bottom: 2px solid var(--text-black); }
+
+        /* LA TARJETA BLANCA CENTRAL */
+        main {
+            width: 90%;
+            max-width: 900px;
+            background: white;
+            margin: 40px 0 100px;
+            padding: 60px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.05);
+            border-radius: 4px;
+            position: relative;
+        }
+
+        /* ICONOS DECORATIVOS EN LAS ESQUINAS */
+        main::before { content: '🌿'; position: absolute; top: 20px; left: -30px; font-size: 2rem; opacity: 0.3; }
+        main::after { content: '🩺'; position: absolute; bottom: 20px; right: -30px; font-size: 2rem; opacity: 0.3; }
+
+        header { text-align: center; margin-bottom: 60px; }
+        h1 { font-size: 3rem; font-weight: 800; margin: 0; color: var(--text-black); }
+        .role { font-size: 1rem; color: var(--sage-green); text-transform: uppercase; letter-spacing: 2px; margin-top: 10px; }
+
+        .section {
             display: grid;
-            grid-template-columns: 200px 1fr;
-            margin-top: 50px;
-            border-top: 1px solid var(--line-color);
-            padding-top: 20px;
+            grid-template-columns: 180px 1fr;
+            padding: 30px 0;
+            border-top: 1px solid #EEE;
         }
 
         .section-title {
             font-size: 0.8rem;
-            font-weight: 700;
+            font-weight: 800;
             text-transform: uppercase;
-            letter-spacing: 1px;
             color: var(--text-black);
         }
 
-        .content-item {
-            margin-bottom: 30px;
-            display: grid;
-            grid-template-columns: 1fr auto;
-            gap: 10px;
-        }
+        .item { display: flex; justify-content: space-between; margin-bottom: 25px; align-items: flex-start; }
+        .item-info h3 { margin: 0; font-size: 1.1rem; color: var(--text-black); }
+        .item-info p { margin: 5px 0 0; color: var(--text-gray); font-size: 0.95rem; }
+        .item-meta { font-size: 0.85rem; color: #AAA; font-weight: 600; min-width: 120px; text-align: right; }
 
-        .content-main h3 {
-            font-size: 1.1rem;
-            font-weight: 700;
-            margin: 0;
-        }
+        .tags { display: flex; flex-wrap: wrap; gap: 10px; }
+        .tag { background: #F0F2F0; padding: 6px 15px; border-radius: 20px; font-size: 0.8rem; font-weight: 600; color: var(--sage-green); }
 
-        .content-main p {
-            font-size: 1rem;
-            color: var(--text-gray);
-            margin: 5px 0 0;
-        }
-
-        .content-meta {
-            text-align: right;
-            font-size: 0.9rem;
-            color: var(--text-light-gray);
-            font-weight: 500;
-        }
-
-        /* --- Skills Tags --- */
-        .skills-tag-container {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
-
-        .skill-tag {
-            padding: 6px 14px;
-            border: 1px solid var(--line-color);
-            border-radius: 20px;
-            font-size: 0.85rem;
-            font-weight: 500;
-            color: var(--text-gray);
-        }
-
-        footer {
-            margin-top: 100px;
-            padding: 40px 0;
-            border-top: 1px solid var(--line-color);
-            text-align: center;
-            font-size: 0.75rem;
-            color: var(--text-light-gray);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
+        footer { padding: 40px; font-size: 0.7rem; letter-spacing: 1px; color: #BBB; text-transform: uppercase; }
 
         @media (max-width: 768px) {
-            .section-container { grid-template-columns: 1fr; gap: 20px; }
-            .content-item { grid-template-columns: 1fr; }
-            .content-meta { text-align: left; }
-            h1 { font-size: 2.5rem; }
+            main { padding: 30px; width: 95%; }
+            .section { grid-template-columns: 1fr; }
+            .item { flex-direction: column; }
+            .item-meta { text-align: left; margin-top: 5px; }
         }
     </style>
 </head>
 <body>
-    <canvas id="neuron-canvas"></canvas>
-    
+
     <nav>
-        <a href="index.html" class="active">Overview</a>
+        <a href="#" class="active">Overview</a>
         <a href="philosophy.html">Philosophy</a>
         <a href="clinical.html">Clinical</a>
         <a href="credentials.html">Credentials</a>
@@ -170,111 +113,60 @@
     </nav>
 
     <main>
-        <header class="header-section">
+        <header>
             <h1>Adrian Diaz</h1>
-            <div class="role-title">Registered Nurse & Industrial Engineer</div>
+            <div class="role">Registered Nurse & Industrial Engineer</div>
         </header>
 
-        <div class="section-container">
+        <div class="section">
             <div class="section-title">Profile</div>
-            <div class="content-main">
-                <p>RN graduate from Activa Training Center with a background in Industrial Engineering. Focused on clinical precision and workflow optimization to deliver superior patient care through evidence-based practice.</p>
+            <div class="item-info">
+                <p>RN graduate focused on the intersection of healthcare and systems engineering. Expert in clinical safety and workflow optimization.</p>
             </div>
         </div>
 
-        <div class="section-container">
-            <div class="section-title">Philosophy & Goals</div>
-            <div class="content-list">
-                <div class="content-item">
-                    <div class="content-main">
-                        <h3>Nursing Philosophy</h3>
-                        <p>Humanized care focused on patient advocacy and ethical excellence.</p>
-                    </div>
-                    <div class="content-meta">View Document →</div>
+        <div class="section">
+            <div class="section-title">Philosophy</div>
+            <div class="item">
+                <div class="item-info">
+                    <h3>Nursing Philosophy</h3>
+                    <p>Patient advocacy and humanized care through ethical excellence.</p>
                 </div>
-                <div class="content-item">
-                    <div class="content-main">
-                        <h3>Professional Goals</h3>
-                        <p>Bridging the gap between clinical safety and operational efficiency.</p>
-                    </div>
-                    <div class="content-meta">Current</div>
-                </div>
+                <div class="item-meta">View Doc →</div>
             </div>
         </div>
 
-        <div class="section-container">
-            <div class="section-title">Clinical Experience</div>
-            <div class="content-list">
-                <div class="content-item">
-                    <div class="content-main">
-                        <h3>Select Specialty Hospital</h3>
-                        <p>High-acuity care, complex medication management, and neurovascular assessment.</p>
-                    </div>
-                    <div class="content-meta">Rotation</div>
+        <div class="section">
+            <div class="section-title">Education</div>
+            <div class="item">
+                <div class="item-info">
+                    <h3>Activa Training Center</h3>
+                    <p>Associate Degree in Nursing (ADN)</p>
                 </div>
-                <div class="content-item">
-                    <div class="content-main">
-                        <h3>Palazzo Mental Health</h3>
-                        <p>Community-based psychiatric care and holistic patient monitoring.</p>
-                    </div>
-                    <div class="content-meta">Rotation</div>
+                <div class="item-meta">Miami, FL</div>
+            </div>
+            <div class="item">
+                <div class="item-info">
+                    <h3>Industrial Engineering</h3>
+                    <p>Bachelor of Science (BS)</p>
                 </div>
+                <div class="item-meta">Degree</div>
             </div>
         </div>
 
-        <div class="section-container">
-            <div class="section-title">Core Skills</div>
-            <div class="skills-tag-container">
-                <div class="skill-tag">eClinicalWorks (eCW)</div>
-                <div class="skill-tag">Wound Care</div>
-                <div class="skill-tag">Florida SHOTS</div>
-                <div class="skill-tag">Process Optimization</div>
-                <div class="skill-tag">Bilingual</div>
-                <div class="skill-tag">Medication Admin</div>
-                <div class="skill-tag">HIPAA Compliance</div>
+        <div class="section">
+            <div class="section-title">Skills</div>
+            <div class="tags">
+                <div class="tag">eClinicalWorks</div>
+                <div class="tag">Florida SHOTS</div>
+                <div class="tag">Wound Care</div>
+                <div class="tag">Process Optimization</div>
+                <div class="tag">Bilingual</div>
             </div>
         </div>
-
     </main>
 
-    <footer>
-        © 2026 Adrian Diaz | Miami Springs, FL | Registered Nurse
-    </footer>
+    <footer>© 2026 Adrian Diaz | Miami Springs, FL</footer>
 
-    <script>
-        const canvas = document.getElementById('neuron-canvas');
-        const ctx = canvas.getContext('2d');
-        let particles = [];
-        function init() {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-            particles = [];
-            for (let i = 0; i < 40; i++) {
-                particles.push({
-                    x: Math.random() * canvas.width,
-                    y: Math.random() * canvas.height,
-                    vx: (Math.random() - 0.5) * 0.2,
-                    vy: (Math.random() - 0.5) * 0.2,
-                    size: 1
-                });
-            }
-        }
-        function animate() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            ctx.fillStyle = "#000";
-            particles.forEach(p => {
-                p.x += p.vx; p.y += p.vy;
-                if (p.x < 0 || p.x > canvas.width) p.vx *= -1;
-                if (p.y < 0 || p.y > canvas.height) p.vy *= -1;
-                ctx.beginPath();
-                ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-                ctx.fill();
-            });
-            requestAnimationFrame(animate);
-        }
-        window.addEventListener('resize', init);
-        init();
-        animate();
-    </script>
 </body>
 </html>
