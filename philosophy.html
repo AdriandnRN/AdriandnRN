@@ -24,16 +24,17 @@
             background-color: var(--bg-light);
             color: var(--text-main);
             overflow: hidden;
+            perspective: 2000px; /* Necesario para el efecto 3D */
         }
 
-        /* INTERACTIVE BUBBLE HOME BUTTON (Bottom Right) */
+        /* HOME BUBBLE (Bottom Right) */
         .home-bubble {
             position: fixed;
             bottom: 30px;
             right: 30px;
             z-index: 2000;
-            width: 60px;
-            height: 60px;
+            width: 65px;
+            height: 65px;
             background: var(--gold);
             color: white;
             text-decoration: none;
@@ -42,78 +43,89 @@
             align-items: center;
             justify-content: center;
             font-weight: 800;
-            font-size: 0.7rem;
+            font-size: 0.75rem;
+            letter-spacing: 1px;
             box-shadow: 0 10px 25px rgba(184, 134, 11, 0.4);
             transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            animation: float 3s ease-in-out infinite;
+            animation: floatBubble 3s ease-in-out infinite;
         }
 
         .home-bubble:hover {
-            transform: scale(1.2) rotate(5deg);
+            transform: scale(1.2) rotate(10deg);
             background: var(--text-main);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.3);
         }
 
-        @keyframes float {
+        @keyframes floatBubble {
             0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
+            50% { transform: translateY(-12px); }
         }
 
-        /* MAIN CONTAINER */
+        /* MAIN 3D CONTAINER */
         .container {
             display: grid;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: 1.1fr 0.9fr;
             grid-template-rows: auto 1fr;
-            height: 100vh;
-            width: 100vw;
+            height: 90vh;
+            width: 95vw;
+            max-width: 1200px;
+            margin: 5vh auto;
+            background: white;
+            border-radius: 24px;
+            box-shadow: 0 40px 80px rgba(0,0,0,0.1);
+            border: 1px solid rgba(255,255,255,0.7);
+            overflow: hidden;
+            transform-style: preserve-3d;
+            transition: transform 0.1s ease-out;
             position: relative;
         }
 
-        /* MIDDLE SPACE EFFECT (Medical Grid) */
-        .container::before {
+        /* MEDICAL PULSE LINE EFFECT (Middle) */
+        .container::after {
             content: "";
             position: absolute;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            width: 100%;
-            height: 2px;
+            width: 80%;
+            height: 1px;
             background: linear-gradient(90deg, transparent, var(--gold-bright), transparent);
-            opacity: 0.2;
+            opacity: 0.3;
             z-index: 0;
-            animation: pulseGrid 4s infinite;
+            animation: pulseLine 4s infinite;
         }
 
-        @keyframes pulseGrid {
-            0%, 100% { opacity: 0.1; width: 80%; }
-            50% { opacity: 0.4; width: 100%; }
+        @keyframes pulseLine {
+            0%, 100% { width: 60%; opacity: 0.1; }
+            50% { width: 90%; opacity: 0.5; }
         }
 
-        /* HEADER & NAV */
+        /* HEADER & NAVIGATION */
         .header-profile {
             grid-column: 1 / span 2;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            padding: 40px 0 20px;
+            padding: 30px 0 15px;
             background: white;
             border-bottom: 1px solid #eee;
             z-index: 10;
         }
 
         .header-profile h1 {
-            font-size: 2.5rem;
+            font-size: 2.2rem;
             font-weight: 800;
             margin: 0;
             text-transform: uppercase;
-            letter-spacing: -1.5px;
+            letter-spacing: -1px;
             color: var(--gold);
         }
 
         nav {
             grid-column: 1 / span 2;
             text-align: center;
-            padding: 15px 0;
+            padding: 12px 0;
             background: white;
             border-bottom: 1px solid #eee;
             z-index: 10;
@@ -125,7 +137,8 @@
             font-weight: 700;
             margin: 0 15px;
             text-transform: uppercase;
-            font-size: 0.85rem;
+            font-size: 0.8rem;
+            letter-spacing: 1px;
             transition: 0.3s;
         }
 
@@ -134,9 +147,9 @@
             border-bottom: 2px solid var(--text-main);
         }
 
-        /* CONTENT */
+        /* LEFT CONTENT: PHILOSOPHY TEXT */
         .content-left {
-            padding: 60px;
+            padding: 50px;
             overflow-y: auto;
             border-right: 1px solid #eee;
             background: white;
@@ -147,28 +160,29 @@
         }
 
         .section-title {
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             text-transform: uppercase;
             letter-spacing: 2px;
             color: var(--gold);
             border-bottom: 2px solid var(--gold-bright);
             display: inline-block;
-            margin-bottom: 25px;
+            margin-bottom: 20px;
             padding-bottom: 5px;
         }
 
         blockquote {
-            font-size: 1.2rem;
+            font-size: 1.05rem;
             line-height: 1.8;
             color: var(--text-muted);
             margin: 0;
-            font-style: italic;
             border-left: 4px solid var(--gold-bright);
-            padding-left: 20px;
+            padding-left: 25px;
+            text-align: justify;
         }
 
+        /* RIGHT CONTENT: PDF ACTIONS */
         .content-right {
-            padding: 60px;
+            padding: 50px;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -181,31 +195,38 @@
             text-decoration: none;
             background: white;
             color: var(--text-main);
-            padding: 25px 35px;
+            padding: 22px 30px;
             border-radius: 12px;
             font-weight: 800;
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             text-transform: uppercase;
             letter-spacing: 2px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
             border: 1px solid #eee;
             transition: 0.3s ease;
+            transform: translateZ(20px); /* Efecto de elevación */
         }
 
         .btn-pdf:hover {
             background: var(--gold);
             color: white;
-            transform: translateX(10px);
+            transform: translateZ(40px) scale(1.05);
+            box-shadow: 0 15px 30px rgba(184, 134, 11, 0.25);
         }
 
         @media (max-width: 900px) {
-            .container { grid-template-columns: 1fr; grid-template-rows: auto auto auto auto; height: auto; }
-            .header-profile, nav { grid-column: 1; }
+            .container { 
+                grid-template-columns: 1fr; 
+                grid-template-rows: auto auto auto auto; 
+                height: auto; 
+                width: 95vw;
+                margin: 20px auto;
+                transform: none !important; /* Desactiva 3D en móvil */
+            }
             .content-left { border-right: none; }
-            .home-bubble { bottom: 20px; right: 20px; width: 50px; height: 50px; }
             body { overflow: auto; }
         }
     </style>
@@ -214,7 +235,7 @@
 
     <a href="index.html" class="home-bubble">HOME</a>
 
-    <div class="container">
+    <div class="container" id="philosophy-card">
         <header class="header-profile">
             <h1>Nursing Philosophy</h1>
         </header>
@@ -227,9 +248,10 @@
         </nav>
 
         <main class="content-left">
-            <div class="section-title">Core Values</div>
+            <div class="section-title">Core Vision & Summary</div>
             <blockquote>
-                "My nursing philosophy is rooted in the integration of evidence-based practice, clinical excellence, and deep compassion."
+                <strong>"Nursing is the synergy of analytical precision and deep human connection."</strong><br><br>
+                My philosophy is built on empathy, service, and continuous learning. Drawing from an engineering background, I apply organized problem-solving to clinical practice, ensuring safe, respectful, and competent care. I aim to impact the profession by championing teamwork and cultural sensitivity, treating every individual with the integrity and dedication I would expect for my own family.
             </blockquote>
         </main>
 
@@ -238,6 +260,18 @@
             <a href="Nursing_Philosophy2.pdf" class="btn-pdf" target="_blank">View Philosophy 2 <span>📄</span></a>
         </aside>
     </div>
+
+    <script>
+        // --- EFECTO INTERACTIVO 3D (TILT) ---
+        const card = document.getElementById('philosophy-card');
+        document.addEventListener('mousemove', (e) => {
+            if (window.innerWidth > 900) {
+                let xAxis = (window.innerWidth / 2 - e.pageX) / 60;
+                let yAxis = (window.innerHeight / 2 - e.pageY) / 60;
+                card.style.transform = `rotateY(${xAxis}deg) rotateX(${yAxis}deg)`;
+            }
+        });
+    </script>
 
 </body>
 </html>
