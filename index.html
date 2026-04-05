@@ -3,24 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Adrian Diaz | Professional Portfolio</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <title>Adrian Diaz | Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
-            --sage-green: #6B705C;
-            --text-black: #1A1A1A;
+            --text-black: #000000;
             --text-gray: #4A4A4A;
-            --bg-canvas: #F4F1EA;
+            --line-color: #E2E8F0;
+            --bg-wash: rgba(255, 255, 255, 0.85);
         }
 
         body {
             margin: 0;
             padding: 0;
             font-family: 'Inter', sans-serif;
-            background-color: var(--bg-canvas);
-            /* FONDO BOTÁNICO EXACTO */
-            background-image: url('https://www.transparenttextures.com/patterns/leaves.png'); 
+            /* FONDO BOTÁNICO CON ICONOS */
+            background: 
+                linear-gradient(var(--bg-wash), var(--bg-wash)),
+                url('https://www.transparenttextures.com/patterns/leaves.png'),
+                #F8F9FA;
             background-attachment: fixed;
+            color: var(--text-black);
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -30,143 +33,209 @@
             width: 100%;
             display: flex;
             justify-content: center;
-            padding: 25px 0;
-            gap: 30px;
-            background: rgba(255, 255, 255, 0.8);
-            backdrop-filter: blur(5px);
-            position: sticky;
-            top: 0;
-            z-index: 100;
+            padding: 30px 0;
+            gap: 40px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
         }
 
         nav a {
             text-decoration: none;
-            color: var(--text-gray);
-            font-size: 0.75rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
+            color: #999;
+            transition: 0.2s;
+            padding-bottom: 5px;
         }
 
-        nav a.active { color: var(--text-black); border-bottom: 2px solid var(--text-black); }
+        nav a.active {
+            color: var(--text-black);
+            border-bottom: 2px solid var(--text-black);
+        }
 
-        /* LA TARJETA BLANCA CENTRAL */
+        header {
+            text-align: center;
+            margin: 40px 0 60px;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin: 0;
+            letter-spacing: -2px;
+        }
+
+        .role {
+            font-size: 1.2rem;
+            font-weight: 400;
+            color: var(--text-gray);
+            margin-top: 10px;
+        }
+
         main {
             width: 90%;
-            max-width: 900px;
+            max-width: 1000px;
             background: white;
-            margin: 40px 0 100px;
-            padding: 60px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.05);
+            padding: 20px 60px 80px;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.05);
             border-radius: 4px;
-            position: relative;
         }
-
-        /* ICONOS DECORATIVOS EN LAS ESQUINAS */
-        main::before { content: '🌿'; position: absolute; top: 20px; left: -30px; font-size: 2rem; opacity: 0.3; }
-        main::after { content: '🩺'; position: absolute; bottom: 20px; right: -30px; font-size: 2rem; opacity: 0.3; }
-
-        header { text-align: center; margin-bottom: 60px; }
-        h1 { font-size: 3rem; font-weight: 800; margin: 0; color: var(--text-black); }
-        .role { font-size: 1rem; color: var(--sage-green); text-transform: uppercase; letter-spacing: 2px; margin-top: 10px; }
 
         .section {
             display: grid;
-            grid-template-columns: 180px 1fr;
-            padding: 30px 0;
-            border-top: 1px solid #EEE;
+            grid-template-columns: 240px 1fr;
+            padding: 40px 0;
+            border-bottom: 1px solid var(--line-color);
         }
 
         .section-title {
-            font-size: 0.8rem;
+            font-size: 0.9rem;
             font-weight: 800;
             text-transform: uppercase;
-            color: var(--text-black);
+            letter-spacing: 1px;
         }
 
-        .item { display: flex; justify-content: space-between; margin-bottom: 25px; align-items: flex-start; }
-        .item-info h3 { margin: 0; font-size: 1.1rem; color: var(--text-black); }
-        .item-info p { margin: 5px 0 0; color: var(--text-gray); font-size: 0.95rem; }
-        .item-meta { font-size: 0.85rem; color: #AAA; font-weight: 600; min-width: 120px; text-align: right; }
+        .content-block {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
 
-        .tags { display: flex; flex-wrap: wrap; gap: 10px; }
-        .tag { background: #F0F2F0; padding: 6px 15px; border-radius: 20px; font-size: 0.8rem; font-weight: 600; color: var(--sage-green); }
+        .row {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
 
-        footer { padding: 40px; font-size: 0.7rem; letter-spacing: 1px; color: #BBB; text-transform: uppercase; }
+        .row-text h3 {
+            margin: 0;
+            font-size: 1.1rem;
+            font-weight: 700;
+        }
 
-        @media (max-width: 768px) {
-            main { padding: 30px; width: 95%; }
-            .section { grid-template-columns: 1fr; }
-            .item { flex-direction: column; }
-            .item-meta { text-align: left; margin-top: 5px; }
+        .row-text p {
+            margin: 5px 0 0;
+            color: var(--text-gray);
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        .meta {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #222;
+            text-align: right;
+            min-width: 120px;
+        }
+
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .tag {
+            background: #F1F3F5;
+            padding: 8px 16px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: #495057;
+        }
+
+        footer {
+            margin: 60px 0;
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #BBB;
+        }
+
+        @media (max-width: 850px) {
+            .section { grid-template-columns: 1fr; gap: 15px; }
+            h1 { font-size: 2.5rem; }
+            main { padding: 20px 30px; }
         }
     </style>
 </head>
 <body>
 
     <nav>
-        <a href="#" class="active">Overview</a>
+        <a href="index.html" class="active">Overview</a>
         <a href="philosophy.html">Philosophy</a>
         <a href="clinical.html">Clinical</a>
         <a href="credentials.html">Credentials</a>
         <a href="contact.html">Contact</a>
     </nav>
 
-    <main>
-        <header>
-            <h1>Adrian Diaz</h1>
-            <div class="role">Registered Nurse & Industrial Engineer</div>
-        </header>
+    <header>
+        <h1>Adrian Diaz</h1>
+        <div class="role">Registered Nurse & Industrial Engineer</div>
+    </header>
 
+    <main>
         <div class="section">
             <div class="section-title">Profile</div>
-            <div class="item-info">
-                <p>RN graduate focused on the intersection of healthcare and systems engineering. Expert in clinical safety and workflow optimization.</p>
+            <div class="row-text">
+                <p>RN graduate focused on clinical safety and workflow optimization. Integrating Industrial Engineering principles to enhance patient care and operational efficiency.</p>
             </div>
         </div>
 
         <div class="section">
-            <div class="section-title">Philosophy</div>
-            <div class="item">
-                <div class="item-info">
-                    <h3>Nursing Philosophy</h3>
-                    <p>Patient advocacy and humanized care through ethical excellence.</p>
+            <div class="section-title">Philosophy & Goals</div>
+            <div class="content-block">
+                <div class="row">
+                    <div class="row-text">
+                        <h3>Nursing Philosophy</h3>
+                        <p>Humanized care focused on patient advocacy and ethical excellence.</p>
+                    </div>
+                    <div class="meta">View Document →</div>
                 </div>
-                <div class="item-meta">View Doc →</div>
+                <div class="row">
+                    <div class="row-text">
+                        <h3>Professional Goals</h3>
+                        <p>Bridging the gap between clinical safety and operational efficiency.</p>
+                    </div>
+                    <div class="meta">Current</div>
+                </div>
             </div>
         </div>
 
         <div class="section">
-            <div class="section-title">Education</div>
-            <div class="item">
-                <div class="item-info">
-                    <h3>Activa Training Center</h3>
-                    <p>Associate Degree in Nursing (ADN)</p>
+            <div class="section-title">Clinical Experience</div>
+            <div class="content-block">
+                <div class="row">
+                    <div class="row-text">
+                        <h3>Select Specialty Hospital</h3>
+                        <p>High-acuity care and neurovascular assessment.</p>
+                    </div>
+                    <div class="meta">Rotation</div>
                 </div>
-                <div class="item-meta">Miami, FL</div>
-            </div>
-            <div class="item">
-                <div class="item-info">
-                    <h3>Industrial Engineering</h3>
-                    <p>Bachelor of Science (BS)</p>
+                <div class="row">
+                    <div class="row-text">
+                        <h3>Palazzo Mental Health</h3>
+                        <p>Psychiatric care and holistic patient monitoring.</p>
+                    </div>
+                    <div class="meta">Rotation</div>
                 </div>
-                <div class="item-meta">Degree</div>
             </div>
         </div>
 
-        <div class="section">
-            <div class="section-title">Skills</div>
+        <div class="section" style="border:none;">
+            <div class="section-title">Core Skills</div>
             <div class="tags">
-                <div class="tag">eClinicalWorks</div>
-                <div class="tag">Florida SHOTS</div>
+                <div class="tag">eClinicalWorks (eCW)</div>
                 <div class="tag">Wound Care</div>
+                <div class="tag">Florida SHOTS</div>
                 <div class="tag">Process Optimization</div>
                 <div class="tag">Bilingual</div>
+                <div class="tag">HIPAA Compliance</div>
             </div>
         </div>
     </main>
 
-    <footer>© 2026 Adrian Diaz | Miami Springs, FL</footer>
+    <footer>© 2026 Adrian Diaz | Miami Springs, FL | Registered Nurse</footer>
 
 </body>
 </html>
