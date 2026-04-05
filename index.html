@@ -3,17 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Adrian Diaz | RN & Systems Optimizer Portfolio</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Great+Vibes&family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <title>ADRIAN DIAZ | RN & SYSTEMS OPTIMIZER PORTFOLIO</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Great+Vibes&family=Inter:wght@400;600;700&family=SF+Mono&display=swap" rel="stylesheet">
     <style>
         :root {
-            --gold: #D4AF37;
-            --gold-glow: rgba(212, 175, 55, 0.6);
+            /* Data-Grid Color Palette */
+            --bg-deep: #050A0F; /* Deepest blue/black */
+            --bg-card: #0A1929; /* Card background */
+            --data-blue: #00A3FF; /* Active/Data color */
+            --data-blue-dim: rgba(0, 163, 255, 0.1);
+            --medical-red: #FF3B3B; /* Accent for RN/Clinical */
+            --text-primary: #E6F1FF;
+            --text-secondary: #8892B0;
+            --font-mono: 'SF Mono', 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+            /* Padfolio Aesthetics */
             --leather-brown: #3d251e;
-            --paper-ivory: #FFFDF5;
-            --text-gray: #4A4A4A;
-            --sage-green: #6B705C;
-            --sage-light: rgba(107, 112, 92, 0.1);
+            --paper-cream: #FFFDF5;
         }
 
         body, html {
@@ -21,14 +26,16 @@
             padding: 0;
             height: 100%;
             font-family: 'Inter', sans-serif;
-            background-color: var(--leather-brown);
-            overflow: hidden;
+            overflow: hidden; /* Prevent early scrolling */
         }
 
-        /* --- BOOK COVER (Initial State) --- */
-        .book-cover {
-            height: 100vh;
-            width: 100vw;
+        /* --- LAYER 1: The Padfolio (Book Cover) --- 
+          Simulates the closed leather book from image_3.png
+        */
+        #padfolio-cover {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100vw; height: 100vh;
             background: 
                 radial-gradient(circle at center, rgba(0,0,0,0) 0%, rgba(0,0,0,0.4) 100%),
                 url('https://www.transparenttextures.com/patterns/leather.png'),
@@ -37,265 +44,327 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            text-align: center;
-            transition: transform 1s ease-in-out;
-            position: relative;
             z-index: 2;
+            transition: transform 1s ease-in-out;
         }
 
-        /* GRABADO EN ORO */
-        .brand {
-            position: relative;
-            padding: 20px;
-        }
-
-        .brand h1 {
+        /* Stitched initials inspired by image_3.png */
+        .cover-initials {
             font-family: 'Great Vibes', cursive;
             font-size: 5rem;
-            color: var(--gold);
-            margin: 0;
-            text-shadow: 1px 1px 0px #000, 0px 0px 10px var(--gold-glow);
-        }
-
-        .brand h2 {
-            font-family: 'Cinzel', serif;
-            font-size: 1.5rem;
-            color: var(--gold);
-            letter-spacing: 5px;
-            margin-top: -10px;
-            opacity: 0.9;
-        }
-
-        /* BEAT ALREDEDOR DEL NOMBRE */
-        .brand::after {
-            content: '';
+            color: rgba(212, 175, 55, 0.8); /* Embossed Gold */
             position: absolute;
-            inset: 0;
-            border: 2px solid var(--gold);
-            border-radius: 15px;
-            animation: pulseBeat 2s infinite;
-            pointer-events: none;
+            top: 50%; left: 50%;
+            transform: translate(-50%, -100%);
+            text-shadow: 1px 1px 1px #000, 0 0 10px rgba(212, 175, 55, 0.3);
         }
 
-        /* BOTÓN OPEN CON BEAT EN EL BORDE */
+        /* --- The Open Button with Beat --- 
+          Styled like the 'Open' button on the Etsy leather portfolio
+        */
         .open-btn {
-            margin-top: 40px;
-            padding: 15px 50px;
-            background: transparent;
-            border: 2px solid var(--gold);
-            color: var(--gold);
+            background-color: transparent;
+            border: 2px solid var(--data-blue);
+            color: var(--data-blue);
             font-family: 'Cinzel', serif;
             font-size: 1.2rem;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            padding: 20px 60px;
             cursor: pointer;
             border-radius: 50px;
             position: relative;
             overflow: hidden;
             transition: 0.3s;
-            text-transform: uppercase;
+            margin-top: 100px; /* Position below initials */
         }
 
         .open-btn:hover {
-            background: var(--gold);
             color: white;
-            box-shadow: 0 0 20px var(--gold);
+            background-color: var(--data-blue);
+            box-shadow: 0 0 20px var(--data-blue);
         }
 
-        .btn-beat {
+        /* The 'Beat' pulse animation */
+        .open-btn::after {
+            content: '';
             position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
-            border: 2px solid var(--gold);
+            inset: -10px;
+            border: 2px solid var(--data-blue);
             border-radius: 50px;
+            opacity: 0.8;
             animation: pulseBeat 1.5s infinite;
         }
 
         @keyframes pulseBeat {
             0% { transform: scale(1); opacity: 0.8; }
-            100% { transform: scale(1.2); opacity: 0; }
+            100% { transform: scale(1.1); opacity: 0; }
         }
 
-        /* --- THE INSIDE (Etsy-Inspired Format) --- */
-        #content-page {
-            position: fixed;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
-            background: var(--paper-ivory);
-            display: none;
-            flex-direction: column;
-            align-items: center;
-            padding: 30px 20px;
-            z-index: 1;
-            overflow-y: auto;
-        }
-
-        /* Modernized Nav Bar */
-        nav {
-            margin-bottom: 60px;
-            text-transform: uppercase;
-            font-size: 0.75rem;
-            letter-spacing: 1.5px;
-            font-weight: 700;
-        }
-
-        nav a {
-            margin: 0 15px;
-            text-decoration: none;
-            color: var(--text-gray);
-            transition: 0.2s;
-        }
-
-        nav a:hover, nav a.active {
-            color: var(--sage-green);
-            border-bottom: 2px solid var(--sage-green);
-        }
-
-        /* Main Content Grid */
-        main {
-            width: 100%;
-            max-width: 900px;
-            margin: 0 auto;
-        }
-
-        /* Layout Block (Etsy Inspired: Title left, Content right) */
-        .section-container {
-            display: grid;
-            grid-template-columns: 240px 1fr;
-            gap: 40px;
-            margin-bottom: 60px;
-            padding-top: 30px;
-            border-top: 1px solid rgba(107, 112, 92, 0.1);
-        }
-
-        .section-title {
-            font-size: 0.85rem;
-            font-weight: 800;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            color: var(--sage-green);
-        }
-
-        /* Profile Block */
-        .profile-text {
-            font-size: 1.1rem;
-            line-height: 1.8;
-            color: #333;
-        }
-
-        /* Record Item Layout (Title and Description) */
-        .record-item {
-            margin-bottom: 30px;
-        }
-
-        .record-item h3 {
-            font-size: 1.1rem;
-            font-weight: 700;
-            margin: 0;
-            color: var(--text-black);
-        }
-
-        .record-item p {
-            font-size: 1rem;
-            color: var(--text-gray);
-            margin: 5px 0 0;
-        }
-
-        /* Skills Tags (Modern Bubbles) */
-        .tags-container {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 12px;
-        }
-
-        .tag {
-            padding: 8px 18px;
-            background-color: var(--sage-light);
-            border-radius: 20px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            color: var(--sage-green);
-            border: 1px solid rgba(107, 112, 92, 0.2);
-        }
-
-        /* Open Animation */
+        /* State for opening the cover */
         .book-open {
             transform: translateY(-100%);
         }
 
-        @media (max-width: 768px) {
-            .section-container { grid-template-columns: 1fr; gap: 20px; }
-            h1 { font-size: 3.5rem; }
-            nav { text-align: center; }
+        /* --- LAYER 2: The Inside (High-Tech Clinical Data) --- 
+        */
+        #content-page {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background-color: var(--bg-deep);
+            color: var(--text-primary);
+            display: none;
+            flex-direction: column;
+            z-index: 1;
+            overflow-y: auto;
+        }
+
+        /* --- Your High-Tech Data Grid Esthetic --- */
+        #neuron-canvas {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            z-index: -1;
+            background: radial-gradient(circle at center, transparent 0%, var(--bg-deep) 100%);
+        }
+
+        nav {
+            background-color: rgba(10, 25, 41, 0.9);
+            border-bottom: 2px solid var(--data-blue);
+            backdrop-filter: blur(10px);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            padding: 15px 0;
+            display: flex;
+            justify-content: center;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--text-secondary);
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin: 0 20px;
+            transition: 0.3s;
+        }
+
+        nav a:hover, nav a.active {
+            color: var(--data-blue);
+            text-shadow: 0 0 10px var(--data-blue);
+        }
+
+        header {
+            text-align: center;
+            padding: 100px 20px 60px;
+            border-bottom: 1px solid var(--data-blue-dim);
+        }
+
+        h1 {
+            font-size: 4rem;
+            font-weight: 800;
+            margin: 0;
+            letter-spacing: -3px;
+        }
+
+        .role {
+            font-family: var(--font-mono);
+            font-size: 1.1rem;
+            color: var(--medical-red);
+            margin-top: 15px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+
+        main {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 40px 20px 100px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        /* Skill Cards */
+        .data-card {
+            background-color: var(--bg-card);
+            padding: 30px;
+            border-radius: 12px;
+            border: 1px solid var(--data-blue-dim);
+            transition: 0.3s;
+        }
+
+        .data-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--data-blue);
+            box-shadow: 0 10px 40px var(--data-blue-dim);
+        }
+
+        .data-card h3 {
+            font-family: var(--font-mono);
+            font-size: 1rem;
+            color: var(--data-blue);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            border-bottom: 1px solid var(--data-blue-dim);
+            padding-bottom: 15px;
+            margin-bottom: 20px;
+        }
+
+        .skill-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            font-size: 1rem;
+            color: var(--text-secondary);
+        }
+
+        .skill-list li { margin-bottom: 12px; position: relative; padding-left: 25px; }
+        .skill-list li::before { content: "[+]"; font-family: var(--font-mono); color: var(--data-blue); position: absolute; left: 0; font-size: 0.8rem; }
+
+        footer {
+            text-align: center;
+            padding: 40px 0;
+            background-color: rgba(10, 25, 41, 0.9);
+            border-top: 2px solid var(--data-blue);
+            color: var(--text-secondary);
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
         }
     </style>
 </head>
 <body>
 
-    <div class="book-cover" id="cover">
-        <div class="brand">
-            <h1>Adrian Diaz</h1>
-            <h2>RN Portfolio</h2>
-        </div>
-
-        <button class="open-btn" onclick="openBook()">
+    <div id="padfolio-cover">
+        <div class="cover-initials">AD</div>
+        <button class="open-btn" onclick="openPortfolio()">
             Open
-            <div class="btn-beat"></div>
         </button>
     </div>
 
     <div id="content-page">
+        <canvas id="neuron-canvas"></canvas>
+        
         <nav>
-            <a href="index.html" class="active">Overview</a>
-            <a href="philosophy.html">Philosophy</a>
-            <a href="clinical.html">Clinical</a>
-            <a href="credentials.html">Credentials</a>
-            <a href="contact.html">Contact</a>
+            <a href="index.html" class="active">/Overview</a>
+            <a href="philosophy.html">/Philosophy</a>
+            <a href="clinical.html">/Clinical</a>
+            <a href="credentials.html">/Credentials</a>
+            <a href="contact.html">/Contact</a>
         </nav>
 
+        <header>
+            <h1>ADRIAN DIAZ</h1>
+            <div class="role">::Registered Nurse::</div>
+        </header>
+
         <main>
-            <div class="section-container">
-                <div class="section-title">Professional Profile</div>
-                <div class="profile-text">
-                    Dedicated **Registered Nurse (RN)** graduate from Activa Training Center. 
-                    Committed to delivering high-quality patient care through evidence-based practice 
-                    and humanized clinical safety. Specialized in acute care, medication administration, 
-                    and patient advocacy, I strive to provide compassionate care and ethical excellence 
-                    in every clinical setting.
-                </div>
+            <div class="data-card">
+                <h3>Clinical Expertise</h3>
+                <ul class="skill-list">
+                    <li>Advanced Medication Administration</li>
+                    <li>Wound Care & Vital Signs</li>
+                    <li>Comprehensive Neurovascular Assessments</li>
+                </ul>
             </div>
-
-            <div class="section-container">
-                <div class="section-title">Nursing Philosophy</div>
-                <div class="record-item">
-                    <h3>Focus: Humanized & Advocacy-Driven Care</h3>
-                    <p>I view nursing as a dedication to humanized care focused on patient advocacy and ethical excellence. My mission is to bridge the gap between clinical safety and operational efficiency, ensuring that care is data-driven, evidence-based, and deeply compassionate.</p>
-                </div>
+            <div class="data-card">
+                <h3>Nursing Philosophy</h3>
+                <ul class="skill-list">
+                    <li>Patient-Centered Advocacy</li>
+                    <li>Humanistic Care</li>
+                    <li>Evidence-Based Practice</li>
+                </ul>
             </div>
-
-            <div class="section-container">
-                <div class="section-title">Clinical Skills</div>
-                <div class="tags-container">
-                    <div class="tag">Wound Care</div>
-                    <div class="tag">Florida SHOTS</div>
-                    <div class="tag">Bilingual</div>
-                    <div class="tag">Critical Thinking</div>
-                    <div class="tag">Medication Admin</div>
-                    <div class="tag">HIPAA Compliance</div>
-                    <div class="tag">Patient Education</div>
-                </div>
+            <div class="data-card">
+                <h3>Systems Proficiency</h3>
+                <ul class="skill-list">
+                    <li>eClinicalWorks (eCW)</li>
+                    <li>Florida SHOTS</li>
+                    <li>HIPAA Data Security</li>
+                </ul>
             </div>
         </main>
+
+        <footer>
+            :: ADRIAN DIAZ :: Miami Springs, FL :: RN Portfolio :: Est. 2026 ::
+        </footer>
     </div>
 
     <script>
-        function openBook() {
-            // Desliza la portada hacia arriba
-            document.getElementById('cover').classList.add('book-open');
-            // Muestra el contenido
+        function openPortfolio() {
+            // Sliding cover animation
+            document.getElementById('padfolio-cover').classList.add('book-open');
+            
+            // Re-enabling scroll and showing content page
             setTimeout(() => {
                 document.getElementById('content-page').style.display = 'flex';
-                document.body.style.overflow = 'auto';
-            }, 500);
+                document.body.style.overflow = 'auto'; // Re-enable scrolling
+                initCanvas(); // Start background interaction
+            }, 500); // Trigger after cover slides halfway
         }
-    </script>
 
+        // --- Your Interactive Neuron/Particle Code (maintained) ---
+        // (This part needs to be defined within initCanvas() for clean loading)
+        const canvas = document.getElementById('neuron-canvas');
+        const ctx = canvas.getContext('2d');
+        let particles = [];
+        const mouse = { x: null, y: null, radius: 180 };
+
+        function initCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            particles = [];
+            let quantity = (canvas.width * canvas.height) / 10000;
+            for (let i = 0; i < quantity; i++) {
+                particles.push({
+                    x: Math.random() * canvas.width,
+                    y: Math.random() * canvas.height,
+                    vx: (Math.random() - 0.5) * 0.2, vy: (Math.random() - 0.5) * 0.2,
+                    size: Math.random() * 2 + 1
+                });
+            }
+            animate();
+        }
+
+        function animate() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            particles.forEach((p, i) => {
+                p.x += p.vx; p.y += p.vy;
+                if (p.x < 0 || p.x > canvas.width) p.vx *= -1;
+                if (p.y < 0 || p.y > canvas.height) p.vy *= -1;
+
+                let dx = mouse.x - p.x;
+                let dy = mouse.y - p.y;
+                let dist = Math.sqrt(dx*dx + dy*dy);
+                let isGlowing = dist < mouse.radius;
+
+                ctx.beginPath();
+                ctx.arc(p.x, p.y, isGlowing ? 4 : p.size, 0, Math.PI * 2);
+                ctx.fillStyle = isGlowing ? 'rgba(0, 163, 255, 0.8)' : 'rgba(0, 163, 255, 0.1)';
+                if(isGlowing) { ctx.shadowBlur = 10; ctx.shadowColor = "#00A3FF"; } else { ctx.shadowBlur = 0; }
+                ctx.fill();
+
+                for (let j = i + 1; j < particles.length; j++) {
+                    let p2 = particles[j];
+                    let dx2 = p.x - p2.x;
+                    let dy2 = p.y - p2.y;
+                    let dist2 = Math.sqrt(dx2*dx2 + dy2*dy2);
+                    if (dist2 < 130) {
+                        let opacity = (1 - dist2/130) * (isGlowing ? 0.5 : 0.08);
+                        ctx.strokeStyle = `rgba(0, 163, 255, ${opacity})`;
+                        ctx.lineWidth = isGlowing ? 1.2 : 0.8;
+                        ctx.beginPath(); ctx.moveTo(p.x, p.y); ctx.lineTo(p2.x, p2.y); ctx.stroke();
+                    }
+                }
+            });
+            requestAnimationFrame(animate);
+        }
+        window.addEventListener('resize', initCanvas);
+        window.addEventListener('mousemove', (e) => { mouse.x = e.x; mouse.y = e.y; });
+    </script>
 </body>
 </html>
