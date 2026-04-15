@@ -59,7 +59,6 @@
             50% { transform: translateY(-12px); }
         }
 
-        /* MAIN CONTAINER */
         .container {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -68,24 +67,6 @@
             width: 100vw;
             background: white;
             position: relative;
-        }
-
-        /* MEDICAL PULSE LINE */
-        .container::after {
-            content: "";
-            position: absolute;
-            top: 50%; left: 50%;
-            transform: translate(-50%, -50%);
-            width: 80%; height: 2px;
-            background: linear-gradient(90deg, transparent, var(--gold-bright), transparent);
-            opacity: 0.2;
-            z-index: 0;
-            animation: pulseLine 4s infinite;
-        }
-
-        @keyframes pulseLine {
-            0%, 100% { width: 60%; opacity: 0.1; }
-            50% { width: 90%; opacity: 0.4; }
         }
 
         .header-profile {
@@ -133,11 +114,12 @@
 
         /* CONTENT AREAS */
         .content-left, .content-right {
-            padding: 40px 60px;
+            padding: 40px;
+            overflow-y: auto;
             background: white;
             display: flex;
             flex-direction: column;
-            justify-content: center;
+            gap: 20px;
             z-index: 1;
             perspective: 1200px;
         }
@@ -145,54 +127,62 @@
         .content-left { border-right: 1px solid #eee; }
         .content-right { background: #fafafa; }
 
-        /* 3D TILT CARD */
+        /* CARDS */
         .dev-card {
             background: #fff;
-            padding: 40px;
+            padding: 30px;
             border-radius: 20px;
-            box-shadow: 0 15px 40px rgba(0,0,0,0.06);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
             border: 1px solid #f0f0f0;
-            transform-style: preserve-3d;
-            transition: transform 0.1s ease-out, box-shadow 0.3s ease;
-            max-width: 500px;
-            margin: 0 auto;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
         .dev-card:hover {
-            box-shadow: 0 25px 60px rgba(184, 134, 11, 0.15);
-            transform: scale(1.05);
+            box-shadow: 0 20px 50px rgba(184, 134, 11, 0.1);
         }
 
         .section-title {
-            font-size: 0.85rem;
+            font-size: 0.75rem;
             text-transform: uppercase;
             letter-spacing: 2px;
             color: var(--gold);
             border-bottom: 2px solid var(--gold-bright);
             display: inline-block;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
             padding-bottom: 5px;
-            transform: translateZ(30px);
         }
 
-        .dev-card h3 {
-            margin: 0 0 15px;
-            font-size: 1.2rem;
-            transform: translateZ(40px);
+        .dev-card h3 { margin: 0 0 10px; font-size: 1.1rem; }
+        .dev-card p { font-size: 0.9rem; line-height: 1.6; color: var(--text-muted); margin-bottom: 15px; }
+
+        /* CERTIFICATE LIST */
+        .cert-link {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            text-decoration: none;
+            color: var(--text-main);
+            background: #fdfdfd;
+            padding: 12px 15px;
+            border-radius: 10px;
+            margin-bottom: 8px;
+            border: 1px solid #eee;
+            font-size: 0.85rem;
+            font-weight: 600;
+            transition: 0.3s;
         }
 
-        .dev-card p {
-            font-size: 1rem;
-            line-height: 1.7;
-            color: var(--text-muted);
-            text-align: justify;
-            transform: translateZ(20px);
+        .cert-link:hover {
+            background: var(--gold);
+            color: white;
+            transform: translateX(5px);
         }
+
+        .cert-link span { font-size: 0.7rem; text-transform: uppercase; opacity: 0.8; }
 
         @media (max-width: 900px) {
-            .container { grid-template-columns: 1fr; grid-template-rows: auto auto auto auto; height: auto; }
+            .container { grid-template-columns: 1fr; height: auto; }
             .content-left { border-right: none; }
-            .dev-card { transform: none !important; margin-bottom: 20px; }
             body { overflow: auto; }
         }
     </style>
@@ -215,45 +205,58 @@
         </nav>
 
         <main class="content-left">
-            <div class="dev-card tilt-card">
+            <div class="dev-card">
                 <div class="section-title">Continuing Education</div>
                 <h3>Lifelong Learning & Mastery</h3>
-                <p>
-                    I am deeply committed to the continuous evolution of my clinical skills and theoretical knowledge. My strategic goal is to complete a Bachelor of Science in Nursing (BSN) and subsequently pursue advanced practice as a Nurse Practitioner. I believe that professional excellence is a journey of constant refinement.
-                </p>
+                <p>I am deeply committed to the continuous evolution of my clinical skills. My goal is to complete a BSN and subsequently pursue advanced practice as a Nurse Practitioner.</p>
+            </div>
+
+            <div class="dev-card">
+                <div class="section-title">Career Goals</div>
+                <h3>Vision for Excellence</h3>
+                <p>My trajectory is defined by evidence-based practice and adaptability. I commit to staying at the forefront of healthcare innovation and patient advocacy.</p>
             </div>
         </main>
 
         <aside class="content-right">
-            <div class="dev-card tilt-card">
-                <div class="section-title">Career Goals</div>
-                <h3>Vision for Excellence</h3>
-                <p>
-                    My professional trajectory is defined by a dedication to evidence-based practice and adaptability across specialized clinical environments. I commit to staying at the forefront of healthcare innovation, ensuring that my delivery of patient-centered care is always comprehensive, progressive, and deeply rooted in advocacy.
-                </p>
+            <div class="dev-card">
+                <div class="section-title">Compliance & Ethics</div>
+                
+                <a href="Adrian_Diaz_-_HIPAA_for_Covered_Entities_-_2026.pdf" target="_blank" class="cert-link">
+                    HIPAA for Covered Entities <span>View PDF</span>
+                </a>
+                <a href="Adrian_Diaz_-_Ethics_and_Code_of_Conduct_-_2026.pdf" target="_blank" class="cert-link">
+                    Ethics and Code of Conduct <span>View PDF</span>
+                </a>
+                <a href="Adrian_Diaz_-_Healthcare_Fraud_Prevention_Avoiding_Improper_Referrals_-_Kickbacks_&_Claims_-_2026.pdf" target="_blank" class="cert-link">
+                    Fraud Prevention & Referrals <span>View PDF</span>
+                </a>
+                <a href="Adrian_Diaz_-_Conflicts_of_Interest_-_2026.pdf" target="_blank" class="cert-link">
+                    Conflicts of Interest Survey <span>View PDF</span>
+                </a>
+            </div>
+
+            <div class="dev-card">
+                <div class="section-title">Safety & Administration</div>
+                
+                <a href="Adrian_Diaz_-_Environmental_Health_&_Safety_-_2026.pdf" target="_blank" class="cert-link">
+                    Environmental Health & Safety <span>View PDF</span>
+                </a>
+                <a href="Adrian_Diaz_-_Preventing_Workplace_Harassment_and_Discrimination_-_2026.pdf" target="_blank" class="cert-link">
+                    Workplace Harassment Prevention <span>View PDF</span>
+                </a>
+                <a href="Adrian_Diaz_-_IT_Security_Awareness_-_2026.pdf" target="_blank" class="cert-link">
+                    IT Security Awareness <span>View PDF</span>
+                </a>
+                <a href="Adrian_Diaz_-_Understanding_Value_Based_Care_-_An_Overview_-_2026.pdf" target="_blank" class="cert-link">
+                    Value-Based Care Overview <span>View PDF</span>
+                </a>
+                <a href="Adrian_Diaz_-_Workday_Basics_Training_-_Overview.pdf" target="_blank" class="cert-link">
+                    Workday Basics Training <span>View PDF</span>
+                </a>
             </div>
         </aside>
     </div>
 
-    <script>
-        const cards = document.querySelectorAll('.tilt-card');
-        cards.forEach(card => {
-            card.addEventListener('mousemove', (e) => {
-                if (window.innerWidth > 900) {
-                    const rect = card.getBoundingClientRect();
-                    const x = e.clientX - rect.left;
-                    const y = e.clientY - rect.top;
-                    const centerX = rect.width / 2;
-                    const centerY = rect.height / 2;
-                    const rotateX = (centerY - y) / 12;
-                    const rotateY = (x - centerX) / 12;
-                    card.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.08)`;
-                }
-            });
-            card.addEventListener('mouseleave', () => {
-                card.style.transform = `rotateX(0deg) rotateY(0deg) scale(1)`;
-            });
-        });
-    </script>
 </body>
 </html>
