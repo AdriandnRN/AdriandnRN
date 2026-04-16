@@ -121,7 +121,6 @@
             flex-direction: column;
             gap: 20px;
             z-index: 1;
-            perspective: 1200px;
         }
 
         .content-left { border-right: 1px solid #eee; }
@@ -130,15 +129,11 @@
         /* CARDS */
         .dev-card {
             background: #fff;
-            padding: 30px;
+            padding: 25px;
             border-radius: 20px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.05);
             border: 1px solid #f0f0f0;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .dev-card:hover {
-            box-shadow: 0 20px 50px rgba(184, 134, 11, 0.1);
+            margin-bottom: 10px;
         }
 
         .section-title {
@@ -153,7 +148,6 @@
         }
 
         .dev-card h3 { margin: 0 0 10px; font-size: 1.1rem; }
-        .dev-card p { font-size: 0.9rem; line-height: 1.6; color: var(--text-muted); margin-bottom: 15px; }
 
         /* CERTIFICATE LIST */
         .cert-link {
@@ -206,22 +200,38 @@
 
         <main class="content-left">
             <div class="dev-card">
-                <div class="section-title">Continuing Education</div>
-                <h3>Lifelong Learning & Mastery</h3>
-                <p>I am deeply committed to the continuous evolution of my clinical skills. My goal is to complete a BSN and subsequently pursue advanced practice as a Nurse Practitioner.</p>
+                <div class="section-title">Clinical Competencies & Validations</div>
+                <h3>Technical Skill Verifications</h3>
+                
+                <a href="Scan_20260416 (7).pdf" target="_blank" class="cert-link">
+                    Medication Administration Check-Off <span>Clinical Validation</span>
+                </a>
+                <a href="Scan_20260416 (4).pdf" target="_blank" class="cert-link">
+                    Blood Glucose / ACCU-CHEK Glucometer <span>Clinical Validation</span>
+                </a>
+                <a href="Scan_20260416 (3).pdf" target="_blank" class="cert-link">
+                    Hand Hygiene & PPE Competency <span>Safety Validation</span>
+                </a>
+                <a href="Scan_20260416 (6).pdf" target="_blank" class="cert-link">
+                    Restraint Validation Check-Off <span>Patient Safety</span>
+                </a>
+                <a href="Scan_20260416 (5).pdf" target="_blank" class="cert-link">
+                    Advanced Med-Admin Verification <span>Clinical Validation</span>
+                </a>
             </div>
 
             <div class="dev-card">
-                <div class="section-title">Career Goals</div>
+                <div class="section-title">Career Roadmap</div>
                 <h3>Vision for Excellence</h3>
-                <p>My trajectory is defined by evidence-based practice and adaptability. I commit to staying at the forefront of healthcare innovation and patient advocacy.</p>
+                <p style="font-size: 0.9rem; line-height: 1.6; color: var(--text-muted);">
+                    Dedicated to proactive patient advocacy and lifelong learning, with a focus on transition to advanced practice nursing (NP) and specialized care environments.
+                </p>
             </div>
         </main>
 
         <aside class="content-right">
             <div class="dev-card">
                 <div class="section-title">Compliance & Ethics</div>
-                
                 <a href="Adrian_Diaz_-_HIPAA_for_Covered_Entities_-_2026.pdf" target="_blank" class="cert-link">
                     HIPAA for Covered Entities <span>View PDF</span>
                 </a>
@@ -238,7 +248,6 @@
 
             <div class="dev-card">
                 <div class="section-title">Safety & Administration</div>
-                
                 <a href="Adrian_Diaz_-_Environmental_Health_&_Safety_-_2026.pdf" target="_blank" class="cert-link">
                     Environmental Health & Safety <span>View PDF</span>
                 </a>
@@ -252,7 +261,7 @@
                     Value-Based Care Overview <span>View PDF</span>
                 </a>
                 <a href="Adrian_Diaz_-_Workday_Basics_Training_-_Overview.pdf" target="_blank" class="cert-link">
-                    Workday Basics Training <span>View PDF</span>
+                    Workday Training <span>View PDF</span>
                 </a>
             </div>
         </aside>
