@@ -120,18 +120,37 @@
             flex-direction: column;
             gap: 20px;
             z-index: 1;
+            perspective: 1000px;
         }
 
         .content-left { border-right: 1px solid #eee; }
         .content-right { background: #fafafa; }
 
+        /* TARJETAS INTERACTIVAS */
         .dev-card {
             background: #fff;
             padding: 25px;
             border-radius: 20px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.05);
             border: 1px solid #f0f0f0;
-            margin-bottom: 10px;
+            margin-bottom: 15px;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            position: relative;
+            transform-style: preserve-3d;
+        }
+
+        .dev-card:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(184, 134, 11, 0.12);
+            border-color: var(--gold-bright);
+        }
+
+        /* Clase activa para cuando se hace clic */
+        .dev-card.expanded {
+            border: 2px solid var(--gold);
+            background: #fffdf9;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.1);
         }
 
         .section-title {
@@ -143,9 +162,10 @@
             display: inline-block;
             margin-bottom: 15px;
             padding-bottom: 5px;
+            pointer-events: none;
         }
 
-        .dev-card h3 { margin: 0 0 10px; font-size: 1.1rem; }
+        .dev-card h3 { margin: 0 0 10px; font-size: 1.1rem; pointer-events: none; }
 
         .cert-link {
             display: flex;
@@ -166,7 +186,7 @@
         .cert-link:hover {
             background: var(--gold);
             color: white;
-            transform: translateX(5px);
+            transform: translateX(8px);
         }
 
         .cert-link span { font-size: 0.7rem; text-transform: uppercase; opacity: 0.8; }
@@ -196,23 +216,23 @@
         </nav>
 
         <main class="content-left">
-            <div class="dev-card">
+            <div class="dev-card" onclick="toggleCard(this)">
                 <div class="section-title">Career Roadmap</div>
                 <h3>Vision for Excellence</h3>
                 <p style="font-size: 0.9rem; line-height: 1.6; color: var(--text-muted);">
-                    As a dedicated Registered Nurse, my professional trajectory is defined by a commitment to evidence-based practice and lifelong learning. I am strategically focused on advancing my education to a Bachelor of Science in Nursing (BSN) and subsequently pursuing certification as a Nurse Practitioner (NP). My goal is to deliver progressive, patient-centered care while maintaining the highest standards of clinical advocacy.
+                    As a dedicated Registered Nurse, my professional trajectory is defined by a commitment to evidence-based practice and lifelong learning. I am strategically focused on advancing my education to a Bachelor of Science in Nursing (BSN) and subsequently pursuing certification as a Nurse Practitioner (NP).
                 </p>
             </div>
 
-            <div class="dev-card">
-                <div class="section-title">Clinical Competencies & Validations</div>
+            <div class="dev-card" onclick="toggleCard(this)">
+                <div class="section-title">Clinical Competencies</div>
                 <h3>Technical Skill Verifications</h3>
                 
                 <a href="Scan_20260416 (7).pdf" target="_blank" class="cert-link">
                     Medication Administration Check-Off <span>Clinical Validation</span>
                 </a>
                 <a href="Scan_20260416 (4).pdf" target="_blank" class="cert-link">
-                    Blood Glucose / ACCU-CHEK Glucometer <span>Clinical Validation</span>
+                    Blood Glucose / ACCU-CHEK <span>Clinical Validation</span>
                 </a>
                 <a href="Scan_20260416 (3).pdf" target="_blank" class="cert-link">
                     Hand Hygiene & PPE Competency <span>Safety Validation</span>
@@ -227,7 +247,7 @@
         </main>
 
         <aside class="content-right">
-            <div class="dev-card">
+            <div class="dev-card" onclick="toggleCard(this)">
                 <div class="section-title">Compliance & Ethics</div>
                 <a href="Adrian_Diaz_-_HIPAA_for_Covered_Entities_-_2026.pdf" target="_blank" class="cert-link">
                     HIPAA for Covered Entities <span>View PDF</span>
@@ -235,7 +255,7 @@
                 <a href="Adrian_Diaz_-_Ethics_and_Code_of_Conduct_-_2026.pdf" target="_blank" class="cert-link">
                     Ethics and Code of Conduct <span>View PDF</span>
                 </a>
-                <a href="Adrian_Diaz_-_Healthcare_Fraud_Prevention_Avoiding_Improper_Referrals_-_Kickbacks_&_Claims_-_2026.pdf" target="_blank" class="cert-link">
+                <a href="Adrian_Diaz_-_Healthcare_Fraud_Prevention_-_2026.pdf" target="_blank" class="cert-link">
                     Fraud Prevention & Referrals <span>View PDF</span>
                 </a>
                 <a href="Adrian_Diaz_-_Conflicts_of_Interest_-_2026.pdf" target="_blank" class="cert-link">
@@ -243,18 +263,18 @@
                 </a>
             </div>
 
-            <div class="dev-card">
+            <div class="dev-card" onclick="toggleCard(this)">
                 <div class="section-title">Safety & Administration</div>
                 <a href="Adrian_Diaz_-_Environmental_Health_&_Safety_-_2026.pdf" target="_blank" class="cert-link">
                     Environmental Health & Safety <span>View PDF</span>
                 </a>
-                <a href="Adrian_Diaz_-_Preventing_Workplace_Harassment_and_Discrimination_-_2026.pdf" target="_blank" class="cert-link">
+                <a href="Adrian_Diaz_-_Preventing_Workplace_Harassment_-_2026.pdf" target="_blank" class="cert-link">
                     Workplace Harassment Prevention <span>View PDF</span>
                 </a>
                 <a href="Adrian_Diaz_-_IT_Security_Awareness_-_2026.pdf" target="_blank" class="cert-link">
                     IT Security Awareness <span>View PDF</span>
                 </a>
-                <a href="Adrian_Diaz_-_Understanding_Value_Based_Care_-_An_Overview_-_2026.pdf" target="_blank" class="cert-link">
+                <a href="Adrian_Diaz_-_Understanding_Value_Based_Care_-_2026.pdf" target="_blank" class="cert-link">
                     Value-Based Care Overview <span>View PDF</span>
                 </a>
                 <a href="Adrian_Diaz_-_Workday_Basics_Training_-_Overview.pdf" target="_blank" class="cert-link">
@@ -264,5 +284,35 @@
         </aside>
     </div>
 
+    <script>
+        function toggleCard(card) {
+            // Quitar la clase 'expanded' de cualquier otra tarjeta
+            document.querySelectorAll('.dev-card').forEach(c => {
+                if (c !== card) c.classList.remove('expanded');
+            });
+            // Alternar la clase en la tarjeta clickeada
+            card.classList.toggle('expanded');
+        }
+
+        // Efecto Tilt Suave (opcional, para mouse)
+        const cards = document.querySelectorAll('.dev-card');
+        cards.forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                if (window.innerWidth > 900) {
+                    const rect = card.getBoundingClientRect();
+                    const x = e.clientX - rect.left;
+                    const y = e.clientY - rect.top;
+                    const centerX = rect.width / 2;
+                    const centerY = rect.height / 2;
+                    const rotateX = (centerY - y) / 25;
+                    const rotateY = (x - centerX) / 25;
+                    card.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-5px)`;
+                }
+            });
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = `rotateX(0deg) rotateY(0deg) translateY(0)`;
+            });
+        });
+    </script>
 </body>
 </html>
